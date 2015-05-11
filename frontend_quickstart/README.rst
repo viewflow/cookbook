@@ -45,7 +45,18 @@ Add `material.frontend.context_processors.modules` into `context_processor` sett
     ]
 
 
-5. Create `modules.py` file, inside sample_app/ directory, with following content::
+5. Add frontend urls into global urlconf module at urls.py::
+
+    from material.frontend import urls as frontend_urls
+
+    urlpatterns = [
+        ...
+        url(r'^admin/', include(admin.site.urls)),
+        url(r'', include(frontend_urls)),
+    ]
+
+
+5. To create a new module make a `modules.py` file, inside sample_app/ directory, with following content::
 
     from material.frontend import Module
 
@@ -84,7 +95,7 @@ Create sqlite database::
 
 Create a super user with login `admin` and password `admin`::
 
-    echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin3', 'admin@example.com', 'admin3')" | tox python manage.py shell
+    echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin3', 'admin@example.com', 'admin3')" | python manage.py shell
 
 Start the webserver::
 
