@@ -6,22 +6,22 @@ This recipe demonstrates how to setup frontend with django-material
 and create a simple fronted module
 
 
-1. Setup django and django-material
+1. Setup django and django-material::
 
     pip install django django-material
 
-2. Create a new django project
+2. Create a new django project::
 
     django_admin.py startproject frontend_quickstart
 
 
-3. Start the new django app
+3. Start the new django app::
 
     python manage.py sample_app
 
 4. Configure the project settings
 
-Include 'material', 'material.frontend', 'easy_pjax' and our 'sample_app' into INSTALLED_APPS setting
+Include 'material', 'material.frontend', 'easy_pjax' and our 'sample_app' into INSTALLED_APPS setting::
 
     INSTALLED_APPS = (
         'material',
@@ -30,7 +30,7 @@ Include 'material', 'material.frontend', 'easy_pjax' and our 'sample_app' into I
         ...
         'sample_app')
 
-Add `material.frontend.context_processors.modules` into `context_processor` setting
+Add `material.frontend.context_processors.modules` into `context_processor` setting::
 
     TEMPLATES = [
         {
@@ -45,7 +45,7 @@ Add `material.frontend.context_processors.modules` into `context_processor` sett
     ]
 
 
-5. Create `modules.py` file, inside sample_app/ directory, with following content
+5. Create `modules.py` file, inside sample_app/ directory, with following content::
 
     from material.frontend import Module
 
@@ -53,7 +53,7 @@ Add `material.frontend.context_processors.modules` into `context_processor` sett
     class Sample(Module):
         icon = 'mdi-image-compare'
 
-6. Put `index.html` into new `sample_app/templates/sample/` directory
+6. Put `index.html` into new `sample_app/templates/sample/` directory::
 
     {% extends 'material/frontend/base_module.html' %}
 
@@ -78,15 +78,15 @@ Add `material.frontend.context_processors.modules` into `context_processor` sett
 
 7. Start the sample
 
-Create sqlite database
+Create sqlite database::
 
     python manage.py migrate
 
-Create a super user with login `admin` and password `admin`
+Create a super user with login `admin` and password `admin`::
 
     echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin3', 'admin@example.com', 'admin3')" | tox python manage.py shell
 
-Start the webserver
+Start the webserver::
 
     tox python manage.py runserver 0.0.0.0 8000
 
