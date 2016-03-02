@@ -21,29 +21,13 @@ and create a simple fronted module
 
 4. Configure the project settings
 
-Include 'material', 'material.frontend', 'easy_pjax' and our 'sample_app' into INSTALLED_APPS setting::
+Include 'material', 'material.frontend', and our 'sample_app' into INSTALLED_APPS setting::
 
     INSTALLED_APPS = (
         'material',
         'material.frontend',
-        'easy_pjax',
         ...
         'sample_app')
-
-Add `material.frontend.context_processors.modules` into `context_processor` setting::
-
-    TEMPLATES = [
-        {
-            ...
-            'OPTIONS': {
-                'context_processors': [
-                    ...
-                    'material.frontend.context_processors.modules',
-                ],
-            },
-        },
-    ]
-
 
 5. Add frontend urls into global urlconf module at urls.py::
 
@@ -56,7 +40,7 @@ Add `material.frontend.context_processors.modules` into `context_processor` sett
     ]
 
 
-5. To create a new module make a `modules.py` file, inside sample_app/ directory, with following content::
+6. To create a new module make a `modules.py` file, inside sample_app/ directory, with following content::
 
     from material.frontend import Module
 
@@ -64,7 +48,7 @@ Add `material.frontend.context_processors.modules` into `context_processor` sett
     class Sample(Module):
         icon = 'mdi-image-compare'
 
-6. Put `index.html` into new `sample_app/templates/sample/` directory::
+7. Put `index.html` into new `sample_app/templates/sample/` directory::
 
     {% extends 'material/frontend/base_module.html' %}
 
@@ -87,7 +71,7 @@ Add `material.frontend.context_processors.modules` into `context_processor` sett
     {% endblock %}
 
 
-7. Start the sample
+8. Start the sample
 
 Create sqlite database::
 

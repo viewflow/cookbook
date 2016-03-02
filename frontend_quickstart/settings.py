@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'material',
     'material.frontend',
-    'easy_pjax',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
