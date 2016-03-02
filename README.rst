@@ -9,3 +9,9 @@ Django-Material
 ===============
 
 `Frontend Quickstart <./frontend_quickstart>`_
+
+Viewflow Pro
+============
+
+`Subprocess demo <./viewflow_pro_subprocess>`_
+

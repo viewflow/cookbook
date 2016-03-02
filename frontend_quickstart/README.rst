@@ -79,7 +79,7 @@ Create sqlite database::
 
 Create a super user with login `admin` and password `admin`::
 
-    echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin3', 'admin@example.com', 'admin3')" | python manage.py shell
+    tox python manage.py createsuperuser
 
 Start the webserver::
 
