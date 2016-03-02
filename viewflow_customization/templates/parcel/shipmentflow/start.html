@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block nav_addparcel_cls%}active{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Add parcel</h2>
+</div>
+
+<form role="form" class="form" method="POST">
+    <div class="col-sm-8">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {{ activation.management_form }}
+    </div>
+    <div class="col-sm-8">
+        {% buttons %}
+        <button type="submit" name="_start" class="btn btn-primary btn-lg">Add</button>
+        {% endbuttons %}
+    </div>
+</form>
+{% endblock %}
+

@@ -1,0 +1,99 @@
+[
+{
+    "fields": {
+        "name": "Mars", 
+        "distance": 0
+    }, 
+    "pk": 1, 
+    "model": "parcel.planet"
+},
+{
+    "fields": {
+        "name": "Jupiter", 
+        "distance": 0
+    }, 
+    "pk": 2, 
+    "model": "parcel.planet"
+},
+{
+    "model": "users.user", 
+    "pk": 1, 
+    "fields": {
+        "groups": [], 
+        "email": "philip@jfry.com", 
+        "user_permissions": [
+            [
+                "add_parcel", 
+                "parcel", 
+                "parcel"
+            ]
+        ]
+    }
+},
+{
+    "model": "users.user", 
+    "pk": 2, 
+    "fields": {
+        "groups": [], 
+        "email": "leela@turanga.com", 
+        "user_permissions": []
+    }
+},
+{
+    "fields": {
+        "user": [
+            "leela@turanga.com"
+        ], 
+        "content_type": [
+            "parcel", 
+            "planet"
+        ], 
+        "object_pk": "1", 
+        "permission": [
+            "land_on_planet", 
+            "parcel", 
+            "planet"
+        ]
+    }, 
+    "model": "guardian.userobjectpermission", 
+    "pk": 1
+},
+{
+    "fields": {
+        "user": [
+            "leela@turanga.com"
+        ], 
+        "content_type": [
+            "parcel", 
+            "planet"
+        ],
+        "object_pk": "2", 
+        "permission": [
+            "land_on_planet", 
+            "parcel", 
+            "planet"
+        ]
+    }, 
+    "model": "guardian.userobjectpermission", 
+    "pk": 1
+},
+{
+    "model": "users.user", 
+    "pk": 3, 
+    "fields": {
+        "groups": [], 
+        "email": "hubert@farnsworth.com", 
+        "is_superuser": true,
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user", 
+    "pk": 4, 
+    "fields": {
+        "groups": [], 
+        "email": "moggy@nibbler.com", 
+        "user_permissions": []
+    }
+}
+]

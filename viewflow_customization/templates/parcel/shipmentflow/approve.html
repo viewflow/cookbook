@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block nav_addparcel_cls%}active{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Approve Parcel</h2>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Author</dt>
+  <dd>{{ activation.process.created_by }}</dd>
+  <dt>Planet</dt>
+  <dd>{{ activation.process.parcel.planet }}</dd>
+  <dt>Description</dt>
+  <dd>{{ activation.process.parcel.description|linebreaks }}</dd>
+</dl>
+
+<form role="form" class="form" method="POST">
+    <div class="col-sm-8">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {{ activation.management_form }}
+    </div>
+    <div class="col-sm-8">
+        {% buttons %}
+        <button type="submit" name="_start" class="btn btn-primary btn-lg">Submit</button>
+        {% endbuttons %}
+    </div>
+</form>
+{% endblock %}

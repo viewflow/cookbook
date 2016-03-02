@@ -10,6 +10,13 @@ Django-Material
 
 `Frontend Quickstart <./frontend_quickstart>`_
 
+
+Viewflow
+========
+
+`Customization <./viewflow_customization>`_ Custom user model/permissions/custom bootstrap3 based templates
+
+
 Viewflow Pro
 ============
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block nav_addparcel_cls%}active{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Deliver</h2>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Author</dt>
+  <dd>{{ activation.process.created_by }}</dd>
+  <dt>Planet</dt>
+  <dd>{{ activation.process.parcel.planet }}</dd>
+  <dt>Description</dt>
+  <dd>{{ activation.process.parcel.description|linebreaks }}</dd>
+</dl>
+
+<form role="form" class="form" method="POST">
+    {% csrf_token %}
+    {{ activation.management_form }}
+    {% buttons %}
+    <button type="submit" name="done" class="btn btn-primary btn-lg">Done</button>
+    {% endbuttons %}
+</form>
+{% endblock %}
