@@ -14,13 +14,13 @@ Django-Material
 Viewflow
 ========
 
-- `HelloWorld <.viewflow_helloworld>`_ The tutorial project
+- `HelloWorld <./viewflow_helloworld>`_ The tutorial project
 - `Customization <./viewflow_customization>`_ Custom user model/permissions/custom bootstrap3 based templates
 
 
 Viewflow Pro
 ============
 
-- `HelloWorld PRO <.viewflow_pro_helloworld>`_ The tutorial project with viewflow.frontend
+- `HelloWorld PRO <./viewflow_pro_helloworld>`_ The tutorial project with viewflow.frontend
 - `Subprocess demo <./viewflow_pro_subprocess>`_
 
