@@ -1,12 +1,12 @@
-============================
-Viewflow Pro Helloworld Demo
-============================
+========================
+Viewflow Helloworld Demo
+========================
 
 Run this sample with::
 
-    virtualenv env --python=python2.7
+    virtualenv env --python=python3.4
     source env/bin/activate
-    pip install -i https://pypi.viewflow.io/<licence_id>/simple/ -r requirements.txt
+    pip install -r requirements.txt
     python manage.py migrate
     python manage.py createsuperuser
     python manage.py runserver

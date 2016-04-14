@@ -1,0 +1,4 @@
+django
+django-viewflow
+celery
+kombu
