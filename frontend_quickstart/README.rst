@@ -17,7 +17,7 @@ and create a simple fronted module
 
 3. Start the new django app::
 
-    python manage.py sample_app
+    python manage.py startapp sample_app
 
 4. Configure the project settings
 
@@ -27,7 +27,7 @@ Include 'material', 'material.frontend', and our 'sample_app' into INSTALLED_APP
         'material',
         'material.frontend',
         ...
-        'sample_app')
+        'sample_app.apps.SampleAppConfig')
 
 5. Add frontend urls into global urlconf module at urls.py::
 
@@ -40,15 +40,28 @@ Include 'material', 'material.frontend', and our 'sample_app' into INSTALLED_APP
     ]
 
 
-6. To create a new module make a `modules.py` file, inside sample_app/ directory, with following content::
+6. To mark application as frontend module add ModuleMixin to the SampleAppConfig class::
 
-    from material.frontend import Module
+    from django.apps import AppConfig
+    from material.frontend.apps import ModuleMixin
 
 
-    class Sample(Module):
-        icon = 'mdi-image-compare'
+    class SampleAppConfig(ModuleMixin, AppConfig):
+        name = 'sample_app'
+        icon = '<i class="material-icons">extension</i>'
 
-7. Put `index.html` into new `sample_app/templates/sample/` directory::
+7. Create module sample_app/urls.py
+
+You don't need to include this `urls.py` into global `ROOT_URLCONF`. The `frontend.urls` would discover module urls automatically::
+
+    from django.views.generic import TemplateView
+    from django.conf.urls import url
+
+    urlpatterns = [
+        url('^$', TemplateView.as_view(template_name="sample_app/index.html"), name="index"),
+    ]
+
+8. Put `index.html` into new `sample_app/templates/sample_app/` directory::
 
     {% extends 'material/frontend/base_module.html' %}
 
@@ -71,7 +84,7 @@ Include 'material', 'material.frontend', and our 'sample_app' into INSTALLED_APP
     {% endblock %}
 
 
-8. Start the sample
+9. Start the sample
 
 Create sqlite database::
 

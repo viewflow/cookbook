@@ -19,7 +19,7 @@ from django.views import generic
 from material.frontend import urls as frontend_urls
 
 urlpatterns = [
-    url(r'^$', generic.RedirectView.as_view(url='sample/', permanent=False)),
+    url(r'^$', generic.RedirectView.as_view(url='sample_app/', permanent=False)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include(frontend_urls)),
 ]
