@@ -1,7 +1,6 @@
-from viewflow import flow, lock, views as flow_views
+from viewflow import frontend, flow, lock, views as flow_views
 from viewflow.activation import STATUS
 from viewflow.base import Flow, this
-from viewflow.frontend.modules import Viewflow
 
 from . import models, views
 
@@ -10,7 +9,7 @@ class OrderItemFlow(Flow):
     process_cls = models.OrderItemProcess
     lock_impl = lock.select_for_update_lock
 
-    start = flow.StartSubprocess().Next(this.reserve_item)
+    start = flow.StartSubprocess(this.start_func).Next(this.reserve_item)
 
     reserve_item = flow.View(
         views.OrderReservationView,
@@ -92,6 +91,6 @@ class OrderFlow(Flow):
     end = flow.End()
 
 
-Viewflow.instance.register(OrderFlow)
-Viewflow.instance.register(OrderItemFlow)
-Viewflow.instance.register(CustomerVerificationFlow)
+frontend.register(OrderFlow)
+frontend.register(OrderItemFlow)
+frontend.register(CustomerVerificationFlow)
