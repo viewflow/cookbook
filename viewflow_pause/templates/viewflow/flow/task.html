@@ -1,0 +1,20 @@
+{% extends 'viewflow/base.html' %}
+{% load viewflow %}
+
+{% block content %}
+<h1>{{ activation.flow_task }}</h1>
+
+{% include_process_data activation.process %}
+
+<form role="form" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ activation.management_form }}
+    {% if activation.pause.can_proceed %}
+    <button type="submit" name="_pause" class="btn btn-primary btn-lg">Save and Pause</button>
+    {% endif %}
+    <button type="submit" name="_done" class="btn btn-primary btn-lg">Done</button>
+    <button type="submit" name="_continue" class="btn btn-default btn-lg">Done and continue on this process</button>
+</form>
+{% endblock %}
+
