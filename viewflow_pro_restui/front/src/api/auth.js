@@ -1,3 +1,11 @@
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+
 module.exports = {
   getToken() {
     return localstorage.token;
@@ -19,5 +27,9 @@ module.exports = {
 
   logout() {
     delete localStorage.token;
+  }
+
+  fetch (url, options={}) {
+    // TODO
   }
 }
