@@ -2,13 +2,15 @@ import React, { Component, PropTypes } from 'react';
 
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
-import {List, ListItem, MakeSelectable} from 'material-ui/List';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
+import {List, ListItem, MakeSelectable} from 'material-ui/List';
 
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
 import Alarm from 'material-ui/svg-icons/action/alarm';
 import Book from 'material-ui/svg-icons/action/book';
 import CommunicationEmail from 'material-ui/svg-icons/communication/email';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 
 class App extends Component {
@@ -34,6 +36,9 @@ class App extends Component {
         <div style={{ marginLeft: drawerWidth }}>
           {this.props.children}
         </div>
+        <FloatingActionButton secondary={true} style={{ position: 'absolute', right: 40, bottom: 40}}>
+          <ContentAdd />
+        </FloatingActionButton>
       </div>
     )
   }
