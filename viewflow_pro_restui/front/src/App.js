@@ -7,17 +7,26 @@ import IconButton from 'material-ui/IconButton';
 import {List, ListItem, MakeSelectable} from 'material-ui/List';
 
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
+import ActionExitToApp from 'material-ui/svg-icons/action/exit-to-app';
 import Alarm from 'material-ui/svg-icons/action/alarm';
 import Book from 'material-ui/svg-icons/action/book';
 import CommunicationEmail from 'material-ui/svg-icons/communication/email';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+
+const styles = {
+  logout: {
+    position: 'absolute',
+    bottom: '0',
+    width: '100%'
+  }
+}
 
 
 class App extends Component {
   handleChangeList = (event, value) => {
     this.context.router.push(value);
   }
-    
+
   render() {
     const SelectableList = MakeSelectable(List);
     const location = this.props.location;
@@ -31,6 +40,9 @@ class App extends Component {
             <ListItem primaryText="Inbox" leftIcon={<CommunicationEmail />} value="/"/>
             <ListItem primaryText="Queue" leftIcon={<Alarm />} value="/queue/"/>
             <ListItem primaryText="Archive" leftIcon={<Book />} value="/archive/"/>
+          </SelectableList>
+          <SelectableList style={styles.logout} onChange={ this.handleChangeList }>
+            <ListItem primaryText="Logout" leftIcon={<ActionExitToApp />} value="/logout/"/>
           </SelectableList>
         </Drawer>
         <div style={{ marginLeft: drawerWidth }}>

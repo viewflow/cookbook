@@ -1,15 +1,33 @@
-import React from 'react';
-import { IndexRoute, Route }  from 'react-router';
+import React from 'react'
+import { IndexRoute, Route }  from 'react-router'
 
-import App from './App';
-import InboxPage from './components/pages/inbox';
-import QueuePage from './components/pages/queue';
-import ArchivePage from './components/pages/archive';
+import App from './App'
+import InboxView from './views/Inbox'
+import QueueView from './views/Queue'
+import ArchiveView from './views/Archive'
+import LoginView from './views/Login'
+import LogoutView from './views/Logout'
+
+
+function requireAuth(nextState, transition) {
+  if(!localStorage.token) {
+    transition({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
+
 
 export default (
-  <Route component={App} path='/'>
-    <IndexRoute component={InboxPage} />
-    <Route component={QueuePage} path='queue' />
-    <Route component={ArchivePage} path='archive' />
+  <Route>
+    <Route path='login' component={LoginView} />    
+    <Route path='logout' component={LogoutView} />    
+    <Route path='/' component={App} onEnter={requireAuth}>
+      <IndexRoute component={InboxView} />
+      <Route path='queue' component={QueueView} />
+      <Route path='archive' component={ArchiveView} />
+      <Route path='logout' component={LogoutView} />
+    </Route>
   </Route>
-);
+)
