@@ -5,6 +5,12 @@ from . import models
 
 
 class HelloRestFlow(Flow):
+    """
+    Sample flow with REST interface
+
+    This is the simple approvement demo process, where one person
+    requests message send and another one approves it
+    """
     process_class = models.HelloRestProcess
 
     summary_template = "'{{ process.text }}' message to the world"

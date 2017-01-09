@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card'
-import CircularProgress from 'material-ui/CircularProgress';
 
-import {login} from '../api'
+import {login} from '../api/base'
+import LoadIndicator from '../components/LoadIndicator'
 
 
 const styles = {
@@ -22,11 +22,6 @@ const styles = {
   },
   form: {
     position: "absolute",
-  },
-  progress: {
-    position: "absolute",
-    top: "10px",
-    right: "10px",
   },
   formField: {
     width: '100%',
@@ -84,7 +79,7 @@ class Login extends Component {
         <form ref="loginForm" style={styles.form}>
           <Card>
             <CardTitle title="Login" subtitle={subtitle} subtitleColor={subtitleColor} />
-            {(() => this.state.inProgress ? <CircularProgress style={styles.progress} size={0.5} /> : "")()}
+            <LoadIndicator inProgress={this.state.inProgress} />
             <CardText>
               <TextField name="username" floatingLabelText="Username" style={styles.formField} errorText={errors.username}/>
               <TextField name="password" floatingLabelText="Password" type="password"  style={styles.formField}  errorText={errors.password}/>

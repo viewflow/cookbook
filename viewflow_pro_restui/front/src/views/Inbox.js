@@ -1,13 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import AppBar from 'material-ui/AppBar';
 import CommunicationEmail from 'material-ui/svg-icons/communication/email';
 import IconButton from 'material-ui/IconButton';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
+import FlowDialog from '../components/FlowDialog'
+import {inbox} from '../api/workflow'
 
-export default (
-  () => {
+
+class Inbox extends Component {
+  state = {
+    inProgress: false,
+    error: null,
+    inbox: [],
+    currentTask: null,
+  }
+
+  componentDidMount() {
+    this.setState({inProgress: true})
+    inbox().then(
+      response => this.setState({inProgress: false, error: response.detail, inbox: response})
+    ).catch(
+      response => this.setState({inProgress: false, error: response.detail, inbox: []})
+    )
+  }
+     
+  renderTaskDialog() {
+    if(this.state.currentTask) {
+      return <FlowDialog task={this.state.currentTask}/>
+    }
+    return null
+  }
+
+  render () {
     return (
       <div>
         <AppBar title="Inbox" iconElementLeft={<IconButton>{<CommunicationEmail />}</IconButton>}/>
@@ -41,7 +67,10 @@ export default (
             </TableRow>
           </TableBody>
         </Table>
+        {this.renderTaskDialog()}
       </div>
     )
   }
-)
+}
+
+export default Inbox;
