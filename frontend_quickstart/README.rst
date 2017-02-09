@@ -66,18 +66,16 @@ You don't need to include this `urls.py` into global `ROOT_URLCONF`. The `fronte
     {% extends 'material/frontend/base_module.html' %}
 
     {% block content %}
-    <div class="row">
-        <div class="col s4">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-title black-text">{{ current_module.label }}</div>
-                    <h5>Installed modules</h5>
-                    <ul>
-                        {% for module in modules %}
-                        <li>{{ module.label }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+    <div class="left-panel">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title black-text">{{ current_module.label }}</div>
+                <h5>Installed modules</h5>
+                <ul>
+                    {% for module in modules %}
+                    <li>{{ module.label }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
