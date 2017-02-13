@@ -10,17 +10,17 @@ class Test(TestCase):
 
     def testApproved(self):
         self.client.post(
-            '/workflow/hellocelery/start/',
+            '/workflow/hellocelery/helloworld/start/',
             {'text': 'Hello, celery',
              '_viewflow_activation-started': '2000-01-01'}
         )
 
         self.client.post(
-            '/workflow/hellocelery/1/approve/2/assign/'
+            '/workflow/hellocelery/helloworld/1/approve/2/assign/'
         )
 
         self.client.post(
-            '/workflow/hellocelery/1/approve/2/',
+            '/workflow/hellocelery/helloworld/1/approve/2/',
             {'approved': True,
              '_viewflow_activation-started': '2000-01-01'}
         )
@@ -32,17 +32,17 @@ class Test(TestCase):
 
     def testNotApproved(self):
         self.client.post(
-            '/workflow/hellocelery/start/',
+            '/workflow/hellocelery/helloworld/start/',
             {'text': 'Hello, celery',
              '_viewflow_activation-started': '2000-01-01'}
         )
 
         self.client.post(
-            '/workflow/hellocelery/1/approve/2/assign/'
+            '/workflow/hellocelery/helloworld/1/approve/2/assign/'
         )
 
         self.client.post(
-            '/workflow/hellocelery/1/approve/2/',
+            '/workflow/hellocelery/helloworld/1/approve/2/',
             {'approved': False,
              '_viewflow_activation-started': '2000-01-01'}
         )
