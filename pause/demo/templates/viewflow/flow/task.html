@@ -1,0 +1,57 @@
+{% extends 'viewflow/base_module.html' %}
+{% load viewflow viewflow_frontend material_form material_frontend %}
+
+{% block breadcrumbs_items %}
+{% include 'viewflow/includes/breadcrumb_category.html' %}
+<a href="{% flowurl activation.flow_class 'index' %}?{{ request|query_back }}">{{ activation.flow_class.process_title }}</a>
+<a href="{% flowurl activation.process 'detail' %}?{{ request|query_back }}">#{{ activation.process.pk }}</a>
+<a class="active" href="{% flowurl activation.task 'detail' %}?{{ request|query_back }}">{{ activation.flow_task }} / #{{ activation.task.pk }}</a>
+{% endblock %}
+
+
+{% block content %}
+{% block left-panel %}
+<div class="left-panel">
+    <div class="card">
+        <form role="form" method="POST">
+            <div class="card-bend primary center-align">
+                <h5>{{ activation.flow_class.process_title }}</h5>
+                <h6>{{ activation.flow_task }} #{{ activation.task.process.id }}/{{ activation.task.id }}</h6>
+            </div>
+            <div class="card-content">
+                <div class="card-title">
+                    {{ activation.task.summary|default:activation.task.flow_task }}
+                    <h6>{{ activation.process.summary }}</h6>
+                </div>
+                {% block task_form %}
+                {% csrf_token %}
+                {% form form=form layout=view.layout %}{% endform %}
+                {{ activation.management_form }}
+                {% endblock %}
+            </div>
+            <div class="card-action">
+                <div class="row">
+                    {% block task_actions %}
+                    <div class="col s3">
+                        <a class="btn btn-flat black-text" href="{% flowurl activation.task 'detail' %}?{{ request|query_back }}">detail</a>
+                    </div>
+                    <div class="col s9 right-align">
+                        {% if activation.pause.can_proceed %}
+                        <button type="submit" name="_pause" class="btn btn-primary btn-lg">Save and Pause</button>
+                        {% endif %}
+                        <button type="submit" name="_continue" class="btn btn-flat">Done and continue on this process</button>
+                        <button type="submit" name="_done" class="btn primary white-text btn-flat">Done</button>
+                    </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block right-panel %}
+<div class="right-panel">
+    {% include_process_data activation.process %}
+</div>
+{% endblock %}
+{% endblock %}
