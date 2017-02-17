@@ -1,12 +1,12 @@
 from django import forms
 from django.forms.models import modelform_factory
 from django.views import generic
-from viewflow.flow.views import FlowViewMixin
+from viewflow.flow.views import FlowMixin
 
 from .models import OrderItem, CustomerVerificationProcess
 
 
-class CustomerVerificationView(FlowViewMixin, generic.UpdateView):
+class CustomerVerificationView(FlowMixin, generic.UpdateView):
     form_class = modelform_factory(
         CustomerVerificationProcess,
         fields=['trusted'],
@@ -16,7 +16,7 @@ class CustomerVerificationView(FlowViewMixin, generic.UpdateView):
         return self.activation.process
 
 
-class OrderReservationView(FlowViewMixin, generic.UpdateView):
+class OrderReservationView(FlowMixin, generic.UpdateView):
     form_class = modelform_factory(
         OrderItem,
         fields=['reserved'],

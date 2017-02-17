@@ -1,5 +1,5 @@
 django==1.10.5
 celery==4.0.2
 django-material==0.12.3
-viewflow-pro=0.12.0
+viewflow-pro=0.12.2
 
