@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load material_form %}
+
+{% block nav_parcels_cls %}class="active"{% endblock %}
+
+{% block content %}
+<h2 class="center">{{ activation.flow_task.task_title }}</h2>
+<div class="row">
+    <div class="col s12 m6 l4 offset-m3 offset-l4">
+        <form method="POST">
+            {% csrf_token %}
+            {% form form=form %} {% endform %}
+            {{ activation.management_form }}
+            <div class="right">
+                <button type="submit" name="_start" class="btn">Start</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

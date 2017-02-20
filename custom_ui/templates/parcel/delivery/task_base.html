@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load viewflow %}
+
+{% block nav_parcels_cls %}class="active"{% endblock %}
+
+{% block content %}
+<h2 class="center">
+  <a href="{% url 'parcel:delivery:detail' activation.process.pk %}">Parcel #{{ activation.process.pk }}</a> &rang; {{ activation.flow_task }}
+</h2>
+<div class="row">
+  <div class="col s12 m6 l6 offset-m3 offset-l2">
+    <ul class="collection">
+      {% if activation.task.owner %}
+      <li class="collection-item avatar">
+        <i class="material-icons circle">person</i>
+        <span class="title">Assignee</span>
+        <p>{{ activation.task.owner }}</p>
+      </li>
+      {% endif %}
+      {% if activation.task.created and not activation.task.started %}
+      <li class="collection-item avatar">
+        <i class="material-icons circle">alarm_add</i>
+        <span class="title">Created</span>
+        <p>{{ activation.task.created }}</p>
+      </li>
+      {% endif %}
+      {% if activation.task.started %}
+      <li class="collection-item avatar">
+        <i class="material-icons circle">alarm_add</i>
+        <span class="title">Started</span>
+        <p>{{ activation.task.started }}</p>
+      </li>
+      {% endif %}
+      {% if activation.task.finished %}
+      <li class="collection-item avatar">
+        <i class="material-icons circle">done_all</i>
+        <span class="title">Finished</span>
+        <p>{{ activation.task.finished }}</p>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="col s12 m6 l4 offset-m3">
+    {% include_process_data activation.process %}
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m6 l10 offset-m3 offset-l2">
+    {% block task_actions %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

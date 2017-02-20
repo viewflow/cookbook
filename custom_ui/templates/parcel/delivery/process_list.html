@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block nav_parcels_cls %}class="active"{% endblock %}
+
+{% block content %}
+<h2 class="center">{{ view.flow_class }}</h2>
+<div class="row">
+  <div class="col s12 m12 l8 offset-l2">
+    <table id="table" class="table bordered">
+      <thead>
+        <td>#</td>
+        <td>Sent</td>
+        <td>Planet</td>
+        <td>Approved</td>
+        <td>Status</td>
+      </thead>
+      <tbody>
+        {% for process in process_list %}
+        <tr>
+          <td>
+            <a href="{% url 'parcel:delivery:detail' process.pk %}">{{ process.pk }}</a>                        
+          </td>
+          <td>{{ process.created }}</td>
+          <td>{{ process.planet }}</td>
+          <td>{{ process.approved|yesno:"Yes,No" }}</td>
+          <td>
+            {% if process.finished %}
+            {{ process.get_drop_status_display }}
+            {% else %}
+            {{ process.status }}
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

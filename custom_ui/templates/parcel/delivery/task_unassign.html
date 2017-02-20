@@ -1,0 +1,8 @@
+{% extends 'viewflow/flow/task_base.html' %}
+
+{% block task_actions %}
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit" name="run_action" class="btn">Unassign</button>
+</form>
+{% endblock %}

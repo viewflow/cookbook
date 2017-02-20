@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_home_cls%}class="active"{% endblock %}
+
+{% block content %}
+<div class="center">
+  <img src="{% static 'lila.jpg' %}" class="responsive-img" style="max-height:500px" title="(c) http://futurama-madhouse.net/"/>
+  <h4>Planet Express, Inc. Intergalactic Delivery</h4>
+  <h5>The Viewflow <a href="http://viewflow.io" target="_blank">Cookbook</a> Sample.</h5>
+</div>
+{% endblock %}

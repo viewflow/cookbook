@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Viewflow - Reusable Workflow Library</title>
+    <link href="{% static 'custom.css' %}" rel="stylesheet">
+    {% include 'material/includes/material_css.html' %}
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <ul>
+          <li {% block nav_home_cls%}{% endblock %}>
+            <a href="/"><i class="material-icons">home</i></a>
+          </li>
+          {% if user.is_authenticated %}
+          <li {% block nav_parcels_cls %}{% endblock %}>
+            <a href="{% url 'parcel:delivery:index' %}"><i class="material-icons left">mail_outline</i>Parcels</a>
+          </li>
+          <li {% block nav_queue_cls %}{% endblock %}>
+            <a href="{% url 'parcel:delivery:queue' %}">
+              <i class="material-icons left">assignment</i>Queue
+              {% if queue_count %}<sup class="red" style="padding:0 5px 0 5px">{{ queue_count }}</sup>{% endif %}
+            </a>
+          </li>
+          <li {% block nav_tasks_cls %}{% endblock %}>
+            <a href="{% url 'parcel:delivery:tasks' %}">
+              <i class="material-icons left">assignment_late</i>Tasks
+              {% if inbox_count %}<sup class="red" style="padding:0 5px 0 5px">{{ inbox_count }}</sup>{% endif %}
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="right">
+            <li {% block nav_login_cls%}{% endblock %}>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+    {% if user.is_authenticated and perms.parcel.add_parcel %}
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red" href="{% url 'parcel:delivery:start' %}"><i class="material-icons">add</i></a>
+    </div>
+    {% endif %}
+
+    <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+  </body>
+</html>

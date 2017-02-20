@@ -1,0 +1,20 @@
+{% extends 'viewflow/flow/task_base.html' %}
+{% load viewflow %}
+
+{% block nav_parcels_cls %}class="active"{% endblock %}
+
+{% block task_actions %}
+{% flowurl activation.task 'execute' user=request.user as execute_url %}
+{% if execute_url %}
+<a href="{{ execute_url }}" class="btn primary">Execute</a>
+{% endif %}
+{% flowurl activation.task 'assign' user=request.user as assign_url %}
+{% if assign_url %}
+<a href="{{ assign_url }}" class="btn blue">Assign</a>
+{% endif %}
+
+{% flowurl activation.task 'unassign' user=request.user as unassign_url %}
+{% if unassign_url %}
+<a href="{{ unassign_url }}" class="btn blue">Unassign</a>
+{% endif %}
+{% endblock %}

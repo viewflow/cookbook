@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load material_form viewflow %}
+
+{% block nav_parcels_cls %}class="active"{% endblock %}
+
+{% block content %}
+<h2 class="center">
+  <a href="{% url 'parcel:delivery:detail' activation.process.pk %}">Parcel #{{ activation.process.pk }}</a> &rang; {{ activation.flow_task }}
+</h2>
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col s12 m6 l6 offset-m3 offset-l2">
+      {% form form=form %} {% endform %}
+      {{ activation.management_form }}
+      <div class="right">
+      </div>
+    </div>
+    <div class="col s12 m6 l4 offset-m3">
+      {% include_process_data activation.process %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6 l10 offset-m3 offset-l2">
+      <button type="submit" name="_start" class="btn">Submit</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
