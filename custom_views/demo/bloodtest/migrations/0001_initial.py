@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('viewflow', '0006_merge'),
+        ('viewflow', '0005_rename_flowcls'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 

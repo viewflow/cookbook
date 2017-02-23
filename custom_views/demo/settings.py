@@ -54,6 +54,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+import django
+if django.VERSION < (1, 10):
+    MIDDLEWARE_CLASSES = MIDDLEWARE
+
 ROOT_URLCONF = 'demo.urls'
 
 TEMPLATES = [
