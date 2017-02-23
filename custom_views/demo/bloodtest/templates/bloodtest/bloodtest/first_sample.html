@@ -1,0 +1,33 @@
+{% extends 'viewflow/flow/start.html' %}
+{% load viewflow material_form material_frontend %}
+
+{% block left-panel %}
+<div class="left-panel">
+    <div class="card">
+        <form role="form" method="POST">
+            <div class="card-content">                   
+                <div class="card-title black-text">{{ activation.flow_task.task_title|default:activation.task.flow_task }}</div>
+                 <span>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</span>
+                    
+                 {% csrf_token %}
+                 
+                 {{ wizard.management_form }}
+                 {% form form=wizard.form %}{% endform %}
+                {{ activation.management_form }}
+            </div>
+            <div class="card-action row">
+                <div class="col s12 right-align">
+                    {% if wizard.steps.prev %}
+                    <button class="btn btn-flat" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Prev</button>
+                    {% endif %}
+                    {% if wizard.steps.next %}
+                    <button class="btn" type="submit">Next</button>
+                    {% else %}
+                    <button type="submit" class="btn primary white-text btn-flat">Start</button>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,4 @@
+django==1.10.5
+django-material==0.12.5
+viewflow=0.12.2
+
