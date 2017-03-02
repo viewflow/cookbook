@@ -1,0 +1,14 @@
+{% extends 'material/frontend/base.html' %}
+
+
+{% block  topbar_links %}
+<li>{{ user }}</li>
+<li id="login_as_menu">
+    <a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="user-login-as-menu"><i class="material-icons right">arrow_drop_down</i>Login As</a>
+</li>
+<ul id="user-login-as-menu" class="dropdown-content"  style="min-width:200px">
+    {% for user in users %}
+    <li><a data-turbolinks="false" href="{% url 'login_as' %}?user_pk={{ user.pk }}">{{ user }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
