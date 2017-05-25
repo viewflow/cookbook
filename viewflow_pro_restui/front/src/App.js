@@ -5,7 +5,7 @@ import Dialog from 'material-ui/Dialog'
 import Drawer from 'material-ui/Drawer'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import IconButton from 'material-ui/IconButton'
-import {List, ListItem, MakeSelectable} from 'material-ui/List'
+import {List, ListItem} from 'material-ui/List'
 
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard'
 import ActionExitToApp from 'material-ui/svg-icons/action/exit-to-app'
@@ -55,7 +55,7 @@ class App extends Component {
 
 
   render() {
-    const SelectableList = MakeSelectable(List)
+    const SelectableList = List
     const location = this.props.location
     const drawerWidth = this.context.muiTheme.drawer.width
 
