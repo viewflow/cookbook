@@ -9,7 +9,7 @@ class DeliveryProcess(Process):
     approved_at = models.DateTimeField(null=True)
     drop_status = models.CharField(
         null=True, max_length=3, default=None,
-        choices=(('SCF', 'Successfull'),
-                 ('ERR', 'Unsuccessfull'))
+        choices=(('SCF', 'Successful'),
+                 ('ERR', 'Unsuccessful'))
     )
     delivery_report = models.TextField(null=True)
