@@ -1,5 +1,5 @@
 pytz
 django==1.10.5
 django-material==0.12.5
-django-viewflow=0.12.2
+django-viewflow==0.12.2
 
