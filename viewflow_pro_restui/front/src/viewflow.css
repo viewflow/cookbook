@@ -1,0 +1,19 @@
+html, body, #root, #content {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+}
+
+.progress--top {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}

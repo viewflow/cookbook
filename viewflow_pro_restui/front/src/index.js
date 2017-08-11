@@ -1,25 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { browserHistory, Router } from 'react-router';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import 'bootstrap/dist/css/bootstrap.css';
+import './viewflow.css';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import routes from './routes';
+import App from './App';
+import PrivateRoute from './components/PrivateRoute';
+import Login from './views/Login';
 
-
-// Needed for onTouchTap
-injectTapEventPlugin();
-
-
-ReactDOM.render(  
-  <MuiThemeProvider>
-    <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)}>
-      {routes}
-    </Router>
-  </MuiThemeProvider>,
-  document.getElementById('root')
-);
-
-
-import "./index.css"
+ReactDOM.render((
+  <Router>
+    <div id="content">
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute path="/" component={App}/>
+      </Switch>
+    </div>
+  </Router>
+), document.getElementById('root'));

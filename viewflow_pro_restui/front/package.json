@@ -2,24 +2,20 @@
   "name": "front",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.4.1"
-  },
   "dependencies": {
-    "material-ui": "^0.16.4",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "react-router": "^2.8.1",
-    "react-tap-event-plugin": "^2.0.1"
+    "bootstrap": "^4.0.0-alpha.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.11",
+    "react-transition-group": "^1.1.2",
+    "reactstrap": "^4.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
   },
   "proxy": "http://localhost:8000/"
 }

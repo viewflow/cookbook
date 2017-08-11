@@ -20,7 +20,7 @@ urlpatterns = [
 
     url(r'^', include([
         url(r'^flows/hellorest/$',
-            rest.FlowDetailView.as_view(flow_class=HelloRestFlow), name="flow"),
+            rest.DetailFlowView.as_view(), {'flow_class': HelloRestFlow}, name="flow"),
         url(r'^tasks/hellorest/', include([HelloRestFlow.instance.urls]))
     ], namespace='helloworld')),
 ]

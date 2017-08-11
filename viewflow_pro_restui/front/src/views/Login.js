@@ -1,102 +1,63 @@
 import React, {Component} from 'react'
-
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
-import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card'
-
-import {login} from '../api/base'
-import LoadIndicator from '../components/LoadIndicator'
+import { Redirect } from 'react-router-dom'
+import { Alert, Jumbotron, Button, Form, Progress } from 'reactstrap';
 
 
-const styles = {
-  overlay: {
-    position: 'fixed',
-    height: '100%',
-    width:'100%',
-    
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+import TextInput from '../components/TextInput'
+import * as API from '../api'
 
-    background: '#eee',
-  },
-  form: {
-    position: "absolute",
-  },
-  formField: {
-    width: '100%',
-  }
-}
-
-
-class Login extends Component {
+export default class Login extends Component {
   constructor (props) {
     super(props)
 
     this.handleSubmit = this.handleSubmit.bind(this)
-    
+
     this.state = {
+      done: false,
       inProgress: false,
       errors: {}
-    }    
-  }
-
-  login(token) {
-    window.localStorage.token = token
-  }
-
-  redirectBack() {
-    const { location } = this.props
-    if (location.state && location.state.nextPathname) {
-      this.context.router.replace(location.state.nextPathname)
-    } else {
-      this.context.router.replace('/')
     }
   }
-  
-  handleSubmit() {
+
+  handleSubmit(event) {
+    event.preventDefault()
     this.setState({inProgress: true})
-
-    const formData = new FormData(this.refs.loginForm)
-
-    login(formData).then(response => {
-      this.setState({inProgress: false, errors: []})
-      this.login(response.token)
-      this.redirectBack()
-    }).catch(      
-      response => this.setState({inProgress: false, errors: response})
+    
+    const formData = new window.FormData(event.target)
+    API.login(formData).then(response => {
+      window.localStorage.userToken = response.token
+      this.setState({inProgress: false, done: true, errors: []})
+    }).catch(
+      response => {
+        this.setState({inProgress: false, errors: response})
+      }
     )
   }
 
   render() {
-    const errors = this.state.errors
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+ 
+    if(!!window.localStorage.userToken) {
+      return (
+        <div>
+          <Redirect to={from} />
+        </div>
+      )
+    }
 
-    const subtitle = errors.non_field_errors || "Please, input your credentials"
-    const subtitleColor = errors.non_field_errors ? "red" : ""
-    
     return (
-      <div style={styles.overlay}>
-        <form ref="loginForm" style={styles.form}>
-          <Card>
-            <CardTitle title="Login" subtitle={subtitle} subtitleColor={subtitleColor} />
-            <LoadIndicator inProgress={this.state.inProgress} />
-            <CardText>
-              <TextField name="username" floatingLabelText="Username" style={styles.formField} errorText={errors.username}/>
-              <TextField name="password" floatingLabelText="Password" type="password"  style={styles.formField}  errorText={errors.password}/>
-            </CardText>
-          <CardActions>
-            <RaisedButton label="Login" primary={true}  fullWidth={true} onClick={this.handleSubmit} />
-          </CardActions>
-          </Card>
-        </form>
+      <div className="container">
+        <Jumbotron>
+          <h2>Please log in</h2>
+          {this.state.errors.non_field_errors? <Alert color="danger">{this.state.errors.non_field_errors}</Alert>:""}
+          <Form onSubmit={this.handleSubmit} >
+            <TextInput id="id_username" name="username" label="Username" error={this.state.errors.username} getRef={input => input && input.focus()}/>
+            <TextInput id="id_password" name="password" label="Password" error={this.state.errors.password} type="password"/>
+            <Button type="submit" color="primary" size="lg" disabled={this.state.inProgress}>Log In</Button>
+          </Form>
+        </Jumbotron>
+        {this.state.inProgress?<Progress animated value="100" className="progress--top"/>:""}
       </div>
     )
   }
 }
-
-
-Login.contextTypes = {
-  router: React.PropTypes.object.isRequired
-}
-
-export default Login
