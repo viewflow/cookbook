@@ -46,6 +46,7 @@ export default class Login extends Component {
     }
 
     return (
+      <div className="login-page"> 
       <div className="container">
         <Jumbotron>
           <h2>Please log in</h2>
@@ -57,6 +58,7 @@ export default class Login extends Component {
           </Form>
         </Jumbotron>
         {this.state.inProgress?<Progress animated value="100" className="progress--top"/>:""}
+      </div>
       </div>
     )
   }

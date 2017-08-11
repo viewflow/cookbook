@@ -11,7 +11,10 @@ import {
   Row,
   Col,
   Jumbotron,
-  Button
+  Button,
+  Card,
+  CardTitle,
+  CardText
 } from 'reactstrap';
 
 class App extends Component {
@@ -30,41 +33,28 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <Navbar color="inverse" inverse toggleable>
-          <NavbarToggler right onClick={this.toggle} />
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-        <Jumbotron>
-          <Container>
-            <Row>
-              <Col>
-                <h1>Welcome to React</h1>
-                <p>
-                  <Button
-                    tag="a"
-                    color="success"
-                    size="large"
-                    href="http://reactstrap.github.io"
-                    target="_blank"
-                  >
-                    View Reactstrap Docs
-                  </Button>
-                </p>
-              </Col>
-            </Row>
-          </Container>
-        </Jumbotron>
+      <div className="dashboard">
+        <div className="dashboar__column">
+          <div className="dashboard__title">Start</div>
+          <div className="dashboard__content">
+             <Card block>
+               <CardText>This process demonstrates hello world approval request flow.</CardText>
+               <Button>Start</Button>
+             </Card>
+          </div>
+        </div>
+        <div className="dashboar__column">
+          <div className="dashboard__title">Approve</div>
+          <div className="dashboard__content"></div>
+        </div>
+        <div className="dashboar__column">
+          <div className="dashboard__title">Send</div>
+          <div className="dashboard__content"></div>
+        </div>
+        <div className="dashboar__column">
+          <div className="dashboard__title">Complete</div>
+          <div className="dashboard__content"></div>
+        </div>
       </div>
     );
   }
