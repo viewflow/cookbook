@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import 'notie/dist/notie.css';
 import './viewflow.css';
 
 import React from 'react'
@@ -11,11 +12,9 @@ import Login from './views/Login';
 
 ReactDOM.render((
   <Router>
-    <div id="content">
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <PrivateRoute path="/" component={App}/>
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/login" component={Login} />
+      <PrivateRoute path="/" component={App}/>
+    </Switch>
   </Router>
 ), document.getElementById('root'));

@@ -1,63 +1,60 @@
 import React, { Component } from 'react'
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Card,
-  CardTitle,
-  CardText
-} from 'reactstrap';
+import { Route, Redirect, Switch, NavLink as Link } from 'react-router-dom'
+import { Nav, NavItem, NavLink, Progress } from 'reactstrap';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+import Inbox from './views/Inbox'
+import Queue from './views/Queue'
+import Archive from './views/Archive'
+import Dashboard from './views/Dashboard'
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: true
-    };
+
+export default class App extends Component {
+  state = {
+    inProgress: false
   }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+
+  setProgress = inProgress => {
+    this.setState({inProgress: inProgress})
   }
+ 
   render() {
     return (
-      <div className="dashboard">
-        <div className="dashboar__column">
-          <div className="dashboard__title">Start</div>
-          <div className="dashboard__content">
-             <Card block>
-               <CardText>This process demonstrates hello world approval request flow.</CardText>
-               <Button>Start</Button>
-             </Card>
-          </div>
+      <div className="app-page">
+        <div className="app-page__sidebar">
+          <p>Tasks</p>
+          <Nav vertical>
+            <NavItem>
+              <NavLink tag={Link} to="/inbox">Inbox</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/queue">Queue</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/archive">Archive</NavLink>
+            </NavItem>
+          </Nav>
+          <p>Dashboard</p>
+          <Nav>
+            <NavLink tag={Link} to="/dashboard/hellorest/">Hello Rest</NavLink>
+          </Nav>
         </div>
-        <div className="dashboar__column">
-          <div className="dashboard__title">Approve</div>
-          <div className="dashboard__content"></div>
+        <div className="app-page__outlet">
+          <Switch>
+            <Redirect exact from="/" to="/dashboard/hellorest" />
+            <Route exact path="/inbox" render={props => (
+              <Inbox setProgress={this.setProgress} {...props} />
+            )}/>
+            <Route exact path="/queue" render={props => (
+              <Queue setProgress={this.setProgress} {...props} />
+            )}/>
+            <Route exact path="/archive" render={props => (
+              <Archive setProgress={this.setProgress} {...props} />
+            )}/>
+            <Route exact path="/dashboard/hellorest" component={Dashboard} />
+          </Switch>
         </div>
-        <div className="dashboar__column">
-          <div className="dashboard__title">Send</div>
-          <div className="dashboard__content"></div>
-        </div>
-        <div className="dashboar__column">
-          <div className="dashboard__title">Complete</div>
-          <div className="dashboard__content"></div>
-        </div>
+        {this.state.inProgress?<Progress animated value="100" className="progress--top"/>:""}
       </div>
     );
   }
 }
-
-export default App;

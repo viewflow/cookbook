@@ -8,15 +8,10 @@ html, body, #root, #content {
 
 body {
     background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.login-page {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-}
 
 .progress--top {
     position: fixed;
@@ -25,7 +20,36 @@ body {
     left: 0px;
 }
 
+/* 
+   Pages 
+*/
+.login-page {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
 
+.app-page {
+    display: flex;
+    flex-derection: row;
+    width: 100%;
+}
+
+.app-page__sidebar {
+    width: 250px;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.app-page__outlet {
+    flex-grow: 1
+}
+
+/*
+   Components 
+*/
 .dashboard {
     display: flex;
     align-items: stretch;
@@ -38,12 +62,48 @@ body {
     margin-bottom: 10px;
 }
 
-.dashboar__column {
+.dashboard__column {
     height: calc(100% - 20px);
     margin: 10px;
-    padding: 20px;
+    padding: 15px;
     width: 350px;
     min-width: 350px;
     background: rgba(234, 234, 234, 0.53);
     border-radius: 10px;
+}
+
+.tasklist {
+}
+
+.tasklist__task {
+    margin: 10px;
+    width: 350px;
+    float: left;
+}
+
+.tasklist__task .card-text {
+    height: 100px
+}
+
+.tasklist__actions {
+    text-align: right;
+}
+
+.tasklist__actions .btn {
+    text-transform: capitalize;
+}
+
+.btn-circle  {
+    border-radius: 50%;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    font-size:36px;
+}
+
+.btn-action {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
 }
