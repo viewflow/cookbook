@@ -1,0 +1,28 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "history": "^4.7.2",
+    "jwt-decode": "^2.2.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "react-scripts": "1.0.12",
+    "react-transition-group": "^1.1.2",
+    "reactstrap": "^4.8.0",
+    "redux": "^3.7.2",
+    "redux-api-middleware": "^2.0.0-beta.3",
+    "redux-persist": "^5.0.0-beta.7",
+    "redux-persist-transform-filter": "0.0.15"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:8000/"
+}
