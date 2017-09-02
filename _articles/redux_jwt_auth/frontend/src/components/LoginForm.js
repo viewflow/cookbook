@@ -30,7 +30,7 @@ export default class LoginForm extends Component {
   }
 
   render() {
-    const {errors} = this.props
+    const errors = this.props.errors || {}
 
     return (
       <Jumbotron className="container">
