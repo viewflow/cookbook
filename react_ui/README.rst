@@ -7,12 +7,16 @@ To run the demo, you need to start three separate processes
 Frontend
 ========
 
-   $ cd frontend/
-   $ npm start
+.. code:: bash
+
+    $ cd frontend/
+    $ npm start
 
 
 Django Server
 =============
+
+.. code:: bash
 
     $ cd backend/
     $ tox python manage.py runserver 0.0.0.0:8000
@@ -20,6 +24,8 @@ Django Server
 
 Celery Worker
 =============
+
+.. code:: bash
 
     $ cd backend/
     $ tox -e celery
