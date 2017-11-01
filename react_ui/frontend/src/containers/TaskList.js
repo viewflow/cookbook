@@ -54,7 +54,7 @@ export default class TaskList extends Component {
           <CardBlock>
             <CardTitle>#{task.process.id} {task.title}</CardTitle>
             <CardText>
-              <div>{task.description}</div>
+              <div>{task.process_summary}</div>
               <div>{task.summary}</div>
             </CardText>
           </CardBlock>

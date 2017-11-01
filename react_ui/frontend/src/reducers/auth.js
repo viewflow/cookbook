@@ -11,7 +11,7 @@ export default (state=initialState, action) => {
   if(action.error === true &&
      action.payload &&
      action.payload.name === "ApiError" &&
-     action.payload.status == 401) {
+     action.payload.status === 401) {
        return {
          token: undefined
        }

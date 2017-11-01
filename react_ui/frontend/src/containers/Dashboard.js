@@ -66,8 +66,8 @@ export class Dashboard extends Component {
           <CardBlock>
             <CardTitle>#{task.process.id} {task.title}</CardTitle>
             <CardText>
-              <div>{task.description}</div>
-              <div>{task.summary}</div>
+            <div>{task.process_summary}</div>
+            <div>{task.summary}</div>
             </CardText>
           </CardBlock>
           <CardBlock className="tasklist__actions">

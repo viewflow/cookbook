@@ -28,7 +28,9 @@ class HelloRestFlow(Flow):
     approve = (
         flow.View(
             views.UpdateProcessView,
-            fields=['approved'])
+            fields=['approved'],
+            task_description="Message approvement required",
+            task_result_summary="Messsage was {{ process.approved|yesno:'Approved,Rejected' }}")
         .Permission(auto_create=True)
         .Next(this.check_approve)
     )
