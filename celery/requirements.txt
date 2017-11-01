@@ -1,6 +1,6 @@
 pytz
 django==1.10.5
 celery==4.0.2
-django-material-pro==0.12.3
-django-viewflow-pro=0.12.2.1
+django-material-pro==1.1.0
+django-viewflow-pro=1.1.0
 
