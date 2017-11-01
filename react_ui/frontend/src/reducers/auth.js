@@ -8,6 +8,15 @@ const initialState = {
 }
 
 export default (state=initialState, action) => {
+  if(action.error === true &&
+     action.payload &&
+     action.payload.name === "ApiError" &&
+     action.payload.status == 401) {
+       return {
+         token: undefined
+       }
+  }
+
   switch(action.type) {
     case LOGIN_SUCCESS:
       return {
