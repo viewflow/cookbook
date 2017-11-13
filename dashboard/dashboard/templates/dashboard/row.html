@@ -1,0 +1,7 @@
+<div class="row">
+    {% for child, span in parent.children_span %}
+    <div class="col s12 m{{ span }}">
+        {% include child %}
+    </div>
+    {% endfor %}
+</div>

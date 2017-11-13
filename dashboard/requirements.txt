@@ -1,0 +1,4 @@
+pytz
+django==1.11.7
+django-material==1.1.0
+

@@ -1,0 +1,11 @@
+{% extends current_module.base_template %}
+
+{% block breadcrumbs_items %}
+<a class="active">{{ dashboard.name }}</a>
+{% endblock %}
+
+{% block content %}
+<div class="left-panel wide">
+    {% include dashboard %}
+</div>
+{% endblock %}

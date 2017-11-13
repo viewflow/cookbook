@@ -1,0 +1,31 @@
+<div class="card stats-card">
+    <div class="card-content">        
+        <div class="card-title">{{ title|default:'Count'}}</div>
+        <canvas id="id_chart_{{ title|slugify }}">
+        </canvas>
+        <script type="text/javascript">
+          new Chart($("#id_chart_{{ title|slugify }}"), {
+            type: 'bar',
+            data: {
+              labels: [{% for item in stats %}'{{ item.label}}',{% endfor %}],
+              datasets: [
+                {
+                  data: [{% for item in stats %}{{ item.count}},{% endfor %}],
+                  label: "{{ title }}"
+                }
+              ]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                  }
+                }]
+              }
+            }
+          })
+        </script>
+        <div style="clear:both"></div>
+    </div>
+</div>

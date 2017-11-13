@@ -1,0 +1,10 @@
+.dashboard > .row {
+  margin-bottom: 0px; }
+  .dashboard > .row > .col {
+    padding-left: 0.375rem;
+    padding-right: 0.375rem; }
+    .dashboard > .row > .col > .card {
+      margin-bottom: 0.375rem; }
+
+.dashboard .counter-card i.material-icons {
+  font-size: 4.2rem; }
