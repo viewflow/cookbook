@@ -10,6 +10,7 @@ Frontend
 .. code:: bash
 
     $ cd frontend/
+    $ npm install
     $ npm start
 
 
