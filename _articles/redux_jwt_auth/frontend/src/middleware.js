@@ -18,6 +18,7 @@ export function createApiMiddleware() {
             postponedRSAAs.forEach((postponed) => {
               rsaaMiddleware(next)(postponed)
             })
+            postponedRSAAs = []
           } else {
             next(nextAction)
           }
