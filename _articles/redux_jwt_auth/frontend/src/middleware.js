@@ -5,7 +5,7 @@ import { refreshToken, isAccessTokenExpired } from './reducers'
 
 
 export function createApiMiddleware() {
-  const postponedRSAAs = []
+  let postponedRSAAs = []
 
   return ({ dispatch, getState }) => {
     const rsaaMiddleware = apiMiddleware({dispatch, getState})
