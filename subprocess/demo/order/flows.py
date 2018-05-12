@@ -18,7 +18,7 @@ class OrderItemFlow(Flow):
     reserve_item = flow.View(
         views.OrderReservationView,
         task_description="Is item reservation succeed?",
-        task_result_summary="Customer is {{ process.trusted|yesno:'Truested,Unrelaible' }}"
+        task_result_summary="Customer is {{ process.trusted|yesno:'Trusted,Unreliable' }}"
     ).Assign(
         lambda act: act.process.parent_task.process.created_by
     ).Next(this.check_reservation)
@@ -58,7 +58,7 @@ class CustomerVerificationFlow(Flow):
     verify_customer = flow.View(
         views.CustomerVerificationView,
         task_description="Is customer trusted?",
-        task_result_summary="Customer considered {{ process.trusted|yesno:'Trusted,Unrelaible' }}"
+        task_result_summary="Customer considered {{ process.trusted|yesno:'Trusted,Unreliable' }}"
     ).Assign(
         lambda act: act.process.parent_task.process.created_by
     ).Next(this.end)
