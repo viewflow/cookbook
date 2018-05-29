@@ -15,4 +15,4 @@ export default (state=initialState, action) => {
   }
 }
 
-export const serverMessage = (state) => state.message
+export const serverMessage = (state) => state.echo.message
