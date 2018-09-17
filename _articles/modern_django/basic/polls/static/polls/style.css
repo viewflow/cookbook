@@ -1,0 +1,14 @@
+body {
+  background: -webkit-linear-gradient(340deg,#fdcd3b 60%,#ffed4b 0);
+  background: -o-linear-gradient(340deg,#fdcd3b 60%,#ffed4b 60%);
+  background: linear-gradient(110deg,#fdcd3b 60%,#ffed4b 0);
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: repeat;
+    background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+li a {
+    color: green;
+}
