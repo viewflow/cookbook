@@ -9,7 +9,7 @@ class BloodTestFlow(Flow):
     process_class = models.BloodTestProcess
 
     first_sample = flow.Start(
-        views.FirstBoodSampleView
+        views.FirstBloodSampleView
     ).Next(this.biochemical_analysis)
 
     second_sample = flow.Start(
