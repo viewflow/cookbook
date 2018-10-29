@@ -34,5 +34,5 @@ urlpatterns = [
         name="task-list"),
 
     url(r'^workflow/api/',
-        include(hello_urls, namespace='helloworld')),
+        include((hello_urls, 'helloworld'), namespace='helloworld')),
 ]
