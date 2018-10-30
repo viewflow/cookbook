@@ -35,7 +35,7 @@ class User(GuardianUserMixin,
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    department = models.ForeignKey(Department, related_name='employees')
+    department = models.ForeignKey(Department, related_name='employees', on_delete=models.CASCADE)
     email = models.EmailField(unique=True, max_length=254)
 
     is_staff = models.BooleanField(default=False)

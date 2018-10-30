@@ -1,6 +1,6 @@
 pytz
-django==1.10.5
-django-material==0.12.5
-django-guardian==1.4.6
-django-viewflow-pro==0.13
+django==2.1.2
+django-guardian==1.4.9
+django-material-pro==1.4.1
+django-viewflow-pro==1.4.1
 

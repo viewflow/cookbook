@@ -4,7 +4,7 @@
 {% block  topbar_links %}
 <li>{{ user }}</li>
 <li id="login_as_menu">
-    <a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="user-login-as-menu"><i class="material-icons right">arrow_drop_down</i>Login As</a>
+    <dmc-dropdown><a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-target="user-login-as-menu"><i class="material-icons right">arrow_drop_down</i>Login As</a></dmc-dropdown>
 </li>
 <ul id="user-login-as-menu" class="dropdown-content"  style="min-width:200px">
     {% for user in users %}

@@ -6,7 +6,7 @@ from material.frontend import urls as frontend_urls
 urlpatterns = [
     url(r'^$', generic.RedirectView.as_view(
         url='/workflow/', permanent=False)),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'', include('demo.website')),
     url(r'', include(frontend_urls)),
 ]
