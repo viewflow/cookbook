@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory'
 import { ConnectedRouter } from 'react-router-redux'
 import { Provider } from 'react-redux'
-import {Route, Switch} from 'react-router'
+import { Route, Switch } from 'react-router'
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import Login from './containers/Login';
-import PrivateRoute from './containers/PrivateRoute';
 import configureStore from './store'
+import AppLayout from './components/AppLayout'
+import Companies from './containers/Companies'
+import CompanyDetails from './containers/CompanyDetails'
+import About from './containers/About'
 
 const history = createHistory()
 
@@ -21,7 +24,10 @@ ReactDOM.render((
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/login/" component={Login} />
-        <PrivateRoute path="/" component={App}/>
+        <AppLayout exact path="/" component={App}/>
+        <AppLayout exact path="/companies" component={Companies}/>
+        <AppLayout exact path="/about" component={About}/>
+        <AppLayout exact path="/company/:id" component={CompanyDetails}/>
       </Switch>
     </ConnectedRouter>
   </Provider>

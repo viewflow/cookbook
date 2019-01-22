@@ -12,6 +12,11 @@ body {
   background-attachment: fixed;
 }
 
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
 /*.
    Pages.
 */
