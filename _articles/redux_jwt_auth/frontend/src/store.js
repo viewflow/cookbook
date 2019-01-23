@@ -27,7 +27,7 @@ export default (history) => {
     applyMiddleware(apiMiddleware, routerMiddleware(history))
   )
 
-  persistStore(store)
+  const persistor = persistStore(store)
 
-  return store
+  return {store, persistor}
 }

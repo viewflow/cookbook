@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory'
 import { ConnectedRouter } from 'react-router-redux'
+import { PersistGate } from 'redux-persist/es/integration/react'
 import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router'
 
@@ -17,18 +18,20 @@ import About from './containers/About'
 
 const history = createHistory()
 
-const store = configureStore(history)
+const {store, persistor} = configureStore(history)
 
 ReactDOM.render((
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/login/" component={Login} />
-        <AppLayout exact path="/" component={App}/>
-        <AppLayout exact path="/companies" component={Companies}/>
-        <AppLayout exact path="/about" component={About}/>
-        <AppLayout exact path="/company/:id" component={CompanyDetails}/>
-      </Switch>
-    </ConnectedRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <ConnectedRouter history={history}>
+          <Switch>
+            <Route exact path="/login/" component={Login} />
+            <AppLayout exact path="/" component={App}/>
+            <AppLayout exact path="/companies" component={Companies}/>
+            <AppLayout exact path="/about" component={About}/>
+            <AppLayout exact path="/company/:id" component={CompanyDetails}/>
+          </Switch>
+        </ConnectedRouter>
+      </PersistGate>
   </Provider>
 ), document.getElementById('root'));
