@@ -1,5 +1,5 @@
 pytz
-django==1.11.6
+django==1.11.23
 django-formtools
 django-material==1.1.0
 django-viewflow==1.1.0
