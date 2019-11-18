@@ -9,7 +9,7 @@ from viewflow.flow.views.utils import get_next_task_url
 from . import forms, models
 
 
-class FirstBoodSampleView(StartFlowMixin, SessionWizardView):
+class FirstBloodSampleView(StartFlowMixin, SessionWizardView):
     template_name = 'bloodtest/bloodtest/first_sample.html'
 
     form_list = [forms.PatientForm, forms.BloodSampleForm]
