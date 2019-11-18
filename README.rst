@@ -11,4 +11,4 @@ Set of samples projects and receipts for django-material and viewflow
 - `Frontend <./frontend>`_ Custom compoment sample for django-material
 - `Guardian <./guardian>`_ Object-based permissions sample
 - `HelloWorld <./helloworld>`_ The tutorial project
-- `Subprocess <./subprocess>` Viewflow subprocess sample
+- `Subprocess <./subprocess>`_ Viewflow subprocess sample
