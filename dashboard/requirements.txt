@@ -1,4 +1,4 @@
 pytz
-django==1.11.7
+django==1.11.23
 django-material==1.1.0
 
