@@ -1,5 +1,5 @@
 pytz
-django==2.1.2
+django==2.1.11
 django-guardian==1.4.9
 django-material-pro==1.4.1
 django-viewflow-pro==1.4.1
