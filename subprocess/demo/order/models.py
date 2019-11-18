@@ -8,7 +8,7 @@ class OrderProcess(Process):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(OrderProcess)
+    order = models.ForeignKey(OrderProcess, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     quantity = models.IntegerField(default=1)
     reserved = models.NullBooleanField()
@@ -19,4 +19,4 @@ class CustomerVerificationProcess(Subprocess):
 
 
 class OrderItemProcess(Subprocess):
-    item = models.ForeignKey(OrderItem)
+    item = models.ForeignKey(OrderItem, on_delete=models.CASCADE)

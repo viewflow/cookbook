@@ -1,4 +1,5 @@
 pytz
-django==1.11.23
-django-material==1.1.0
+django~=2.2
+django-material-pro<2.0
+django-viewflow-pro<2.0
 

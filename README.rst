@@ -5,8 +5,10 @@ Viewflow Cookbook
 Set of samples projects and receipts for django-material and viewflow
 
 - `Celery <./celery>`_ Viewflow with Celery sample
-- `Custom User Model <./customuser>`_ Viewflow with custom user model, and django-guardian permissions
+- `Custom UI <./custom_ui>`_
+- `Custom Views <./custom_views>`_
+- `Dashboard <./dashboard>`_ Sample dashboard for django-material
+- `Frontend <./frontend>`_ Custom compoment sample for django-material
+- `Guardian <./guardian>`_ Object-based permissions sample
 - `HelloWorld <./helloworld>`_ The tutorial project
-- `NoFrontend <./nofrontend>`_ Viewflow with functional based views and bootstrap templates
-- `Paused Task <./pause>`_ Custom Activation state demo
 - `Subprocess <./subprocess>` Viewflow subprocess sample

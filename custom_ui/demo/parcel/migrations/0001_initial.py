@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DeliveryProcess',
             fields=[
-                ('process_ptr', models.OneToOneField(auto_created=True, serialize=False, parent_link=True, to='viewflow.Process', primary_key=True)),
+                ('process_ptr', models.OneToOneField(on_delete=models.CASCADE, auto_created=True, serialize=False, parent_link=True, to='viewflow.Process', primary_key=True)),
                 ('planet', models.CharField(max_length=250)),
                 ('description', models.TextField()),
                 ('approved', models.BooleanField(default=False)),

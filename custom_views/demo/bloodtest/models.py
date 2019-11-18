@@ -25,20 +25,20 @@ class Patient(models.Model):
 
 
 class BloodSample(models.Model):
-    patient = models.ForeignKey(Patient)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     taken_at = models.DateTimeField(default=timezone.now)
-    taken_by = models.ForeignKey(User)
+    taken_by = models.ForeignKey(User, on_delete=models.CASCADE)
     notes = models.TextField(blank=True)
 
 
 class Biochemistry(models.Model):
-    sample = models.OneToOneField(BloodSample)
+    sample = models.OneToOneField(BloodSample, on_delete=models.CASCADE)
     hemoglobin = models.IntegerField(help_text='g/dL')
     lymphocytes = models.DecimalField(max_digits=3, decimal_places=1, help_text='10^9/L')
 
 
 class TumorMarkers(models.Model):
-    sample = models.OneToOneField(BloodSample)
+    sample = models.OneToOneField(BloodSample, on_delete=models.CASCADE)
     alpha_fetoprotein = models.IntegerField(help_text='ng/mL')
     beta_gonadotropin = models.IntegerField(help_text='IU/I')
     ca19 = models.IntegerField(help_text='U/mL')
@@ -48,7 +48,7 @@ class TumorMarkers(models.Model):
 
 
 class Hormones(models.Model):
-    sample = models.OneToOneField(BloodSample)
+    sample = models.OneToOneField(BloodSample, on_delete=models.CASCADE)
     acth = models.DecimalField(max_digits=3, decimal_places=1, help_text='pmol/L')
     estradiol = models.IntegerField(help_text='ng/dL')
     free_t3 = models.DecimalField(max_digits=3, decimal_places=1, help_text='ng/dL')
@@ -56,7 +56,7 @@ class Hormones(models.Model):
 
 
 class BloodTestProcess(Process):
-    sample = models.ForeignKey(BloodSample)
+    sample = models.ForeignKey(BloodSample, on_delete=models.CASCADE)
 
     @property
     def tumor_test_required(self):

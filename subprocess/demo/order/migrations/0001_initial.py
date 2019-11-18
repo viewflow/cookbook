@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CustomerVerificationProcess',
             fields=[
-                ('subprocess_ptr', models.OneToOneField(parent_link=True, auto_created=True, to='viewflow.Subprocess', serialize=False, primary_key=True)),
+                ('subprocess_ptr', models.OneToOneField(on_delete=models.CASCADE, parent_link=True, auto_created=True, to='viewflow.Subprocess', serialize=False, primary_key=True)),
                 ('trusted', models.NullBooleanField()),
             ],
             options={
@@ -34,8 +34,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OrderItemProcess',
             fields=[
-                ('subprocess_ptr', models.OneToOneField(parent_link=True, auto_created=True, to='viewflow.Subprocess', serialize=False, primary_key=True)),
-                ('item', models.ForeignKey(to='order.OrderItem')),
+                ('subprocess_ptr', models.OneToOneField(on_delete=models.CASCADE, parent_link=True, auto_created=True, to='viewflow.Subprocess', serialize=False, primary_key=True)),
+                ('item', models.ForeignKey(to='order.OrderItem', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OrderProcess',
             fields=[
-                ('process_ptr', models.OneToOneField(parent_link=True, auto_created=True, to='viewflow.Process', serialize=False, primary_key=True)),
+                ('process_ptr', models.OneToOneField(on_delete=models.CASCADE, parent_link=True, auto_created=True, to='viewflow.Process', serialize=False, primary_key=True)),
                 ('customer_name', models.CharField(max_length=250)),
                 ('customer_address', models.CharField(max_length=250)),
             ],
@@ -57,6 +57,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='orderitem',
             name='order',
-            field=models.ForeignKey(to='order.OrderProcess'),
+            field=models.ForeignKey(to='order.OrderProcess', on_delete=models.CASCADE),
         ),
     ]
