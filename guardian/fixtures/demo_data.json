@@ -7,6 +7,16 @@
                 "can_register_bill_billprocess",
                 "payments",
                 "billprocess"
+            ],
+            [
+                "can_accept_bill",
+                "users",
+                "department"
+            ],
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
             ]
         ]
     },
@@ -20,6 +30,11 @@
                 "can_set_bill_paydate",
                 "users",
                 "department"
+            ],
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
             ]
         ]
     },
@@ -38,6 +53,11 @@
                 "can_validate_bill",
                 "users",
                 "department"
+            ],
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
             ]
         ]
     },
