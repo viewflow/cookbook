@@ -7,5 +7,5 @@ delivery_urls = FlowViewSet(DeliveryFlow).urls
 
 app_name = 'parcel'
 urlpatterns = [
-     url(r'^delivery/', include(delivery_urls))
+     url(r'^delivery/', include((delivery_urls, 'delivery')))
 ]
