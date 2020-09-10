@@ -1,7 +1,8 @@
 django==2.1.2
 djangorestframework==3.9.0
 django-rest-swagger==2.2.0
-pyaml=3.13
 django-viewflow-pro==1.4.1
 django-material-pro==1.4.1
-
+pyaml==20.4.0
+celery==4.4.7
+coreapi==2.3.3
