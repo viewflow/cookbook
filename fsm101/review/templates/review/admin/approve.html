@@ -1,0 +1,41 @@
+{% extends 'admin/base_site.html' %}
+{% load admin_urls i18n static %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form delete-confirmation{% endblock %}
+
+{% block extrahead %}
+{{ media }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/cancel.js' %}"></script>
+{% endblock %}
+
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+&rsaquo; {% if has_view_permission %}<a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}
+&rsaquo; <a href="{% url opts|admin_urlname:'change' original.pk|admin_urlquote %}">{{ original|truncatewords:"18" }}</a>
+&rsaquo; {{ transition.label }}
+</div>
+{% endblock %}
+
+
+{% block content %}<div id="content-main">
+<form method="post">
+  {% csrf_token %}
+  <fieldset class="module aligned">
+    <div class="form-row field-text">
+      <div>
+        {{ form.non_field_errors }}
+        {{ form.comment.errors }}
+        {{ form.comment.label_tag }}
+        {{ form.comment }}
+      </div>
+    </div>
+  </fieldset>
+  <input type="submit" value="{% trans 'Yes, I’m sure' %}">
+  <a href="#" class="button cancel-link">{% trans "No, take me back" %}</a>
+</form>
+
+</div>{% endblock %}

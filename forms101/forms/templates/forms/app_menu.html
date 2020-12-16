@@ -1,0 +1,65 @@
+{% load i18n viewflow %}
+<vf-page-menu-navigation class="mdc-list">
+  <style>
+  .forms-list-group .mdc-list-item>i:first-child {
+    display:none
+  }
+
+ .forms-list-group .mdc-list-item.mdc-list-item--selected>i:first-child {
+    display:inline-block;
+  }
+
+  .forms-list-group .mdc-list-item.mdc-list-item--selected>i:not(:first-child) {
+    display:none;
+  }
+  </style>
+  <div class="mdc-list-group forms-list-group">
+    <h3 class="vf-page__menu-subheader mdc-list-group__subheader">{{ app.title }}</h3>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'bank_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Bank application'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'checkout_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Checkout product'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'comment_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Comment form'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'contact_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Contact form'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'hospital_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Hospital registration'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'login_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Login form sample'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'order_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Order services'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'profile_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Profile Edit'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'registration_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Registration form'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'signup_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Sign up'%}
+    </a>
+
+    <a class="mdc-list-item vf-page__menu-list-item" href="{% reverse viewset 'wizard_form' %}">
+      <i class="material-icons">radio_button_checked</i><i class="material-icons">radio_button_unchecked</i> {% trans 'Wizard sample'%}
+    </a>
+
+  </div>
+  <div class="mdc-list-divider"></div>
+</vf-page-menu-navigation>

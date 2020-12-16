@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" class="pure-form-stacked">
+  {% csrf_token %}
+  <fieldset>
+    <legend>Edit {{ object.content_type|capfirst }}</legend>
+    {{ form }}
+    <button type="submit" class="pure-button pure-button-primary">Save</button>
+  </fielset>
+</form>
+{% endblock content %}
+<form metho="POST">
+</form>

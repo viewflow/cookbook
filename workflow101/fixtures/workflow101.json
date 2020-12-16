@@ -1,0 +1,38 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+       "user_permissions": [
+            [
+                "can_start_helloworldprocess",
+                "helloworld",
+                "helloworldprocess"
+            ],
+            [
+                "view_helloworldprocess",
+                "helloworld",
+                "helloworldprocess"
+            ]
+       ],
+        "username": "helloworld/employee"
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "user_permissions": [
+            [
+                "can_approve_helloworldprocess",
+                "helloworld",
+                "helloworldprocess"
+            ],
+            [
+                "view_helloworldprocess",
+                "helloworld",
+                "helloworldprocess"
+            ]
+        ],
+        "username": "helloworld/manager"
+    }
+}
+]

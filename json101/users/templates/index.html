@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="pure-table pure-table-horizontal">
+{% for user in user_list %}
+<tr>
+  <td>{{ user.username }}</td>
+  <td>{{ user.content_type }}</td>
+  <td>{% with url=user.get_absolute_url %}
+      {% if url %}<a href="{{ url }}">edit</a>{% endif %}
+  {% endwith %}</td>
+</tr>
+{% endfor %}
+</table>
+<div>
+  <a class="pure-button" href="{% url 'employee_add' %}">Add an Employee</a>
+  <a class="pure-button" href="{% url 'client_add' %}">Add a Client</a>
+</div>
+{% endblock content %}

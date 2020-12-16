@@ -1,0 +1,3 @@
+django
+django-guardian
+django-viewflow-pro
