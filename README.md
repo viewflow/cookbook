@@ -1,4 +1,4 @@
-# Viewflow Cookbook
+<h1>Viewflow Cookbook <img src="https://www.flaticon.com/svg/static/icons/svg/0/547.svg" align="right" height="70"></h1>
 
 Set of sample projects and receipts for the Viewflow library.
 
