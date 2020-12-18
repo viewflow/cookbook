@@ -4,18 +4,22 @@ Admin-style CRUD application
 
 This demo shows how to create a quick CRUD frontend.
 
+## Online demo
+
+https://demo-next.viewflow.io/atlas/
+
 ## Quickstart
 
 ```bash
 $ git clone https://github.com/viewflow/cookbook.git
 
 $ python3 -m venv crud101/venv
-$ . crud101/venv/activate
+$ source crud101/venv/activate
 
 $ pip install crud101/requirements.txt --extra-index-url=...
 $ python3 crud101/manage.py migrate
 $ python3 crud101/manage.py loaddata crud101/atlas/fixtures/*.json
-$ ./manage.py runserver
+$ python3 crud101/manage.py runserver
 ```
 
 Navigate to http://127.0.0.1:8000
