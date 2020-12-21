@@ -21,4 +21,5 @@ Navigate to http://127.0.0.1:8000
 - [Composite FK field](http://docs-next.viewflow.io/orm/composite_fk.html)
 
 ## Most interesting files
+- [routers.py](./config/routers.py) - DB Router to integrate demo db
 - [models.py](./airdata/models.py) - Model definitions for the demo database

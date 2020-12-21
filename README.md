@@ -8,4 +8,5 @@ Set of sample projects and receipts for the Viewflow library.
 - [FSM 101](./fsm101) - Finite state machine workflow UI and REST API
 - [JSON 101](./json101) - JSON storage and polymorphic user model
 - [Legacy DB](./legacy_db) - Django and Database with composite foreign keys sample
+- [Timescale DB](./timescale_db) - Access to timescale database from Django
 - [Workflow 101](./workflow101) - HelloWorld workflow sample

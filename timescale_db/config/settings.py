@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'L8n5nQjK95i9pfmSFVVK7hdded1sKHl5q0_owXKWL4TCeEmb-p'
+SECRET_KEY = 'm5GM5DZrFuZhzVWUBrS1YrFybuFHDIhYf2sQ3Vyqhwg-PFV_KT'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -16,7 +16,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'cookbook.legacy_db.airdata',
+    'cookbook.timescale_db.device_ops',
 
     'viewflow',
     'django.contrib.admin',
@@ -30,7 +30,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -38,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cookbook.legacy_db.config.urls'
+ROOT_URLCONF = 'cookbook.timescale_db.config.urls'
 
 TEMPLATES = [
     {
@@ -64,16 +63,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'demo': {
+    'devices': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'demo',
+        'NAME': 'device_ops',
         'HOST': 'localhost',
         'USER': 'viewflow',
         'PASSWORD': 'viewflow',
     }
 }
 
-DATABASE_ROUTERS = ['cookbook.legacy_db.config.routers.Router', ]
+DATABASE_ROUTERS = ['cookbook.timescale_db.config.routers.Router', ]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -93,6 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
@@ -110,23 +111,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django.db.backends': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-        },
-    },
-}
-
-
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000  # allow to save long inlines
