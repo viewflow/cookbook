@@ -15,6 +15,9 @@ class DeviceInfo(models.Model):
         db_table = 'device_info'
         verbose_name = 'Device'
 
+    def __str__(self):
+        return self.device_id or 'New Device'
+
 
 class Readings(models.Model):
     id = CompositeKey(columns=['device_id', 'time'])

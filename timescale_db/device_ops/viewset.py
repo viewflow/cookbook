@@ -10,11 +10,12 @@ class DeviceModelViewset(ModelViewset):
 
 class ReadingsViewset(ModelViewset):
     list_columns = ('device', 'time', 'battery_level', 'cpu_avg_15min', 'mem_free')
+    list_filter_fields = ('device', )
     model = Readings
 
 
 class DevicesDataApplication(Application):
-    items = [
+    viewsets = [
         DeviceModelViewset(),
         ReadingsViewset(),
     ]

@@ -46,7 +46,7 @@ class FlightViewset(ModelViewset):
 class AirportApp(Application):
     icon = Icon('tour')
 
-    items = [
+    viewsets = [
         AircraftViewset(),
         AirportViewset(),
         BookingViewset(),

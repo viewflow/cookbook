@@ -9,7 +9,7 @@ site = Site(
     title="Airflights demo Database",
     primary_color='#3949ab',
     secondary_color='#5c6bc0',
-    items=[
+    viewsets=[
         AirportApp(),
         Admin(),
     ]

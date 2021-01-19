@@ -9,7 +9,7 @@ site = Site(
     title="CRUD 101 Demo",
     primary_color='#3949ab',
     secondary_color='#5c6bc0',
-    items=[
+    viewsets=[
         Application(
             title='Dashboard',
             menu_template_name='board/app_menu.html',

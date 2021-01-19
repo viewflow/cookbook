@@ -8,7 +8,7 @@ from viewflow.workflow.flow import FlowAppViewset
 from ..helloworld.flows import HelloWorldFlow
 
 
-site = Site(title="Workflow 101 Demo", items=[
+site = Site(title="Workflow 101 Demo", viewsets=[
     FlowAppViewset(HelloWorldFlow, icon=Icon('assignment')),
 ])
 

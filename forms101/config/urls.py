@@ -6,7 +6,7 @@ from viewflow.urls import Site
 from ..forms.viewset import Forms
 
 
-site = Site(title="Material Forms Demo", items=[
+site = Site(title="Material Forms Demo", viewsets=[
     Forms(),
 ])
 

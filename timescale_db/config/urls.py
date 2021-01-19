@@ -5,7 +5,7 @@ from ..device_ops.viewset import DevicesDataApplication
 
 
 site = Site(
-    items=[
+    viewsets=[
         DevicesDataApplication(),
         Admin(),
     ]

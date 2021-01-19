@@ -111,7 +111,7 @@ atlas = Application(
     title='CRUD sample',
     icon=Icon('extension'),
     app_name='atlas',
-    items=[
+    viewsets=[
         CityViewset(),
         ContinentViewset(),
         CountryViewset(),
