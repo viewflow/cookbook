@@ -4,9 +4,10 @@ from django.db import models as django
 from django.utils.text import Truncator
 from django.utils.html import mark_safe, format_html
 from django.utils.translation import ugettext_lazy as _
+from import_export.admin import ExportMixin, ExportActionMixin, ImportExportMixin
 from guardian.admin import GuardedModelAdmin
 
-from . import models
+from . import models, resources
 
 
 class CountryTabularInline(admin.TabularInline):
@@ -27,7 +28,7 @@ class CountryTabularInline(admin.TabularInline):
 
     formset = CountryInlineFormset
 
-    def has_add_permission(self, request):
+    def has_add_permission(self, request, obj=None):
         return False
 
 
@@ -117,7 +118,7 @@ class SeaAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Continent)
-class ContinentAdmin(admin.ModelAdmin):
+class ContinentAdmin(ExportMixin, admin.ModelAdmin):
     icon = '<i class="fa fa-globe"></i>'
     actions_selection_counter = False
     fieldsets = (
@@ -138,6 +139,7 @@ class ContinentAdmin(admin.ModelAdmin):
     ordering = ['population']
     raw_id_fields = ('oceans', )
     readonly_fields = ('biggest_city', 'longest_river', )
+    resource_class = resources.ContinentResource
 
     def surrounded_oceans(self, contintent):
         return ', '.join(ocean.name for ocean in contintent.oceans.all())
@@ -190,7 +192,7 @@ class CountryAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.City)
-class CityAdmin(GuardedModelAdmin):
+class CityAdmin(ImportExportMixin, ExportActionMixin, GuardedModelAdmin):
     icon = '<i class="fa fa-building"></i>'
     list_display = ('name', 'country', 'population')
     list_filter = ('is_capital', 'country', (
@@ -203,6 +205,7 @@ class CityAdmin(GuardedModelAdmin):
     show_full_result_count = False
     raw_id_fields = ('country', )
     readonly_fields = ('became_independent_in_20_century', )
+    resource_class = resources.CityResource
 
     def became_independent_in_20_century(self, city):
         if city.country_id is not None and city.country.independence_day:

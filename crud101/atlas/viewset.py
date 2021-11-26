@@ -1,24 +1,34 @@
 from django.utils.translation import gettext_lazy as _
 
 from viewflow import Icon
-from viewflow.forms import Layout, Fieldset, Row
+from viewflow.contrib.import_export import ExportViewsetMixin
+from viewflow.forms import Layout, FieldSet, Row
 from viewflow.urls import (
     Application, DetailViewMixin, DeleteViewMixin,
     ModelViewset, ReadonlyModelViewset
 )
 
-from . import models, filters
+from . import models, filters, forms
 
 
-class CityViewset(DetailViewMixin, DeleteViewMixin, ModelViewset):
+class CityViewset(ExportViewsetMixin, DetailViewMixin, DeleteViewMixin, ModelViewset):
     icon = Icon('location_city')
     model = models.City
     list_columns = ('name', 'country', 'population')
     list_filter_fields = ('is_capital', 'country', )
     queryset = model._default_manager.select_related('country')
 
+    try:
+        from viewflow.forms import AjaxModelSelect
+        form_widgets = {
+            'country': AjaxModelSelect(lookups=['name__istartswith'])
+        }
+    except ImportError:
+        # pro-only
+        pass
 
-class ContinentViewset(ModelViewset):
+
+class ContinentViewset(ExportViewsetMixin, ModelViewset):
     icon = Icon('terrain')
     model = models.Continent
     list_columns = (
@@ -28,7 +38,7 @@ class ContinentViewset(ModelViewset):
     list_filter_fields = ('oceans', )
     create_form_layout = Layout(
         'name',
-        Fieldset(
+        FieldSet(
             _('Details'),
             'area',
             Row('oceans', 'hemisphere'),
@@ -37,13 +47,13 @@ class ContinentViewset(ModelViewset):
     )
     form_layout = Layout(
         'name',
-        Fieldset(
+        FieldSet(
             _('Details'),
             'area',
             Row('oceans', 'hemisphere'),
             Row('population', 'population_density')
         ),
-        Fieldset(
+        FieldSet(
             _('Fun facts'),
             Row('largest_country', 'biggest_mountain'),
             Row('biggest_city', 'longest_river')
@@ -57,6 +67,7 @@ class ContinentViewset(ModelViewset):
 
 class CountryViewset(DeleteViewMixin, ModelViewset):
     icon = Icon('nature_people')
+    update_form_class = forms.CountryForm
     model = models.Country
     list_columns = (
         'tld', 'name', 'continent',

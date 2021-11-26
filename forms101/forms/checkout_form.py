@@ -1,5 +1,5 @@
 from django import forms
-from viewflow.forms import Layout, Fieldset, Row, Column, Span
+from viewflow.forms import Layout, FieldSet, Row, Column, Span
 from . import COUNTRY_CHOICES
 
 
@@ -38,7 +38,7 @@ class CheckoutForm(forms.Form):
         ),
         'address',
         'additional_info',
-        Fieldset('Card Details',
+        FieldSet('Card Details',
                  Row(Column('card_type', desktop=4),
                      Column('card_holder',
                             Row(Span('card_number', desktop=10), Span('card_ccv2', desktop=2)),

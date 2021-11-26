@@ -28,7 +28,9 @@ INSTALLED_APPS = [
 
     'viewflow',
     'guardian',
+    'import_export',
     'cookbook.crud101.atlas',
+    'cookbook.crud101.polls',
 ]
 
 MIDDLEWARE = [

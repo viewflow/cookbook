@@ -1,33 +1,32 @@
 # Dashboard
 
-Quick material-design dashboard with Chart.js
+Blazing fast advanced graphs with ploty and celery for background data cache updates demo
 
-This demo shows how to quickly connect a single view to the site menu and use base dashboard prepared templates.
 
-## Online demo
 
-https://demo-next.viewflow.io/dashboard/dashboard/
+# Note
+Based on Plotly Financial Report Example
 
-## Quickstart
+https://github.com/plotly/dash-sample-apps
 
-```bash
-$ git clone https://github.com/viewflow/cookbook.git
+MIT License
 
-$ python3 -m venv dashboard/venv
-$ source dashboard/venv/activate
+Copyright (c) 2019 Plotly
 
-$ pip install dashboard/requirements.txt --extra-index-url=...
-$ python3 crud101/manage.py migrate
-$ python3 crud101/manage.py runserver
-```
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Navigate to http://127.0.0.1:8000
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## Related documentation
-
-- [Site and Application Viewsets](https://docs-next.viewflow.io/-frontend/site.html)
-- [Chart.js documentation](https://www.chartjs.org/docs/latest/)
-
-## Most interesting files
-- [urls.py](./config/urls.py) - Setup base site urls
-- [dashboard.html](./board/templates/board/dashboard.html) - Dashboard template
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE

@@ -1,5 +1,5 @@
 from django import forms
-from viewflow.forms import Layout, Fieldset, Row, Column, Span
+from viewflow.forms import Layout, FieldSet, Row, Column, Span
 from . import COUNTRY_CHOICES
 
 
@@ -101,9 +101,9 @@ class BankForm(forms.Form):
         " account(s) issued by the Bank from time-to-time.")
 
     layout = Layout(
-        Fieldset("Please open an account at",
+        FieldSet("Please open an account at",
                  'branch_name'),
-        Fieldset("Personal Details (Sole/First Accountholder/Minor)",
+        FieldSet("Personal Details (Sole/First Accountholder/Minor)",
                  Row(Span('person_title', desktop=2), Span('full_name', desktop=10)),
                  Row(Column('date_of_birth',
                             'email',
@@ -111,37 +111,37 @@ class BankForm(forms.Form):
                      Column('nationality',
                             Row('mobile_no', 'existing_bank_account'),
                             'partner_name'))),
-        Fieldset('Residential address',
+        FieldSet('Residential address',
                  Row('flat_building', 'road_no'),
                  Row(Span('area_and_landmark', desktop=10), Span('city', desktop=2)),
                  Row('telephone_residence', 'office', 'fax', 'pin_code')),
-        Fieldset("Mailing Address (If different from the First Accountholder's address)",
+        FieldSet("Mailing Address (If different from the First Accountholder's address)",
                  'mailing_company_details',
                  Row('mailing_road_no', 'mailing_area_and_landmark', 'mailing_city', 'mailing_mobile'),
                  Row('mailing_telephone_residence', 'mailing_office', 'mailing_fax', 'mailing_pin_code'),
                  'mailing_email'),
-        Fieldset("Details of Introduction by Existing Customer (If applicable)",
+        FieldSet("Details of Introduction by Existing Customer (If applicable)",
                  Row('introducer_name', 'introducer_account_no'),
                  'introducer_signature'),
-        Fieldset("Account Details",
+        FieldSet("Account Details",
                  Row('account_type', 'account_mode'),
                  'account_amount'),
-        Fieldset("Details of Fixed Deposit",
+        FieldSet("Details of Fixed Deposit",
                  Row('deposit_type', 'deposit_mode'),
                  Row(
                      Span('deposit_amount', desktop=6),
                      Span('deposit_no', desktop=3),
                      Span('deposit_individual_amount', desktop=3))
                  ),
-        Fieldset("Personal Details",
+        FieldSet("Personal Details",
                  Row('occupation', 'education', 'monthly_income'),
                  'job_title',
                  Row('department', 'nature_of_business'),
                  Row('martial_status', 'spouse_name')),
-        Fieldset("Other existing bank accounts, if any",
+        FieldSet("Other existing bank accounts, if any",
                  Row('other_account1', 'other_account2')),
-        Fieldset("Reason for Account opening",
+        FieldSet("Reason for Account opening",
                  'reason'),
-        Fieldset("Terms And Conditions",
+        FieldSet("Terms And Conditions",
                  'terms_accepted')
     )

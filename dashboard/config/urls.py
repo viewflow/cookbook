@@ -3,7 +3,11 @@ from viewflow.contrib.admin import Admin
 from viewflow.contrib.auth import AuthViewset
 from viewflow.urls import Site, Application
 
-from cookbook.dashboard.board.views import dashboard_view
+from ..oilngas.dashboard import dashboard as oilDashboard
+from ..stocks.dashboard import dashboard as stocksDashboard
+from ..tests.dashboard import dashboard
+from ..django_stats import DjangoStatsDashboard
+
 
 site = Site(
     title="CRUD 101 Demo",
@@ -12,9 +16,11 @@ site = Site(
     viewsets=[
         Application(
             title='Dashboard',
-            menu_template_name='board/app_menu.html',
-            urls=[
-                path('', dashboard_view, name='index')
+            viewsets=[
+                oilDashboard,
+                stocksDashboard,
+                DjangoStatsDashboard(),
+                dashboard,
             ]
         ),
         Admin(),

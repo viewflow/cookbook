@@ -27,9 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 
     'viewflow',
-    'cookbook.dashboard.board',
 ]
 
 MIDDLEWARE = [
@@ -39,7 +39,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'cookbook.dashboard.config.urls'
@@ -59,6 +58,8 @@ TEMPLATES = [
         },
     },
 ]
+
+WSGI_APPLICATION = 'cookbook.dashboard.config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases

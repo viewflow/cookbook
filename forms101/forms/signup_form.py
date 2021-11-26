@@ -1,5 +1,5 @@
 from django import forms
-from viewflow.forms import Layout, Row, FormSetField, Form
+from viewflow.forms import Layout, Row, FormSetField, Form, Caption, FormSet
 
 
 class EmailForm(forms.Form):
@@ -32,6 +32,7 @@ class AddressForm(forms.Form):
     zipcode = forms.CharField(max_length=10)
 
     layout = Layout(
+        Caption('Address'),
         'line_1',
         'line_2',
         'state',
@@ -43,15 +44,19 @@ AddressFormSet = forms.formset_factory(AddressForm, extra=3, can_delete=True)
 
 
 class SignupForm(Form):
-    username = forms.CharField(max_length=50)
+    username = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(attrs={'leading-icon': 'account_box'}),
+    )
     first_name = forms.CharField(max_length=250)
     last_name = forms.CharField(max_length=250)
+    date_of_birth = forms.DateField()
     emails = FormSetField(formset_class=EmailFormSet)
     addresses = FormSetField(formset_class=AddressFormSet)
 
     layout = Layout(
         'username',
-        Row('first_name', 'last_name'),
+        Row('first_name', 'last_name', 'date_of_birth'),
         'emails',
-        'addresses',
+        FormSet('addresses', card_desktop=4),
     )

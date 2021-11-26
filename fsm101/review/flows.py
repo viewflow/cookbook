@@ -8,10 +8,7 @@ from .models import Review, ReviewState, ReviewChangeLog
 class ReviewFlow(object):
     """Review process definition."""
 
-    stage = fsm.State(
-        ReviewState,
-        default=ReviewState.NEW
-    )
+    stage = fsm.State(ReviewState, default=ReviewState.NEW)
 
     def __init__(self, review: Review, user, ip_address=None):
         self.review = review
@@ -30,6 +27,9 @@ class ReviewFlow(object):
 
     @stage.on_success()
     def _on_success_transition(self, descriptor, source, target):
+        if self.review is None:
+            return
+
         with transaction.atomic():
             self.review.save()
             ReviewChangeLog.objects.create(
@@ -38,41 +38,38 @@ class ReviewFlow(object):
                 target=target.value,
                 author=self.user,
                 ip_address=self.ip_address,
-                diff='\n'.join(
+                diff="\n".join(
                     difflib.unified_diff([self.initial_text], [self.review.text])
-                ) if self.initial_text != self.review.text else ''
+                )
+                if self.initial_text != self.review.text
+                else "",
             )
             self.initial_text = self.review.text
 
     @stage.transition(
-        source=ReviewState.NEW,
-        target=ReviewState.APPROVED,
-        permission=this.is_approver
+        source=ReviewState.NEW, target=ReviewState.APPROVED, permission=this.is_approver
     )
     def approve(self):
         self.review.approver = self.user
 
     @stage.transition(
-        source=ReviewState.NEW,
-        target=ReviewState.REJECTED,
-        permission=this.is_approver
+        source=ReviewState.NEW, target=ReviewState.REJECTED, permission=this.is_approver
     )
     def reject(self):
         self.review.approver = self.user
 
-    @stage.transition(
-        source=ReviewState.APPROVED,
-        target=ReviewState.PUBLISHED
-    )
+    @stage.transition(source=ReviewState.APPROVED, target=ReviewState.PUBLISHED)
     def publish(self):
         self.review.published = timezone.now()
 
-    @stage.transition(
-        source=fsm.State.ANY,
-        target=ReviewState.REMOVED
-    )
+    @stage.transition(source=fsm.State.ANY, target=ReviewState.REMOVED)
     def remove(self):
         pass
+
+    @stage.transition(source=ReviewState.REMOVED)
+    def delete(self):
+        self.review.delete()
+        self.review = None
 
     def is_approver(self, user):
         return user.is_staff

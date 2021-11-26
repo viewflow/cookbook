@@ -181,7 +181,7 @@ class Test(TestCase):  # noqa: D101
             'name': 'United Kingdom',
             'independence_day': '5/1/1707',
             'gay_friendly': True,
-            'continent': self.continent.pk,
+            'form-continent-area': 10**3,
         }
         response = self.client.post(reverse('atlas:country:change', args=[self.country.pk]), test_data)
         self.assertEqual(response.status_code, 302)

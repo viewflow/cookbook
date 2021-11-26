@@ -5,7 +5,7 @@
   <i class="material-icons">api</i>{% trans 'REST API' %}
 </a>
 {% if request.user.is_staff %}
-<a class="mdc-list-item vf-page__menu-list-item" href="{% url 'admin:review_review_changelist' %}" data-turbolinks="false">
+<a class="mdc-list-item vf-page__menu-list-item" href="{% url 'admin:review_review_changelist' %}" data-turbo="false">
   <i class="material-icons">admin_panel_settings</i>{% trans 'Administration' %}
 </a>
 {% endif %}
