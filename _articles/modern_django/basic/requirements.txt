@@ -1,2 +1,2 @@
 pytz
-django==2.2.26
+django==2.2.28
