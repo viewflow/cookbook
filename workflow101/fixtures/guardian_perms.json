@@ -1,0 +1,410 @@
+[
+{
+    "fields": {
+        "name": "Secretariat",
+        "permissions": [
+            [
+                "can_register_bill_billprocess",
+                "payments",
+                "billprocess"
+            ],
+            [
+                "can_accept_bill",
+                "users",
+                "department"
+            ],
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ]
+    },
+    "model": "auth.group"
+},
+{
+    "fields": {
+        "name": "Financial Officers",
+        "permissions": [
+            [
+                "can_set_bill_paydate",
+                "users",
+                "department"
+            ],
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ]
+    },
+    "model": "auth.group"
+},
+{
+    "fields": {
+        "name": "Accounting",
+        "permissions": [
+            [
+                "can_pay_bill",
+                "users",
+                "department"
+            ],
+            [
+                "can_validate_bill",
+                "users",
+                "department"
+            ],
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ]
+    },
+    "model": "auth.group"
+},
+{
+    "fields": {
+        "name": "Internal Control",
+        "description": ""
+    },
+    "model": "users.department"
+},
+{
+    "fields": {
+        "name": "Services",
+        "description": ""
+    },
+    "model": "users.department"
+},
+{
+    "fields": {
+        "name": "Marketing",
+        "description": ""
+    },
+    "model": "users.department"
+},
+{
+    "fields": {
+        "name": "Financial",
+        "description": ""
+    },
+    "model": "users.department"
+},
+{
+    "fields": {
+        "name": "Accounting",
+        "description": ""
+    },
+    "model": "users.department"
+},
+{
+    "fields": {
+        "name": "Secretariat",
+        "description": ""
+    },
+    "model": "users.department"
+},
+{
+    "fields": {
+        "department": [
+            "Internal Control"
+        ],
+        "is_staff": true,
+        "is_active": true,
+        "groups": [],
+        "password": "pbkdf2_sha256$20000$pFAUNO2cSZMA$tXMXjwSJInj8M7GOr24ckA2TNcCbKHfNgusBs3HjV28=",
+        "last_login": "2017-03-01T04:09:15.433Z",
+        "user_permissions": [],
+        "is_superuser": true,
+        "email": "admin@admin.com"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Internal Control"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "password": "",
+        "last_login": null,
+        "user_permissions": [],
+        "is_superuser": false,
+        "email": "anonymous@satoshi.com"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Accounting"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [
+            [
+                "Accounting"
+            ]
+        ],
+        "password": "pbkdf2_sha256$20000$OuZdkAzttyEc$PCCXWWUiwVTDJCP6lV8WVWvkluwDp26LsTcCgNWxpIo=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "manager.accounting@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Accounting"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [
+            [
+                "Accounting"
+            ]
+        ],
+        "password": "pbkdf2_sha256$20000$1tEmluxmN2Gb$UBs/Xc9T/yU1KyoVS0BNUI9WVEi8dqU51ugGCbs0BSU=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "head.accounting@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Financial"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [
+            [
+                "Financial Officers"
+            ]
+        ],
+        "password": "pbkdf2_sha256$20000$5lNAmQFKWkkg$NgAJIoiBcMDpJNpXQJLquSc9vyelnM9ZYCaXgtStAr8=",
+        "last_login": null,
+        "user_permissions": [],
+        "is_superuser": false,
+        "email": "officer.financial@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Financial"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [
+            [
+                "Financial Officers"
+            ]
+        ],
+        "password": "pbkdf2_sha256$20000$WigyAG7UGkRE$mhkJyIOuX6+7Uw866dAb7S3azIvq8d9P4gh4Dp5mwcQ=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "cfo@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Marketing"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "password": "pbkdf2_sha256$20000$5p5IqvKPXav4$gGGiXdhuQOQQjwjdbizCMwEePTNPOwKMxY3kgiOAzqM=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "manager.marketing@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Marketing"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "password": "pbkdf2_sha256$20000$LQQLlunynFEl$2d/ZxNy9pl/ZshD0wsamMLpdgHxqvBPlX7l/14nfiy4=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "head.marketing@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Services"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "password": "pbkdf2_sha256$20000$6uDJouat74hM$aaT4c0P3Lq/0jyxJITiePoWpy6iUQ51J7oE7ESNV82c=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "manager.services@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Services"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "password": "pbkdf2_sha256$20000$d8vd0XGsNQIT$UWd4FNvxVH/+rsvCQqmhBxTRSQ3WrzucDH6CZ0G9ijE=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "head.services@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Internal Control"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "password": "pbkdf2_sha256$20000$um3NwKNg5gZx$dpFAzhlPXkKjC9ZZLsAFUwOVoIkPBOY1Shkr+HB3z10=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "manager.control@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Internal Control"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "password": "pbkdf2_sha256$20000$EnPJ9vMWAtUn$eBTQGEQQp//Bo6ILUhSCNxg7cB5OCRJvWIhL0eE5D9o=",
+        "last_login": null,
+        "user_permissions": [
+            [
+                "view_billprocess",
+                "payments",
+                "billprocess"
+            ]
+        ],
+        "is_superuser": false,
+        "email": "head.control@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Secretariat"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [
+            [
+                "Secretariat"
+            ]
+        ],
+        "password": "pbkdf2_sha256$20000$SmZZFL7jLixi$G2WuWUxSLW1MBTZd8XREodsn2N7t+KHvipz3/0fBJKs=",
+        "last_login": null,
+        "user_permissions": [],
+        "is_superuser": false,
+        "email": "manager.secretariat@viewflow.io"
+    },
+    "model": "users.user"
+},
+{
+    "fields": {
+        "department": [
+            "Secretariat"
+        ],
+        "is_staff": false,
+        "is_active": true,
+        "groups": [
+            [
+                "Secretariat"
+            ]
+        ],
+        "password": "pbkdf2_sha256$20000$8yc35GmNXHUe$2fT7FmjTZnxMOtngCYvRDFb1GQAv+WxsHF1j5IJhFT4=",
+        "last_login": null,
+        "user_permissions": [],
+        "is_superuser": false,
+        "email": "head.secretariat@viewflow.io"
+    },
+    "model": "users.user"
+}
+]

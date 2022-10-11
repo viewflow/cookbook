@@ -2,7 +2,7 @@ from django.utils.translation import gettext_lazy as _
 
 from viewflow import Icon
 from viewflow.contrib.import_export import ExportViewsetMixin
-from viewflow.forms import Layout, FieldSet, Row
+from viewflow.forms import Layout, FieldSet, Row, DependentModelSelect
 from viewflow.urls import (
     Application, DetailViewMixin, DeleteViewMixin,
     ModelViewset, ReadonlyModelViewset
@@ -16,8 +16,8 @@ class CityViewset(ExportViewsetMixin, DetailViewMixin, DeleteViewMixin, ModelVie
     model = models.City
     list_columns = ('name', 'country', 'population')
     list_filter_fields = ('is_capital', 'country', )
+    list_search_fields = ['name']
     queryset = model._default_manager.select_related('country')
-
     try:
         from viewflow.forms import AjaxModelSelect
         form_widgets = {
@@ -103,11 +103,17 @@ class SeaViewset(DeleteViewMixin, ModelViewset):
     list_columns = ('name', 'parent', 'ocean', 'sea_area', )
     list_filterset_class = filters.SeaFilterSet
     form_layout = Layout(
-        Row('name', 'parent'),
         'ocean',
+        Row('name', 'parent'),
         Row('area', 'avg_depth', 'max_depth'),
         'basin_countries'
     )
+    form_widgets = {
+        'parent': DependentModelSelect(
+            depends_on='ocean',
+            queryset=lambda parent: models.Sea.objects.filter(ocean=parent)
+        )
+    }
 
     def sea_area(self, sea):
         return None if sea.area == 0 else sea.area
@@ -122,6 +128,7 @@ atlas = Application(
     title='CRUD sample',
     icon=Icon('extension'),
     app_name='atlas',
+    permission='atlas.can_view_city',
     viewsets=[
         CityViewset(),
         ContinentViewset(),

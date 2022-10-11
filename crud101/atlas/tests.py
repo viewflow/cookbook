@@ -3,7 +3,7 @@ from datetime import date
 from django.test import TestCase, override_settings, tag
 from django.urls import reverse
 
-from . import models
+from . import models, viewset
 
 
 @tag('integration')
@@ -236,3 +236,9 @@ class Test(TestCase):  # noqa: D101
         response = self.client.post(reverse('atlas:city:delete', args=[self.city.pk]))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(models.City.objects.filter(pk=self.city.pk))
+
+    def test_viewset_verbose_names(self):  # noqa: D102
+        city_viewset = viewset.CityViewset()
+        self.assertEqual('Cities', city_viewset.title)
+
+        self.assertEqual('Oceans', viewset.ocean_viewset.title)

@@ -1,12 +1,14 @@
 {% extends 'viewflow/includes/app_menu.html' %}{% load i18n viewflow %}
 
 {% block additional_links %}
-<a class="mdc-list-item vf-page__menu-list-item" href="{% reverse app 'swagger' %}">
-  <i class="material-icons">api</i>{% trans 'REST API' %}
+<a class="mdc-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon vf-page__menu-list-item" href="{% reverse app 'swagger' %}">
+  <span class="mdc-list-item__start"><i class="material-icons">api</i></span>
+  <span class="mdc-list-item__content">{% trans 'REST API' %}</span>
 </a>
 {% if request.user.is_staff %}
-<a class="mdc-list-item vf-page__menu-list-item" href="{% url 'admin:review_review_changelist' %}" data-turbo="false">
-  <i class="material-icons">admin_panel_settings</i>{% trans 'Administration' %}
+<a class="mdc-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon vf-page__menu-list-item" href="{% url 'admin:review_review_changelist' %}" data-turbo="false">
+  <span class="mdc-list-item__start"><i class="material-icons">admin_panel_settings</i></span>
+  <span class="mdc-list-item__content">{% trans 'Administration' %}</span>
 </a>
 {% endif %}
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.views import generic
 from django.urls import path
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from viewflow import Icon
 from viewflow.urls import Application
@@ -22,6 +22,7 @@ class Forms(Application):
     title = _('Forms and Widgets')
     icon = Icon('dynamic_form')
     menu_template_name = 'forms/app_menu.html'
+    permission=lambda user: user.is_staff,
 
     bank_form_path = path(
         'bank/',

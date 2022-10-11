@@ -4,6 +4,11 @@ from django.urls import reverse
 
 @override_settings(ROOT_URLCONF=__name__[:-5] + 'config.urls')
 class Test(TestCase):  # noqa: D101
+    fixtures = ['users.json']
+
+    def setUp(self):  # noqa: D102
+        self.assertTrue(self.client.login(username='admin', password='admin'))
+
     def test_checkout_form(self):
         form_url = reverse('forms:checkout_form')
         response = self.client.get(form_url)

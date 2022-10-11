@@ -186,21 +186,27 @@ def update_well_text(well_statuses, well_types, year_slider):
     Output('gasText', 'children'),
     Input('aggregate_data', 'data'))
 def update_gas_text(data):
-    return data[0] + " mcf"
+    if data is not None:
+        return data[0] + " mcf"
+    return ''
 
 
 @dashboard.callback(
     Output('oilText', 'children'),
     Input('aggregate_data', 'data'))
 def update_oil_text(data):
-    return data[1] + " bbl"
+    if data is not None:
+        return data[1] + " bbl"
+    return ''
 
 
 @dashboard.callback(
     Output('waterText', 'children'),
     Input('aggregate_data', 'data'))
 def update_water_text(data):
-    return data[2] + " bbl"
+    if data is not None:
+        return data[2] + " bbl"
+    return ''
 
 
 @dashboard.callback(

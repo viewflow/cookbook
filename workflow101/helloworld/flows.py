@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from viewflow import this
 from viewflow.contrib import celery
@@ -17,11 +17,11 @@ class HelloWorldFlow(flow.Flow):
     """
     process_class = HelloWorldProcess
     process_title = _('Hello world')
-    process_detail = _('This process demonstrates hello world approval request flow.')
+    process_description = _('Message to the world request flow.')
+    process_summary_template = _("'{{ process.text }}' message to the world")
+    process_result_template = _("'{{ process.text }}' message to the world")
 
     lock_impl = lock.select_for_update_lock
-
-    summary_template = _("Send '{{ process.text }}' message to the world")
 
     start = (
         flow.Start(
@@ -29,7 +29,7 @@ class HelloWorldFlow(flow.Flow):
                 fields=['text']
             )
         )
-        .Description(title=_('New message'))
+        .Annotation(title=_('New message'))
         .Permission(auto_create=True)
         .Next(this.approve)
     )
@@ -40,10 +40,11 @@ class HelloWorldFlow(flow.Flow):
                 fields=['approved']
             )
         )
-        .Description(
+        .Annotation(
             title=_('Approve'),
-            detail=_("'{{ process.text }}' approvement required"),
-            result=_("Messsage was {{ process.approved|yesno:'Approved,Rejected' }}")
+            description=_('Supervisor approvement'),
+            summary_template=_("Message review required"),
+            result_template=_("Message was {{ process.approved|yesno:'Approved,Rejected' }}")
         )
         .Permission(auto_create=True)
         .Next(this.check_approve)
@@ -51,7 +52,7 @@ class HelloWorldFlow(flow.Flow):
 
     check_approve = (
         flow.If(act.process.approved)
-        .Description(
+        .Annotation(
             title=_('Approvement check')
         )
         .Then(this.send)
@@ -60,8 +61,8 @@ class HelloWorldFlow(flow.Flow):
 
     send = (
         celery.Job(send_hello_world_request)
-        .Description(title=_('Send message'))
+        .Annotation(title=_('Send message'))
         .Next(this.end)
     )
 
-    end = flow.End().Description(title=_('End'))
+    end = flow.End().Annotation(title=_('End'))

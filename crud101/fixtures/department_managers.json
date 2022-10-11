@@ -1,0 +1,242 @@
+[
+{
+    "model": "staff.deptmanager",
+    "pk": 1,
+    "fields": {
+        "employee": 110022,
+        "department": "d001",
+        "from_date": "1985-01-01",
+        "to_date": "1991-10-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 2,
+    "fields": {
+        "employee": 110039,
+        "department": "d001",
+        "from_date": "1991-10-01",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 3,
+    "fields": {
+        "employee": 110085,
+        "department": "d002",
+        "from_date": "1985-01-01",
+        "to_date": "1989-12-17"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 4,
+    "fields": {
+        "employee": 110114,
+        "department": "d002",
+        "from_date": "1989-12-17",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 5,
+    "fields": {
+        "employee": 110183,
+        "department": "d003",
+        "from_date": "1985-01-01",
+        "to_date": "1992-03-21"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 6,
+    "fields": {
+        "employee": 110228,
+        "department": "d003",
+        "from_date": "1992-03-21",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 7,
+    "fields": {
+        "employee": 110303,
+        "department": "d004",
+        "from_date": "1985-01-01",
+        "to_date": "1988-09-09"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 8,
+    "fields": {
+        "employee": 110344,
+        "department": "d004",
+        "from_date": "1988-09-09",
+        "to_date": "1992-08-02"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 9,
+    "fields": {
+        "employee": 110386,
+        "department": "d004",
+        "from_date": "1992-08-02",
+        "to_date": "1996-08-30"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 10,
+    "fields": {
+        "employee": 110420,
+        "department": "d004",
+        "from_date": "1996-08-30",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 11,
+    "fields": {
+        "employee": 110511,
+        "department": "d005",
+        "from_date": "1985-01-01",
+        "to_date": "1992-04-25"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 12,
+    "fields": {
+        "employee": 110567,
+        "department": "d005",
+        "from_date": "1992-04-25",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 13,
+    "fields": {
+        "employee": 110725,
+        "department": "d006",
+        "from_date": "1985-01-01",
+        "to_date": "1989-05-06"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 14,
+    "fields": {
+        "employee": 110765,
+        "department": "d006",
+        "from_date": "1989-05-06",
+        "to_date": "1991-09-12"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 15,
+    "fields": {
+        "employee": 110800,
+        "department": "d006",
+        "from_date": "1991-09-12",
+        "to_date": "1994-06-28"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 16,
+    "fields": {
+        "employee": 110854,
+        "department": "d006",
+        "from_date": "1994-06-28",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 17,
+    "fields": {
+        "employee": 111035,
+        "department": "d007",
+        "from_date": "1985-01-01",
+        "to_date": "1991-03-07"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 18,
+    "fields": {
+        "employee": 111133,
+        "department": "d007",
+        "from_date": "1991-03-07",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 19,
+    "fields": {
+        "employee": 111400,
+        "department": "d008",
+        "from_date": "1985-01-01",
+        "to_date": "1991-04-08"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 20,
+    "fields": {
+        "employee": 111534,
+        "department": "d008",
+        "from_date": "1991-04-08",
+        "to_date": "9999-01-01"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 21,
+    "fields": {
+        "employee": 111692,
+        "department": "d009",
+        "from_date": "1985-01-01",
+        "to_date": "1988-10-17"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 22,
+    "fields": {
+        "employee": 111784,
+        "department": "d009",
+        "from_date": "1988-10-17",
+        "to_date": "1992-09-08"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 23,
+    "fields": {
+        "employee": 111877,
+        "department": "d009",
+        "from_date": "1992-09-08",
+        "to_date": "1996-01-03"
+    }
+},
+{
+    "model": "staff.deptmanager",
+    "pk": 24,
+    "fields": {
+        "employee": 111939,
+        "department": "d009",
+        "from_date": "1996-01-03",
+        "to_date": "9999-01-01"
+    }
+}
+]

@@ -1,0 +1,11 @@
+{% extends 'viewflow/views/list.html' %}{% load i18n viewflow %}
+
+
+{% block list-header-subtitle %}
+<h2 class="vf-card__breadcrumbs">
+    <a href="{% reverse viewset 'list' %}">Departments</a>
+    <a href="{% reverse viewset 'detail' view.department.pk %}">{{ view.department }}</a>
+    <a>{% trans 'Employees' %}</a>
+</h2>
+
+{% endblock %}

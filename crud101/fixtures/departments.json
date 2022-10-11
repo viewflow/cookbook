@@ -1,0 +1,65 @@
+[
+{
+    "model": "staff.department",
+    "pk": "d001",
+    "fields": {
+        "dept_name": "Marketing"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d002",
+    "fields": {
+        "dept_name": "Finance"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d003",
+    "fields": {
+        "dept_name": "Human Resources"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d004",
+    "fields": {
+        "dept_name": "Production"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d005",
+    "fields": {
+        "dept_name": "Development"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d006",
+    "fields": {
+        "dept_name": "Quality Management"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d007",
+    "fields": {
+        "dept_name": "Sales"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d008",
+    "fields": {
+        "dept_name": "Research"
+    }
+},
+{
+    "model": "staff.department",
+    "pk": "d009",
+    "fields": {
+        "dept_name": "Customer Service"
+    }
+}
+]

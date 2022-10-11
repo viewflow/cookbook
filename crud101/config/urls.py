@@ -1,8 +1,11 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from viewflow.contrib.admin import Admin
 from viewflow.contrib.auth import AuthViewset
 from viewflow.urls import Site
 from ..atlas.viewset import atlas
+from ..staff.urls import StaffApp
 
 
 site = Site(
@@ -11,6 +14,7 @@ site = Site(
     secondary_color='#5c6bc0',
     viewsets=[
         atlas,
+        StaffApp(),
         Admin(),
     ]
 )
@@ -18,4 +22,4 @@ site = Site(
 urlpatterns = [
     path('', site.urls),
     path('accounts/', AuthViewset().urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,52 @@
+[
+  {
+    "fields": {
+      "name": "Accounting",
+      "description": ""
+    },
+    "model": "users.department"
+  },
+  {
+    "fields": {
+      "name": "Business management",
+      "description": ""
+    },
+    "model": "users.department"
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+        "username": "bills/clerkA"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+        "username": "bills/managerA"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+        "username": "bills/clerkB"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+        "username": "bills/managerB"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+        "username": "bills/head"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+        "username": "bills/financial"
+    }
+  }
+]

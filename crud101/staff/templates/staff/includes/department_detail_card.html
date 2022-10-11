@@ -1,0 +1,14 @@
+{% extends 'viewflow/includes/object_detail_card.html' %}
+{% load i18n viewflow %}
+
+
+{% block detail-extra %}
+<tr>
+  <th class="vf-list__table-header vf-list__table-header-text">{% trans 'Employees' %}</th>
+  <td class="vf-list__table-cell vf-list__table-cell-text">
+    <a href="{% reverse viewset 'employees' object.pk %}">
+      {{ object.deptemp_set.count }}
+    </a>
+  </td>
+</tr>
+{% endblock %}

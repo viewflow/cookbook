@@ -1,0 +1,20 @@
+{% extends 'viewflow/base_page.html' %}
+
+{% block page-toolbar-actions %}
+{{ block.super }}
+<vf-card-menu class="mdc-menu-surface--anchor">
+  <button class="mdc-button vf-card__menu-trigger" style="color:white">
+    Login as <i class="material-icons">arrow_drop_down</i>
+  </button>
+  <div class="mdc-menu mdc-menu-surface">
+    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+      {% for user in users %}
+      <li class="mdc-list-item" role="menuitem" data-card-menu-href="/login_as?username={{ user.username }}">
+        <span class="mdc-list-item__ripple"></span>
+        <span class="mdc-list-item__text">{{ user }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</vf-card-menu>
+{% endblock %}

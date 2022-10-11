@@ -1,0 +1,22 @@
+{% extends 'viewflow/views/detail.html' %}{% load i18n humanize %}
+
+{% block content %}
+<div class="mdc-layout-grid vf-page__grid">
+  <div class="mdc-layout-grid__inner vf-page__grid-inner">
+      <div class="mdc-layout-grid__cell--span-8">
+          <div class="mdc-layout-grid__inner vf-page__grid-inner">
+              <div class="mdc-layout-grid__cell--span-12">
+                {% include 'staff/includes/department_detail_card.html' %}
+              </div>
+          </div>
+      </div>
+      <div class="mdc-layout-grid__cell--span-4">
+          <div class="mdc-layout-grid__inner vf-page__grid-inner">
+              <div class="mdc-layout-grid__cell--span-12">
+                {% include 'staff/includes/department_managers_card.html' %}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

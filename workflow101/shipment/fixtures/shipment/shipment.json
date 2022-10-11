@@ -1,0 +1,121 @@
+[
+{
+    "fields": {
+        "name": "shipment/clerk",
+        "permissions": [
+            [
+                "can_start_request",
+                "shipment",
+                "shipmentprocess"
+            ],
+            [
+                "view_shipmentprocess",
+                "shipment",
+                "shipmentprocess"
+            ]
+        ]
+    },
+    "model": "auth.group"
+},
+{
+    "fields": {
+        "name": "shipment/manager",
+        "permissions": [
+            [
+                "can_take_extra_insurance",
+                "shipment",
+                "shipmentprocess"
+            ],
+            [
+                "view_shipmentprocess",
+                "shipment",
+                "shipmentprocess"
+            ]
+        ]
+    },
+    "model": "auth.group"
+},
+{
+    "fields": {
+        "name": "shipment/worker",
+        "permissions": [
+            [
+                "can_package_goods",
+                "shipment",
+                "shipmentprocess"
+            ],
+            [
+                "can_move_package",
+                "shipment",
+                "shipmentprocess"
+            ],
+            [
+                "view_shipmentprocess",
+                "shipment",
+                "shipmentprocess"
+            ]
+        ]
+    },
+    "model": "auth.group"
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "user_permissions": [],
+        "username": "shipment/clerk",
+        "groups": [
+            [
+                "shipment/clerk"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "user_permissions": [],
+        "username": "shipment/manager",
+        "groups": [
+            [
+                "shipment/manager"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "user_permissions": [],
+        "username": "shipment/worker",
+        "groups": [
+            [
+                "shipment/worker"
+            ]
+        ]
+    }
+},
+{
+    "pk": 1,
+    "fields": {
+        "name": "Default",
+        "phone": "+555-123-456"
+    },
+    "model": "shipment.carrier"
+},
+{
+    "model": "shipment.carrier",
+    "fields": {
+        "name": "China Post",
+        "phone": "+555-765-432"
+    },
+    "pk": 2
+},
+{
+    "model": "shipment.carrier",
+    "fields": {
+        "name": "USPS",
+        "phone": "+555-918-273"
+    },
+    "pk": 3
+}
+]

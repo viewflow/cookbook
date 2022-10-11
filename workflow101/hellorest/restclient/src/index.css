@@ -1,0 +1,132 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+body {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/*.
+   Pages.
+*/
+.login-page {
+  display: flex;
+  width: 100%;
+    min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-page {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.app-page__sidebar {
+  width: 250px;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.app-page__outlet {
+  flex-grow: 1
+}
+
+/*
+Components.
+*/
+.progress--top {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+.dashboard {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  max-width: 100%;
+}
+
+.dashboard__title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.dashboard__column {
+  height: calc(100% - 20px);
+  margin: 10px;
+  padding: 15px;
+  width: 350px;
+  min-width: 350px;
+  background: rgba(234, 234, 234, 0.53);
+  border-radius: 10px;
+}
+
+.dashboard__task {
+  margin-top: 10px;
+}
+
+.dashboard__task .card-text {
+  height: 100px
+}
+
+.task_list__task {
+  margin: 10px;
+  width: 350px;
+  float: left;
+}
+
+.task_list__task .card-text {
+  height: 100px
+}
+
+.tasklist__moretasks {
+  color: #333333;
+  text-align: center;
+}
+
+.task_list__actions {
+  text-align: right;
+}
+
+.task_list__actions .btn {
+  text-transform: capitalize;
+}
+
+.btn-circle  {
+  display: inline-block;
+  border-radius: 50%;
+  padding: 0;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  font-size:36px;
+  line-height:55px;
+  text-align: center;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.btn-circle:hover {
+  text-decoration: none;
+}
+
+.btn-action {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+}
+
+.form-floating>label {
+  padding-left: 20px; /* fix */
+}

@@ -1,0 +1,7 @@
+{% extends 'staff/base_form.html' %}{% load i18n viewflow %}
+
+{% block breadcrumbs %}
+<a href="{% reverse viewset 'list' %}">{% trans 'Employees' %}</a>
+<a href="{% reverse viewset 'detail' employee.pk %}">{{ employee }}</a>
+<a>{% trans 'Change Salary' %}</a>
+{% endblock %}

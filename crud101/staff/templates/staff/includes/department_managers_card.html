@@ -1,0 +1,31 @@
+{% load i18n humanize viewflow %}
+<div class="mdc-card vf-card">
+  <section class="vf-card__header">
+    <h1 class="vf-card__title">{% trans 'Department Managers' %}</h1>
+  </section>
+  <section class="mdc-data-table">
+    <div class="mdc-data-table__table-container">
+      <table class="mdc-data-table__table">
+        <thead>
+          <tr class="mdc-data-table__header-row">
+            <td class="mdc-data-table__header-cell">{% trans 'Manager' %}</td>
+            <td class="mdc-data-table__header-cell">{% trans 'Since' %}</td>
+          </tr>
+        </thead>
+        <tbody class="mdc-data-table__content">
+          {% for manager in object.deptmanager_set.all %}
+          <tr class="mdc-data-table__row">
+            <td class="mdc-data-table__cell">
+                <a href="{% url 'staff:employee:detail' manager.employee.pk %}">{{ manager.employee }}</a>
+            </td>
+            <td class="mdc-data-table__cell">{{ manager.from_date }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="mdc-card__actions vf-card__actions">
+    <a class="mdc-button mdc-card__action mdc-card__action--button" href="{% reverse viewset 'change_manager' object.pk %}">{% trans 'Change' %}</a>
+  </section>
+</div>
