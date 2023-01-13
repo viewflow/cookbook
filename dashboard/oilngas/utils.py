@@ -3,6 +3,8 @@ import datetime as dt
 
 
 def human_format(num):
+    if num <= 0:
+        return num
     magnitude = int(math.log(num, 1000))
     mantissa = str(int(num / (1000**magnitude)))
     return mantissa + ['', 'K', 'M', 'G', 'T', 'P'][magnitude]

@@ -9,9 +9,9 @@
   <div class="mdc-menu mdc-menu-surface">
     <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
       {% for user in users %}
-      <li class="mdc-list-item" role="menuitem" data-card-menu-href="/login_as?username={{ user.username }}">
+      <li class="mdc-list-item mdc-list-item--with-one-line" role="menuitem" data-card-menu-href="/login_as?username={{ user.username }}">
         <span class="mdc-list-item__ripple"></span>
-        <span class="mdc-list-item__text">{{ user }}</a>
+        <span class="mdc-list-item__content">{{ user }}</a>
       </li>
       {% endfor %}
     </ul>

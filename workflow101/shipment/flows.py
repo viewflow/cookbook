@@ -28,6 +28,7 @@ class ShipmentFlow(flow.Flow):
 
     start = (
         flow.Start(views.StartView.as_view())
+        .Annotation(title=_('New shipment'))
         .Permission("shipment.can_start_request")
         .Next(this.split_clerk_warehouse)
     )

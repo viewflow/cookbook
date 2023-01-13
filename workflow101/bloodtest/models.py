@@ -9,14 +9,9 @@ class Patient(models.Model):
     age = models.IntegerField()
     sex = models.CharField(
         max_length=1,
-        choices=(
-            ("M", "Male"),
-            ("F", "Female"),
-            ("O", "Other"),
-            ("U", "Unknown")))
-    weight = models.DecimalField(
-        max_digits=4, decimal_places=1,
-        help_text='kg')
+        choices=(("M", "Male"), ("F", "Female"), ("O", "Other"), ("U", "Unknown")),
+    )
+    weight = models.DecimalField(max_digits=4, decimal_places=1, help_text="kg")
     height = models.IntegerField(help_text="cm")
     comment = models.TextField(blank=True)
 
@@ -33,26 +28,28 @@ class BloodSample(models.Model):
 
 class Biochemistry(models.Model):
     sample = models.OneToOneField(BloodSample, on_delete=models.CASCADE)
-    hemoglobin = models.IntegerField(help_text='g/dL')
-    lymphocytes = models.DecimalField(max_digits=3, decimal_places=1, help_text='10^9/L')
+    hemoglobin = models.IntegerField(help_text="g/dL")
+    lymphocytes = models.DecimalField(
+        max_digits=3, decimal_places=1, help_text="10^9/L"
+    )
 
 
 class TumorMarkers(models.Model):
     sample = models.OneToOneField(BloodSample, on_delete=models.CASCADE)
-    alpha_fetoprotein = models.IntegerField(help_text='ng/mL')
-    beta_gonadotropin = models.IntegerField(help_text='IU/I')
-    ca19 = models.IntegerField(help_text='U/mL')
-    cea = models.IntegerField(help_text='ug/L')
-    pap = models.IntegerField(help_text='U/dL')
-    pas = models.IntegerField(help_text='ug/L')
+    alpha_fetoprotein = models.IntegerField(help_text="ng/mL")
+    beta_gonadotropin = models.IntegerField(help_text="IU/I")
+    ca19 = models.IntegerField(help_text="U/mL")
+    cea = models.IntegerField(help_text="ug/L")
+    pap = models.IntegerField(help_text="U/dL")
+    pas = models.IntegerField(help_text="ug/L")
 
 
 class Hormones(models.Model):
     sample = models.OneToOneField(BloodSample, on_delete=models.CASCADE)
-    acth = models.DecimalField(max_digits=3, decimal_places=1, help_text='pmol/L')
-    estradiol = models.IntegerField(help_text='ng/dL')
-    free_t3 = models.DecimalField(max_digits=3, decimal_places=1, help_text='ng/dL')
-    free_t4 = models.IntegerField(help_text='pmol/L')
+    acth = models.DecimalField(max_digits=3, decimal_places=1, help_text="pmol/L")
+    estradiol = models.IntegerField(help_text="ng/dL")
+    free_t3 = models.DecimalField(max_digits=3, decimal_places=1, help_text="ng/dL")
+    free_t4 = models.IntegerField(help_text="pmol/L")
 
 
 class BloodTestProcess(Process):
@@ -61,8 +58,8 @@ class BloodTestProcess(Process):
 
     @property
     def tumor_test_required(self):
-        return self.artefact.biochemistry.lymphocytes > 5
+        return self.artifact.biochemistry.lymphocytes > 5
 
     @property
     def hormone_test_required(self):
-        return self.artefact.biochemistry.hemoglobin < 12
+        return self.artifact.biochemistry.hemoglobin < 12

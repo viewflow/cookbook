@@ -242,3 +242,21 @@ class Test(TestCase):  # noqa: D101
         self.assertEqual('Cities', city_viewset.title)
 
         self.assertEqual('Oceans', viewset.ocean_viewset.title)
+
+    def test_non_permitted_user_has_no_access(self):
+        self.client.logout()
+
+        response = self.client.get(reverse('atlas:city:index'))
+        self.assertEqual(response.status_code, 403)
+
+        response = self.client.get(reverse('atlas:city:add'))
+        self.assertEqual(response.status_code, 403)
+
+        response = self.client.get(reverse('atlas:city:change', args=[self.city.pk]))
+        self.assertEqual(response.status_code, 403)
+
+        response = self.client.post(reverse('atlas:city:detail', args=[self.city.pk]))
+        self.assertEqual(response.status_code, 403)
+
+        response = self.client.post(reverse('atlas:city:delete', args=[self.city.pk]))
+        self.assertEqual(response.status_code, 403)

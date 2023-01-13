@@ -1,0 +1,557 @@
+# Viewflow - The low-code for developers with yesterday's deadline
+# Copyright (C) 2023 Mikhail Podgurskiy
+# This file is distributed under the same license as the Viewflow package.
+# Mikhail Podgurskiy <mikhail@viewflow.io>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Viewflow\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-07 10:45+0000\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: crud101/atlas/admin.py:47
+msgid "wiki"
+msgstr ""
+
+#: crud101/atlas/admin.py:90
+msgid "map"
+msgstr "karte"
+
+#: crud101/atlas/admin.py:94
+msgid "short description"
+msgstr "Kurzbeschreibung"
+
+#: crud101/atlas/admin.py:116
+msgid "sea area"
+msgstr "Seegebiet"
+
+#: crud101/atlas/admin.py:127 crud101/atlas/viewset.py:42
+#: crud101/atlas/viewset.py:51
+msgid "Details"
+msgstr "Einzelheiten"
+
+#: crud101/atlas/admin.py:130 crud101/atlas/viewset.py:57
+msgid "Fun facts"
+msgstr "Lustige Fakten"
+
+#: crud101/atlas/admin.py:146
+msgid "surrounded oceans"
+msgstr "umgebene ozeane"
+
+#: crud101/atlas/admin.py:150
+msgid "countries count"
+msgstr "Länder zählen"
+
+#: crud101/atlas/admin.py:190 crud101/atlas/admin.py:213
+msgid "became independent in XX century"
+msgstr "wurde im XX Jahrhundert unabhängig"
+
+#: crud101/atlas/models.py:8 crud101/atlas/models.py:27
+#: crud101/atlas/models.py:76 crud101/atlas/models.py:143
+#: crud101/atlas/models.py:168 crud101/staff/models.py:8
+msgid "name"
+msgstr ""
+
+#: crud101/atlas/models.py:12 crud101/atlas/models.py:41
+#: crud101/atlas/models.py:81
+msgid "area"
+msgstr "Bereich"
+
+#: crud101/atlas/models.py:13
+msgid "slug"
+msgstr ""
+
+#: crud101/atlas/models.py:14
+msgid "description"
+msgstr "beschreibung"
+
+#: crud101/atlas/models.py:15
+msgid "map url"
+msgstr "karte url"
+
+#: crud101/atlas/models.py:18 crud101/atlas/models.py:37
+msgid "ocean"
+msgstr "Ozean"
+
+#: crud101/atlas/models.py:19 crud101/atlas/models.py:117
+msgid "oceans"
+msgstr "Ozeane"
+
+#: crud101/atlas/models.py:32
+msgid "parent"
+msgstr "Elternteil"
+
+#: crud101/atlas/models.py:42
+msgid "km²"
+msgstr ""
+
+#: crud101/atlas/models.py:45
+msgid "average depth"
+msgstr "mittlere tiefe"
+
+#: crud101/atlas/models.py:46 crud101/atlas/models.py:52
+msgid "meters"
+msgstr "meter"
+
+#: crud101/atlas/models.py:51
+msgid "maximum depth"
+msgstr "maximale tiefe"
+
+#: crud101/atlas/models.py:66
+msgid "sea"
+msgstr "Meer"
+
+#: crud101/atlas/models.py:67
+msgid "seas"
+msgstr "Meere"
+
+#: crud101/atlas/models.py:84 crud101/atlas/models.py:170
+msgid "population"
+msgstr "Bevölkerung"
+
+#: crud101/atlas/models.py:86
+msgid "population density"
+msgstr "Bevölkerungsdichte"
+
+#: crud101/atlas/models.py:96
+msgid "largest country"
+msgstr "größtes land"
+
+#: crud101/atlas/models.py:103
+msgid "biggest city"
+msgstr "größte stadt"
+
+#: crud101/atlas/models.py:106
+msgid "longest river"
+msgstr "längster fluss"
+
+#: crud101/atlas/models.py:112
+msgid "biggest mountain"
+msgstr "größter berg"
+
+#: crud101/atlas/models.py:131 crud101/atlas/models.py:155
+msgid "continent"
+msgstr "Kontinent"
+
+#: crud101/atlas/models.py:132
+msgid "continents"
+msgstr "Kontinente"
+
+#: crud101/atlas/models.py:137
+msgid "Countries"
+msgstr "Länder"
+
+#: crud101/atlas/models.py:142 crud101/staff/models.py:7
+msgid "code"
+msgstr ""
+
+#: crud101/atlas/models.py:145
+msgid "independence day"
+msgstr "Unabhängigkeitstag"
+
+#: crud101/atlas/models.py:149
+msgid "gay friendly"
+msgstr "homosexuellenfreundlich"
+
+#: crud101/atlas/models.py:159 crud101/atlas/models.py:175
+msgid "country"
+msgstr "land"
+
+#: crud101/atlas/models.py:160
+msgid "countries"
+msgstr "Länder"
+
+#: crud101/atlas/models.py:169
+msgid "is capital city"
+msgstr "ist Hauptstadt"
+
+#: crud101/atlas/models.py:179
+msgid "city"
+msgstr "Stadt"
+
+#: crud101/atlas/models.py:180
+msgid "cities"
+msgstr "Städte"
+
+#: crud101/atlas/viewset.py:65
+msgid "Surrounded oceans"
+msgstr "Umgebene Ozeane"
+
+#: crud101/atlas/viewset.py:88
+msgid "Became independent in XX century"
+msgstr "Im XX Jahrhundert unabhängig geworden"
+
+#: crud101/staff/forms.py:31
+#: crud101/staff/templates/staff/includes/department_managers_card.html:11
+msgid "Manager"
+msgstr "Leiter"
+
+#: crud101/staff/forms.py:32
+msgid "full name"
+msgstr "vollständiger name"
+
+#: crud101/staff/forms.py:53
+msgid "Change department"
+msgstr "Abteilung wechseln"
+
+#: crud101/staff/forms.py:71
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:11
+msgid "Position"
+msgstr ""
+
+#: crud101/staff/forms.py:89
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:4
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:11
+msgid "Salary"
+msgstr "Gehalt"
+
+#: crud101/staff/models.py:11 crud101/staff/models.py:22
+#: crud101/staff/models.py:39
+msgid "department"
+msgstr "Abteilung"
+
+#: crud101/staff/models.py:12
+msgid "departments"
+msgstr "Abteilungen"
+
+#: crud101/staff/models.py:21 crud101/staff/models.py:38
+#: crud101/staff/models.py:64 crud101/staff/models.py:73
+#: crud101/staff/models.py:91
+msgid "employee"
+msgstr "Mitarbeiter"
+
+#: crud101/staff/models.py:23 crud101/staff/models.py:40
+#: crud101/staff/models.py:75 crud101/staff/models.py:93
+msgid "from"
+msgstr "von"
+
+#: crud101/staff/models.py:24 crud101/staff/models.py:41
+#: crud101/staff/models.py:76 crud101/staff/models.py:94
+msgid "to"
+msgstr "von"
+
+#: crud101/staff/models.py:29
+#, fuzzy
+#| msgid "department employees"
+msgid "department employee"
+msgstr "Mitarbeiter der Abteilung"
+
+#: crud101/staff/models.py:30
+msgid "department employees"
+msgstr "Mitarbeiter der Abteilung"
+
+#: crud101/staff/models.py:46
+msgid "department manager"
+msgstr "Abteilungsleiter"
+
+#: crud101/staff/models.py:47
+msgid "department managers"
+msgstr "Abteilungsleiter"
+
+#: crud101/staff/models.py:56
+msgid "employee number"
+msgstr "Mitarbeiternummer"
+
+#: crud101/staff/models.py:57
+msgid "birthday"
+msgstr "Geburtstag"
+
+#: crud101/staff/models.py:58
+msgid "first name"
+msgstr "Vorname"
+
+#: crud101/staff/models.py:59
+msgid "last name"
+msgstr "Nachname"
+
+#: crud101/staff/models.py:60
+msgid "gender"
+msgstr "Geschlecht"
+
+#: crud101/staff/models.py:61
+msgid "hire date"
+msgstr "Anstellungsdatum"
+
+#: crud101/staff/models.py:65
+msgid "employees"
+msgstr "Angestellte"
+
+#: crud101/staff/models.py:74 crud101/staff/models.py:83
+msgid "salary"
+msgstr "Gehalt"
+
+#: crud101/staff/models.py:84
+msgid "salaries"
+msgstr "Gehälter"
+
+#: crud101/staff/models.py:92 crud101/staff/models.py:99
+msgid "title"
+msgstr "Titel"
+
+#: crud101/staff/models.py:100
+msgid "titles"
+msgstr "Titel"
+
+#: crud101/staff/templates/staff/base_form.html:16
+#: crud101/staff/templates/staff/manager_change.html:6
+msgid "Change Manager"
+msgstr "Ändern Manager"
+
+#: crud101/staff/templates/staff/department_employees_list.html:8
+#: crud101/staff/templates/staff/employee_department_change.html:4
+#: crud101/staff/templates/staff/includes/department_detail_card.html:7
+#: crud101/staff/templates/staff/salary_change.html:4
+#: crud101/staff/templates/staff/title_change.html:4
+msgid "Employees"
+msgstr "Angestellte"
+
+#: crud101/staff/templates/staff/employee_department_change.html:6
+msgid "Change Department"
+msgstr "Abteilung wechseln"
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:4
+msgid "Department Managers"
+msgstr "Abteilungsleiter"
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:12
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:12
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:12
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:12
+msgid "Since"
+msgstr "Seit"
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:29
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:29
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:29
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:27
+msgid "Change"
+msgstr "Veränderung"
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:4
+#: crud101/staff/templates/staff/manager_change.html:4
+msgid "Departments"
+msgstr "Abteilungen"
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:11
+msgid "Department"
+msgstr "Abteilung"
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:13
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:13
+msgid "To"
+msgstr "Stammen"
+
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:4
+msgid "Positions"
+msgstr ""
+
+#: crud101/staff/templates/staff/salary_change.html:6
+msgid "Change Salary"
+msgstr "Gehalt ändern"
+
+#: crud101/staff/templates/staff/title_change.html:6
+msgid "Change Position"
+msgstr "Position ändern"
+
+#: forms101/forms/templates/forms/app_menu.html:25
+msgid "Bank application"
+msgstr "Bankanwendung"
+
+#: forms101/forms/templates/forms/app_menu.html:30
+msgid "Checkout product"
+msgstr "Kassenprodukt"
+
+#: forms101/forms/templates/forms/app_menu.html:35
+msgid "Comment form"
+msgstr "Kommentarformular"
+
+#: forms101/forms/templates/forms/app_menu.html:40
+msgid "Contact form"
+msgstr "Kontakt Formular"
+
+#: forms101/forms/templates/forms/app_menu.html:45
+msgid "Hospital registration"
+msgstr "Registrierung im Krankenhaus"
+
+#: forms101/forms/templates/forms/app_menu.html:50
+msgid "Login form sample"
+msgstr "Anmeldeformular Muster"
+
+#: forms101/forms/templates/forms/app_menu.html:55
+msgid "Order services"
+msgstr "Dienstleistungen bestellen"
+
+#: forms101/forms/templates/forms/app_menu.html:60
+msgid "Profile Edit"
+msgstr "Profil bearbeiten"
+
+#: forms101/forms/templates/forms/app_menu.html:65
+msgid "Registration form"
+msgstr "Anmeldeformular"
+
+#: forms101/forms/templates/forms/app_menu.html:70
+msgid "Sign up"
+msgstr "Anmelden"
+
+#: forms101/forms/templates/forms/app_menu.html:75
+msgid "Wizard sample"
+msgstr "Wizard-Beispiel"
+
+#: forms101/forms/templates/formtools/wizard/wizard_done.html:20
+msgid "One more time"
+msgstr "Ein Mal noch"
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:30
+msgid "first step"
+msgstr "erster schritt"
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:34
+msgid "prev step"
+msgstr "vorheriger schritt"
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:39
+msgid "submit"
+msgstr "einreichen"
+
+#: forms101/forms/viewset.py:22
+msgid "Forms and Widgets"
+msgstr "Formulare und Widgets"
+
+#: fsm101/review/admin.py:92
+msgid "Reject review"
+msgstr "Überprüfung ablehnen"
+
+#: fsm101/review/models.py:8
+msgid "New"
+msgstr "Neu"
+
+#: fsm101/review/models.py:9 workflow101/helloworld/models.py:9
+msgid "Approved"
+msgstr "Genehmigt"
+
+#: fsm101/review/models.py:10
+msgid "Rejected"
+msgstr "Hat abgelehnt"
+
+#: fsm101/review/models.py:11
+msgid "Published"
+msgstr "Veröffentlicht"
+
+#: fsm101/review/models.py:12
+msgid "Hidden"
+msgstr "Versteckt"
+
+#: fsm101/review/models.py:13
+msgid "Removed"
+msgstr "Entfernt"
+
+#: fsm101/review/rest.py:56
+msgid "Transition is not allowed"
+msgstr "Der Übergang ist nicht erlaubt"
+
+#: fsm101/review/templates/review/admin/approve.html:15
+msgid "Home"
+msgstr "Heim"
+
+#: fsm101/review/templates/review/admin/approve.html:37
+msgid "Yes, I’m sure"
+msgstr "Ja, ich bin sicher"
+
+#: fsm101/review/templates/review/admin/approve.html:38
+msgid "No, take me back"
+msgstr "Nein, bring mich zurück"
+
+#: fsm101/review/templates/review/app_menu.html:6
+msgid "REST API"
+msgstr "REST API"
+
+#: fsm101/review/templates/review/app_menu.html:11
+msgid "Administration"
+msgstr "Verwaltung"
+
+#: workflow101/bloodtest/flows.py:11
+msgid "Blood test"
+msgstr "Bluttest"
+
+#: workflow101/helloworld/flows.py:19
+msgid "Hello world"
+msgstr "Hallo Welt"
+
+#: workflow101/helloworld/flows.py:20
+msgid "Message to the world request flow."
+msgstr "Nachricht an die welt anfragefluss."
+
+#: workflow101/helloworld/flows.py:21
+msgid "Send '{{ process.text }}' message to the world"
+msgstr "Senden Sie die Nachricht {{ process.text }} in die Welt"
+
+#: workflow101/helloworld/flows.py:22
+msgid "Sent '{{ process.text }}' message to the world"
+msgstr "Nachricht {{ process.text }} an die Welt gesendet"
+
+#: workflow101/helloworld/flows.py:32
+msgid "New message"
+msgstr "Neue Nachricht"
+
+#: workflow101/helloworld/flows.py:44
+msgid "Approve"
+msgstr "Genehmigen Sie"
+
+#: workflow101/helloworld/flows.py:45
+msgid "Supervisor approvement"
+msgstr "Genehmigung des Datenschutzbeauftragten"
+
+#: workflow101/helloworld/flows.py:46
+msgid "Message review required"
+msgstr "Überprüfung der Nachricht erforderlich"
+
+#: workflow101/helloworld/flows.py:47
+msgid "Message was {{ process.approved|yesno:'Approved,Rejected' }}"
+msgstr "Die Nachricht wurde {{ process.approved|yesno:'Approved,Rejected' }}"
+
+#: workflow101/helloworld/flows.py:56
+msgid "Approvement check"
+msgstr "Prüfung der Zulassung"
+
+#: workflow101/helloworld/flows.py:64
+msgid "Send message"
+msgstr "Nachricht senden"
+
+#: workflow101/helloworld/flows.py:68
+msgid "End"
+msgstr "Ende"
+
+#: workflow101/helloworld/models.py:8
+msgid "Message"
+msgstr "Nachricht"
+
+#: workflow101/helloworld/models.py:13
+msgid "World Request"
+msgstr "Welt-Anfrage"
+
+#: workflow101/helloworld/models.py:14
+msgid "World Requests"
+msgstr "Welt-Anfragen"
+
+#: workflow101/shipment/flows.py:18
+msgid "Order shipment"
+msgstr "Versand bestellen"
+
+#: workflow101/shipment/flows.py:20
+msgid "Split and synchronize work for a Manager, Clerk and Warehouse worker"
+msgstr ""
+"Aufteilung und Synchronisierung der Arbeit für einen Manager, einen "
+"Sachbearbeiter und einen Lagerarbeiter"
+
+#: workflow101/shipment/flows.py:31
+msgid "New shipment"
+msgstr "Neue Sendung"
+
+#~ msgid "department employeevi"
+#~ msgstr "Mitarbeiter der Abteilung"

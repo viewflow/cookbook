@@ -1,0 +1,44 @@
+{% extends 'viewflow/workflow/start.html' %}
+{% load i18n viewflow %}
+
+<div class="card-title black-text">{{ activation.flow_task.task_title|default:activation.task.flow_task }}</div>
+<span>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</span>
+
+
+
+{% block form %}
+<vf-form>
+  <form class="vf-form" method="POST" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+    {% csrf_token %}
+    <section class="vf-card__form">
+      {{ wizard.management_form }}
+      {% render wizard.form wizard.form.layout %}
+    </section>
+    <section class="mdc-card__actions vf-card__actions">
+      {% if wizard.steps.prev %}
+      <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--touch" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__touch"></span>
+        <span class="mdc-button__focus-ring"></span>
+        <span class="mdc-button__label">{% trans 'Prev' %}</span>
+      </button>
+      {% endif %}
+      {% if wizard.steps.next %}
+      <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--touch" type="submit">
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__touch"></span>
+        <span class="mdc-button__focus-ring"></span>
+        <span class="mdc-button__label">{% trans 'Next' %}</span>
+      </button>
+      {% else %}
+      <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--touch" type="submit">
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__touch"></span>
+        <span class="mdc-button__focus-ring"></span>
+        <span class="mdc-button__label">{% trans 'Start' %}</span>
+      </button>
+      {% endif %}
+    </section>
+  </form>
+</vf-form>
+{% endblock form %}

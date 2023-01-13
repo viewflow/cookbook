@@ -169,6 +169,8 @@ def update_year_slider(count_graph_selected):
         for point in count_graph_selected['points']:
             values.append(int(point['pointNumber']))
 
+        if not values:
+            return [1960, 1961]
         return [min(values) + 1960, max(values) + 1961]
 
 
@@ -187,7 +189,7 @@ def update_well_text(well_statuses, well_types, year_slider):
     Input('aggregate_data', 'data'))
 def update_gas_text(data):
     if data is not None:
-        return data[0] + " mcf"
+        return str(data[0]) + " mcf"
     return ''
 
 
@@ -196,7 +198,7 @@ def update_gas_text(data):
     Input('aggregate_data', 'data'))
 def update_oil_text(data):
     if data is not None:
-        return data[1] + " bbl"
+        return str(data[1]) + " bbl"
     return ''
 
 
@@ -205,7 +207,7 @@ def update_oil_text(data):
     Input('aggregate_data', 'data'))
 def update_water_text(data):
     if data is not None:
-        return data[2] + " bbl"
+        return str(data[2]) + " bbl"
     return ''
 
 

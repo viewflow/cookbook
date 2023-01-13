@@ -1,0 +1,553 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-07 10:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: crud101/atlas/admin.py:47
+msgid "wiki"
+msgstr ""
+
+#: crud101/atlas/admin.py:90
+msgid "map"
+msgstr ""
+
+#: crud101/atlas/admin.py:94
+msgid "short description"
+msgstr ""
+
+#: crud101/atlas/admin.py:116
+msgid "sea area"
+msgstr ""
+
+#: crud101/atlas/admin.py:127 crud101/atlas/viewset.py:42
+#: crud101/atlas/viewset.py:51
+msgid "Details"
+msgstr ""
+
+#: crud101/atlas/admin.py:130 crud101/atlas/viewset.py:57
+msgid "Fun facts"
+msgstr ""
+
+#: crud101/atlas/admin.py:146
+msgid "surrounded oceans"
+msgstr ""
+
+#: crud101/atlas/admin.py:150
+msgid "countries count"
+msgstr ""
+
+#: crud101/atlas/admin.py:190 crud101/atlas/admin.py:213
+msgid "became independent in XX century"
+msgstr ""
+
+#: crud101/atlas/models.py:8 crud101/atlas/models.py:27
+#: crud101/atlas/models.py:76 crud101/atlas/models.py:143
+#: crud101/atlas/models.py:168 crud101/staff/models.py:8
+msgid "name"
+msgstr ""
+
+#: crud101/atlas/models.py:12 crud101/atlas/models.py:41
+#: crud101/atlas/models.py:81
+msgid "area"
+msgstr ""
+
+#: crud101/atlas/models.py:13
+msgid "slug"
+msgstr ""
+
+#: crud101/atlas/models.py:14
+msgid "description"
+msgstr ""
+
+#: crud101/atlas/models.py:15
+msgid "map url"
+msgstr ""
+
+#: crud101/atlas/models.py:18 crud101/atlas/models.py:37
+msgid "ocean"
+msgstr ""
+
+#: crud101/atlas/models.py:19 crud101/atlas/models.py:117
+msgid "oceans"
+msgstr ""
+
+#: crud101/atlas/models.py:32
+msgid "parent"
+msgstr ""
+
+#: crud101/atlas/models.py:42
+msgid "km²"
+msgstr ""
+
+#: crud101/atlas/models.py:45
+msgid "average depth"
+msgstr ""
+
+#: crud101/atlas/models.py:46 crud101/atlas/models.py:52
+msgid "meters"
+msgstr ""
+
+#: crud101/atlas/models.py:51
+msgid "maximum depth"
+msgstr ""
+
+#: crud101/atlas/models.py:66
+msgid "sea"
+msgstr ""
+
+#: crud101/atlas/models.py:67
+msgid "seas"
+msgstr ""
+
+#: crud101/atlas/models.py:84 crud101/atlas/models.py:170
+msgid "population"
+msgstr ""
+
+#: crud101/atlas/models.py:86
+msgid "population density"
+msgstr ""
+
+#: crud101/atlas/models.py:96
+msgid "largest country"
+msgstr ""
+
+#: crud101/atlas/models.py:103
+msgid "biggest city"
+msgstr ""
+
+#: crud101/atlas/models.py:106
+msgid "longest river"
+msgstr ""
+
+#: crud101/atlas/models.py:112
+msgid "biggest mountain"
+msgstr ""
+
+#: crud101/atlas/models.py:131 crud101/atlas/models.py:155
+msgid "continent"
+msgstr ""
+
+#: crud101/atlas/models.py:132
+msgid "continents"
+msgstr ""
+
+#: crud101/atlas/models.py:137
+msgid "Countries"
+msgstr ""
+
+#: crud101/atlas/models.py:142 crud101/staff/models.py:7
+msgid "code"
+msgstr ""
+
+#: crud101/atlas/models.py:145
+msgid "independence day"
+msgstr ""
+
+#: crud101/atlas/models.py:149
+msgid "gay friendly"
+msgstr ""
+
+#: crud101/atlas/models.py:159 crud101/atlas/models.py:175
+msgid "country"
+msgstr ""
+
+#: crud101/atlas/models.py:160
+msgid "countries"
+msgstr ""
+
+#: crud101/atlas/models.py:169
+msgid "is capital city"
+msgstr ""
+
+#: crud101/atlas/models.py:179
+msgid "city"
+msgstr ""
+
+#: crud101/atlas/models.py:180
+msgid "cities"
+msgstr ""
+
+#: crud101/atlas/viewset.py:65
+msgid "Surrounded oceans"
+msgstr ""
+
+#: crud101/atlas/viewset.py:88
+msgid "Became independent in XX century"
+msgstr ""
+
+#: crud101/staff/forms.py:31
+#: crud101/staff/templates/staff/includes/department_managers_card.html:11
+msgid "Manager"
+msgstr ""
+
+#: crud101/staff/forms.py:32
+msgid "full name"
+msgstr ""
+
+#: crud101/staff/forms.py:53
+msgid "Change department"
+msgstr ""
+
+#: crud101/staff/forms.py:71
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:11
+msgid "Position"
+msgstr ""
+
+#: crud101/staff/forms.py:89
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:4
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:11
+msgid "Salary"
+msgstr ""
+
+#: crud101/staff/models.py:11 crud101/staff/models.py:22
+#: crud101/staff/models.py:39
+msgid "department"
+msgstr ""
+
+#: crud101/staff/models.py:12
+msgid "departments"
+msgstr ""
+
+#: crud101/staff/models.py:21 crud101/staff/models.py:38
+#: crud101/staff/models.py:64 crud101/staff/models.py:73
+#: crud101/staff/models.py:91
+msgid "employee"
+msgstr ""
+
+#: crud101/staff/models.py:23 crud101/staff/models.py:40
+#: crud101/staff/models.py:75 crud101/staff/models.py:93
+msgid "from"
+msgstr ""
+
+#: crud101/staff/models.py:24 crud101/staff/models.py:41
+#: crud101/staff/models.py:76 crud101/staff/models.py:94
+msgid "to"
+msgstr ""
+
+#: crud101/staff/models.py:29
+msgid "department employee"
+msgstr ""
+
+#: crud101/staff/models.py:30
+msgid "department employees"
+msgstr ""
+
+#: crud101/staff/models.py:46
+msgid "department manager"
+msgstr ""
+
+#: crud101/staff/models.py:47
+msgid "department managers"
+msgstr ""
+
+#: crud101/staff/models.py:56
+msgid "employee number"
+msgstr ""
+
+#: crud101/staff/models.py:57
+msgid "birthday"
+msgstr ""
+
+#: crud101/staff/models.py:58
+msgid "first name"
+msgstr ""
+
+#: crud101/staff/models.py:59
+msgid "last name"
+msgstr ""
+
+#: crud101/staff/models.py:60
+msgid "gender"
+msgstr ""
+
+#: crud101/staff/models.py:61
+msgid "hire date"
+msgstr ""
+
+#: crud101/staff/models.py:65
+msgid "employees"
+msgstr ""
+
+#: crud101/staff/models.py:74 crud101/staff/models.py:83
+msgid "salary"
+msgstr ""
+
+#: crud101/staff/models.py:84
+msgid "salaries"
+msgstr ""
+
+#: crud101/staff/models.py:92 crud101/staff/models.py:99
+msgid "title"
+msgstr ""
+
+#: crud101/staff/models.py:100
+msgid "titles"
+msgstr ""
+
+#: crud101/staff/templates/staff/base_form.html:16
+#: crud101/staff/templates/staff/manager_change.html:6
+msgid "Change Manager"
+msgstr ""
+
+#: crud101/staff/templates/staff/department_employees_list.html:8
+#: crud101/staff/templates/staff/employee_department_change.html:4
+#: crud101/staff/templates/staff/includes/department_detail_card.html:7
+#: crud101/staff/templates/staff/salary_change.html:4
+#: crud101/staff/templates/staff/title_change.html:4
+msgid "Employees"
+msgstr ""
+
+#: crud101/staff/templates/staff/employee_department_change.html:6
+msgid "Change Department"
+msgstr ""
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:4
+msgid "Department Managers"
+msgstr ""
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:12
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:12
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:12
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:12
+msgid "Since"
+msgstr ""
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:29
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:29
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:29
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:27
+msgid "Change"
+msgstr ""
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:4
+#: crud101/staff/templates/staff/manager_change.html:4
+msgid "Departments"
+msgstr ""
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:11
+msgid "Department"
+msgstr ""
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:13
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:13
+msgid "To"
+msgstr ""
+
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:4
+msgid "Positions"
+msgstr ""
+
+#: crud101/staff/templates/staff/salary_change.html:6
+msgid "Change Salary"
+msgstr ""
+
+#: crud101/staff/templates/staff/title_change.html:6
+msgid "Change Position"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:25
+msgid "Bank application"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:30
+msgid "Checkout product"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:35
+msgid "Comment form"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:40
+msgid "Contact form"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:45
+msgid "Hospital registration"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:50
+msgid "Login form sample"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:55
+msgid "Order services"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:60
+msgid "Profile Edit"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:65
+msgid "Registration form"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:70
+msgid "Sign up"
+msgstr ""
+
+#: forms101/forms/templates/forms/app_menu.html:75
+msgid "Wizard sample"
+msgstr ""
+
+#: forms101/forms/templates/formtools/wizard/wizard_done.html:20
+msgid "One more time"
+msgstr ""
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:30
+msgid "first step"
+msgstr ""
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:34
+msgid "prev step"
+msgstr ""
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:39
+msgid "submit"
+msgstr ""
+
+#: forms101/forms/viewset.py:22
+msgid "Forms and Widgets"
+msgstr ""
+
+#: fsm101/review/admin.py:92
+msgid "Reject review"
+msgstr ""
+
+#: fsm101/review/models.py:8
+msgid "New"
+msgstr ""
+
+#: fsm101/review/models.py:9 workflow101/helloworld/models.py:9
+msgid "Approved"
+msgstr ""
+
+#: fsm101/review/models.py:10
+msgid "Rejected"
+msgstr ""
+
+#: fsm101/review/models.py:11
+msgid "Published"
+msgstr ""
+
+#: fsm101/review/models.py:12
+msgid "Hidden"
+msgstr ""
+
+#: fsm101/review/models.py:13
+msgid "Removed"
+msgstr ""
+
+#: fsm101/review/rest.py:56
+msgid "Transition is not allowed"
+msgstr ""
+
+#: fsm101/review/templates/review/admin/approve.html:15
+msgid "Home"
+msgstr ""
+
+#: fsm101/review/templates/review/admin/approve.html:37
+msgid "Yes, I’m sure"
+msgstr ""
+
+#: fsm101/review/templates/review/admin/approve.html:38
+msgid "No, take me back"
+msgstr ""
+
+#: fsm101/review/templates/review/app_menu.html:6
+msgid "REST API"
+msgstr ""
+
+#: fsm101/review/templates/review/app_menu.html:11
+msgid "Administration"
+msgstr ""
+
+#: workflow101/bloodtest/flows.py:11
+msgid "Blood test"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:19
+msgid "Hello world"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:20
+msgid "Message to the world request flow."
+msgstr ""
+
+#: workflow101/helloworld/flows.py:21
+msgid "Send '{{ process.text }}' message to the world"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:22
+msgid "Sent '{{ process.text }}' message to the world"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:32
+msgid "New message"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:44
+msgid "Approve"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:45
+msgid "Supervisor approvement"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:46
+msgid "Message review required"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:47
+msgid "Message was {{ process.approved|yesno:'Approved,Rejected' }}"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:56
+msgid "Approvement check"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:64
+msgid "Send message"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:68
+msgid "End"
+msgstr ""
+
+#: workflow101/helloworld/models.py:8
+msgid "Message"
+msgstr ""
+
+#: workflow101/helloworld/models.py:13
+msgid "World Request"
+msgstr ""
+
+#: workflow101/helloworld/models.py:14
+msgid "World Requests"
+msgstr ""
+
+#: workflow101/shipment/flows.py:18
+msgid "Order shipment"
+msgstr ""
+
+#: workflow101/shipment/flows.py:20
+msgid "Split and synchronize work for a Manager, Clerk and Warehouse worker"
+msgstr ""
+
+#: workflow101/shipment/flows.py:31
+msgid "New shipment"
+msgstr ""

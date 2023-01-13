@@ -58,15 +58,15 @@ class ReviewFlow(object):
     def reject(self):
         self.review.approver = self.user
 
-    @stage.transition(source=ReviewState.APPROVED, target=ReviewState.PUBLISHED)
+    @stage.transition(source=ReviewState.APPROVED, target=ReviewState.PUBLISHED, permission=lambda flow, user: True)
     def publish(self):
         self.review.published = timezone.now()
 
-    @stage.transition(source=fsm.State.ANY, target=ReviewState.REMOVED)
+    @stage.transition(source=fsm.State.ANY, target=ReviewState.REMOVED, permission=lambda flow, user: True)
     def remove(self):
         pass
 
-    @stage.transition(source=ReviewState.REMOVED)
+    @stage.transition(source=ReviewState.REMOVED, permission=lambda flow, user: True)
     def delete(self):
         self.review.delete()
         self.review = None

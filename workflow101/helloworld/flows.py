@@ -18,8 +18,8 @@ class HelloWorldFlow(flow.Flow):
     process_class = HelloWorldProcess
     process_title = _('Hello world')
     process_description = _('Message to the world request flow.')
-    process_summary_template = _("'{{ process.text }}' message to the world")
-    process_result_template = _("'{{ process.text }}' message to the world")
+    process_summary_template = _("Send '{{ process.text }}' message to the world")
+    process_result_template = _("Sent '{{ process.text }}' message to the world")
 
     lock_impl = lock.select_for_update_lock
 

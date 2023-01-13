@@ -100,7 +100,7 @@ ocean_viewset = ReadonlyModelViewset(
 class SeaViewset(DeleteViewMixin, ModelViewset):
     icon = Icon('beach_access')
     model = models.Sea
-    list_columns = ('name', 'parent', 'ocean', 'sea_area', )
+    list_columns = ('name', 'parent_sea', 'ocean', 'sea_area', )
     list_filterset_class = filters.SeaFilterSet
     form_layout = Layout(
         'ocean',
@@ -114,6 +114,9 @@ class SeaViewset(DeleteViewMixin, ModelViewset):
             queryset=lambda parent: models.Sea.objects.filter(ocean=parent)
         )
     }
+
+    def parent_sea(self, sea):
+        return sea.parent
 
     def sea_area(self, sea):
         return None if sea.area == 0 else sea.area

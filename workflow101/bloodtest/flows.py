@@ -8,7 +8,7 @@ from . import views, models
 
 class BloodTestFlow(flow.Flow):
     process_class = models.BloodTestProcess
-    process_title = _('Blood test')
+    process_title = _("Blood test")
 
     first_sample = flow.Start(views.FirstBloodSampleView.as_view()).Next(
         this.biochemical_analysis
@@ -35,6 +35,7 @@ class BloodTestFlow(flow.Flow):
         flow.View(
             views.GenericTestFormView.as_view(
                 model=models.TumorMarkers,
+                template_name="viewflow//workflow/task.html",
                 fields=[
                     "alpha_fetoprotein",
                     "beta_gonadotropin",

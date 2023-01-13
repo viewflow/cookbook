@@ -36,8 +36,6 @@ class DynamicSplit(
     flow.NodeDetailMixin,
     flow.NodeExecuteMixin,
     mixins.NextNodeMixin,
-    mixins.NodeUndoMixin,
-    mixins.NodeCancelMixin,
     Node,
 ):
     """

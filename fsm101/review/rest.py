@@ -3,7 +3,7 @@ from rest_framework.exceptions import ValidationError, PermissionDenied
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.utils.translation import gettext_lazy as _
-from viewflow.fsm import FlowRESTMixin
+from viewflow.fsm.rest import FlowRESTMixin
 
 from .flows import ReviewFlow
 from .models import Review, ReviewState

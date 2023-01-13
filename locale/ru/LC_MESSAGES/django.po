@@ -1,0 +1,555 @@
+# Viewflow - The low-code for developers with yesterday's deadline
+# Copyright (C) 2023 Mikhail Podgurskiy
+# This file is distributed under the same license as the Viewflow package.
+# Mikhail Podgurskiy <mikhail@viewflow.io>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Viewflow\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-07 10:45+0000\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: crud101/atlas/admin.py:47
+msgid "wiki"
+msgstr "Вики"
+
+#: crud101/atlas/admin.py:90
+msgid "map"
+msgstr "Карта"
+
+#: crud101/atlas/admin.py:94
+msgid "short description"
+msgstr "Бриф"
+
+#: crud101/atlas/admin.py:116
+msgid "sea area"
+msgstr "Площадь моря"
+
+#: crud101/atlas/admin.py:127 crud101/atlas/viewset.py:42
+#: crud101/atlas/viewset.py:51
+msgid "Details"
+msgstr "Подробности"
+
+#: crud101/atlas/admin.py:130 crud101/atlas/viewset.py:57
+msgid "Fun facts"
+msgstr "Забавные факты"
+
+#: crud101/atlas/admin.py:146
+msgid "surrounded oceans"
+msgstr "Окружающие океаны"
+
+#: crud101/atlas/admin.py:150
+msgid "countries count"
+msgstr "Количество стран"
+
+#: crud101/atlas/admin.py:190 crud101/atlas/admin.py:213
+msgid "became independent in XX century"
+msgstr "Обрела независимость в XX столетии"
+
+#: crud101/atlas/models.py:8 crud101/atlas/models.py:27
+#: crud101/atlas/models.py:76 crud101/atlas/models.py:143
+#: crud101/atlas/models.py:168 crud101/staff/models.py:8
+msgid "name"
+msgstr "Имя"
+
+#: crud101/atlas/models.py:12 crud101/atlas/models.py:41
+#: crud101/atlas/models.py:81
+msgid "area"
+msgstr "Площадь"
+
+#: crud101/atlas/models.py:13
+msgid "slug"
+msgstr "слуг"
+
+#: crud101/atlas/models.py:14
+msgid "description"
+msgstr "Описание"
+
+#: crud101/atlas/models.py:15
+msgid "map url"
+msgstr "URL карты"
+
+#: crud101/atlas/models.py:18 crud101/atlas/models.py:37
+msgid "ocean"
+msgstr "Океан"
+
+#: crud101/atlas/models.py:19 crud101/atlas/models.py:117
+msgid "oceans"
+msgstr "Океаны"
+
+#: crud101/atlas/models.py:32
+msgid "parent"
+msgstr "Регион"
+
+#: crud101/atlas/models.py:42
+msgid "km²"
+msgstr "км²"
+
+#: crud101/atlas/models.py:45
+msgid "average depth"
+msgstr "Средняя глубина"
+
+#: crud101/atlas/models.py:46 crud101/atlas/models.py:52
+msgid "meters"
+msgstr "метры"
+
+#: crud101/atlas/models.py:51
+msgid "maximum depth"
+msgstr "максимальная глубина"
+
+#: crud101/atlas/models.py:66
+msgid "sea"
+msgstr "мое"
+
+#: crud101/atlas/models.py:67
+msgid "seas"
+msgstr "моря"
+
+#: crud101/atlas/models.py:84 crud101/atlas/models.py:170
+msgid "population"
+msgstr "население"
+
+#: crud101/atlas/models.py:86
+msgid "population density"
+msgstr "плотность населения"
+
+#: crud101/atlas/models.py:96
+msgid "largest country"
+msgstr "наибольшая страна"
+
+#: crud101/atlas/models.py:103
+msgid "biggest city"
+msgstr "крупнейщий город"
+
+#: crud101/atlas/models.py:106
+msgid "longest river"
+msgstr "длиннейщая река"
+
+#: crud101/atlas/models.py:112
+msgid "biggest mountain"
+msgstr "высочайщая гора"
+
+#: crud101/atlas/models.py:131 crud101/atlas/models.py:155
+msgid "continent"
+msgstr "континент"
+
+#: crud101/atlas/models.py:132
+msgid "continents"
+msgstr "континенты"
+
+#: crud101/atlas/models.py:137
+msgid "Countries"
+msgstr "Страны"
+
+#: crud101/atlas/models.py:142 crud101/staff/models.py:7
+msgid "code"
+msgstr "код"
+
+#: crud101/atlas/models.py:145
+msgid "independence day"
+msgstr "день независимости"
+
+#: crud101/atlas/models.py:149
+msgid "gay friendly"
+msgstr "Дружелюбна к ЛГБТ+"
+
+#: crud101/atlas/models.py:159 crud101/atlas/models.py:175
+msgid "country"
+msgstr "страна"
+
+#: crud101/atlas/models.py:160
+msgid "countries"
+msgstr "страны"
+
+#: crud101/atlas/models.py:169
+msgid "is capital city"
+msgstr "столица"
+
+#: crud101/atlas/models.py:179
+msgid "city"
+msgstr "город"
+
+#: crud101/atlas/models.py:180
+msgid "cities"
+msgstr "города"
+
+#: crud101/atlas/viewset.py:65
+msgid "Surrounded oceans"
+msgstr "окружающие океаны"
+
+#: crud101/atlas/viewset.py:88
+msgid "Became independent in XX century"
+msgstr "Обрела независимость в XX столетии"
+
+#: crud101/staff/forms.py:31
+#: crud101/staff/templates/staff/includes/department_managers_card.html:11
+msgid "Manager"
+msgstr "Менеджер"
+
+#: crud101/staff/forms.py:32
+msgid "full name"
+msgstr "Полное имя"
+
+#: crud101/staff/forms.py:53
+msgid "Change department"
+msgstr "Сменить департамент"
+
+#: crud101/staff/forms.py:71
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:11
+msgid "Position"
+msgstr "Должность"
+
+#: crud101/staff/forms.py:89
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:4
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:11
+msgid "Salary"
+msgstr "Зарплата"
+
+#: crud101/staff/models.py:11 crud101/staff/models.py:22
+#: crud101/staff/models.py:39
+msgid "department"
+msgstr "Отдел"
+
+#: crud101/staff/models.py:12
+msgid "departments"
+msgstr "Отделы"
+
+#: crud101/staff/models.py:21 crud101/staff/models.py:38
+#: crud101/staff/models.py:64 crud101/staff/models.py:73
+#: crud101/staff/models.py:91
+msgid "employee"
+msgstr "Работник"
+
+#: crud101/staff/models.py:23 crud101/staff/models.py:40
+#: crud101/staff/models.py:75 crud101/staff/models.py:93
+msgid "from"
+msgstr "из"
+
+#: crud101/staff/models.py:24 crud101/staff/models.py:41
+#: crud101/staff/models.py:76 crud101/staff/models.py:94
+msgid "to"
+msgstr "в"
+
+#: crud101/staff/models.py:29
+msgid "department employee"
+msgstr "работник отдела"
+
+#: crud101/staff/models.py:30
+msgid "department employees"
+msgstr "работники отдела"
+
+#: crud101/staff/models.py:46
+msgid "department manager"
+msgstr "менеджер отдела"
+
+#: crud101/staff/models.py:47
+msgid "department managers"
+msgstr "менеджеры отделов"
+
+#: crud101/staff/models.py:56
+msgid "employee number"
+msgstr "номер работника"
+
+#: crud101/staff/models.py:57
+msgid "birthday"
+msgstr "день рождения"
+
+#: crud101/staff/models.py:58
+msgid "first name"
+msgstr "Имя"
+
+#: crud101/staff/models.py:59
+msgid "last name"
+msgstr "Фамилия"
+
+#: crud101/staff/models.py:60
+msgid "gender"
+msgstr "пол"
+
+#: crud101/staff/models.py:61
+msgid "hire date"
+msgstr "дата найма"
+
+#: crud101/staff/models.py:65
+msgid "employees"
+msgstr "Работники"
+
+#: crud101/staff/models.py:74 crud101/staff/models.py:83
+msgid "salary"
+msgstr "Зарплата"
+
+#: crud101/staff/models.py:84
+msgid "salaries"
+msgstr "Зарплаты"
+
+#: crud101/staff/models.py:92 crud101/staff/models.py:99
+msgid "title"
+msgstr "Должность"
+
+#: crud101/staff/models.py:100
+msgid "titles"
+msgstr "Должности"
+
+#: crud101/staff/templates/staff/base_form.html:16
+#: crud101/staff/templates/staff/manager_change.html:6
+msgid "Change Manager"
+msgstr "Сменить менеджера"
+
+#: crud101/staff/templates/staff/department_employees_list.html:8
+#: crud101/staff/templates/staff/employee_department_change.html:4
+#: crud101/staff/templates/staff/includes/department_detail_card.html:7
+#: crud101/staff/templates/staff/salary_change.html:4
+#: crud101/staff/templates/staff/title_change.html:4
+msgid "Employees"
+msgstr "Работники"
+
+#: crud101/staff/templates/staff/employee_department_change.html:6
+msgid "Change Department"
+msgstr "Сменить отдел"
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:4
+msgid "Department Managers"
+msgstr "Менеджеры отдела"
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:12
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:12
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:12
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:12
+msgid "Since"
+msgstr "С"
+
+#: crud101/staff/templates/staff/includes/department_managers_card.html:29
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:29
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:29
+#: crud101/staff/templates/staff/includes/employee_salary_card.html:27
+msgid "Change"
+msgstr "Изменить"
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:4
+#: crud101/staff/templates/staff/manager_change.html:4
+msgid "Departments"
+msgstr "Отделы"
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:11
+msgid "Department"
+msgstr "Отдел"
+
+#: crud101/staff/templates/staff/includes/employee_departments_card.html:13
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:13
+msgid "To"
+msgstr "В"
+
+#: crud101/staff/templates/staff/includes/employee_positions_card.html:4
+msgid "Positions"
+msgstr "Должности"
+
+#: crud101/staff/templates/staff/salary_change.html:6
+msgid "Change Salary"
+msgstr "Изменить зарплату"
+
+#: crud101/staff/templates/staff/title_change.html:6
+msgid "Change Position"
+msgstr "Изменить должность"
+
+#: forms101/forms/templates/forms/app_menu.html:25
+msgid "Bank application"
+msgstr "Заявка в банк"
+
+#: forms101/forms/templates/forms/app_menu.html:30
+msgid "Checkout product"
+msgstr "Купить продукт"
+
+#: forms101/forms/templates/forms/app_menu.html:35
+msgid "Comment form"
+msgstr "Форма комментария"
+
+#: forms101/forms/templates/forms/app_menu.html:40
+msgid "Contact form"
+msgstr "Контактная форма"
+
+#: forms101/forms/templates/forms/app_menu.html:45
+msgid "Hospital registration"
+msgstr "Регистрация в больнице"
+
+#: forms101/forms/templates/forms/app_menu.html:50
+msgid "Login form sample"
+msgstr "Пример формы входа"
+
+#: forms101/forms/templates/forms/app_menu.html:55
+msgid "Order services"
+msgstr "Покупка услуг"
+
+#: forms101/forms/templates/forms/app_menu.html:60
+msgid "Profile Edit"
+msgstr "Редактирование профиля"
+
+#: forms101/forms/templates/forms/app_menu.html:65
+msgid "Registration form"
+msgstr "Форма регистрации"
+
+#: forms101/forms/templates/forms/app_menu.html:70
+msgid "Sign up"
+msgstr "Форма входа"
+
+#: forms101/forms/templates/forms/app_menu.html:75
+msgid "Wizard sample"
+msgstr "Пример мастера"
+
+#: forms101/forms/templates/formtools/wizard/wizard_done.html:20
+msgid "One more time"
+msgstr "Еще рад"
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:30
+msgid "first step"
+msgstr "первый шаг"
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:34
+msgid "prev step"
+msgstr "прошлый шаг"
+
+#: forms101/forms/templates/formtools/wizard/wizard_form.html:39
+msgid "submit"
+msgstr "отправить"
+
+#: forms101/forms/viewset.py:22
+msgid "Forms and Widgets"
+msgstr "Формы и Виджеты"
+
+#: fsm101/review/admin.py:92
+msgid "Reject review"
+msgstr "Отклонить ревью"
+
+#: fsm101/review/models.py:8
+msgid "New"
+msgstr "Новый"
+
+#: fsm101/review/models.py:9 workflow101/helloworld/models.py:9
+msgid "Approved"
+msgstr "Подтверждено"
+
+#: fsm101/review/models.py:10
+msgid "Rejected"
+msgstr "Отменено"
+
+#: fsm101/review/models.py:11
+msgid "Published"
+msgstr "Опубликованно"
+
+#: fsm101/review/models.py:12
+msgid "Hidden"
+msgstr "Спрятанно"
+
+#: fsm101/review/models.py:13
+msgid "Removed"
+msgstr "Удалено"
+
+#: fsm101/review/rest.py:56
+msgid "Transition is not allowed"
+msgstr "Переход не разрешен"
+
+#: fsm101/review/templates/review/admin/approve.html:15
+msgid "Home"
+msgstr "Дом"
+
+#: fsm101/review/templates/review/admin/approve.html:37
+msgid "Yes, I’m sure"
+msgstr "Д, я уверен"
+
+#: fsm101/review/templates/review/admin/approve.html:38
+msgid "No, take me back"
+msgstr "Нет, верните меня назад"
+
+#: fsm101/review/templates/review/app_menu.html:6
+msgid "REST API"
+msgstr ""
+
+#: fsm101/review/templates/review/app_menu.html:11
+msgid "Administration"
+msgstr "Администрирование"
+
+#: workflow101/bloodtest/flows.py:11
+msgid "Blood test"
+msgstr "Тест крови"
+
+#: workflow101/helloworld/flows.py:19
+msgid "Hello world"
+msgstr "Привет мир"
+
+#: workflow101/helloworld/flows.py:20
+msgid "Message to the world request flow."
+msgstr "Запрос отправки сообщения в мир"
+
+#: workflow101/helloworld/flows.py:21
+msgid "Send '{{ process.text }}' message to the world"
+msgstr "Send '{{ process.text }}' сообщение в мир"
+
+#: workflow101/helloworld/flows.py:22
+msgid "Sent '{{ process.text }}' message to the world"
+msgstr "Отправленно '{{ process.text }}' message to the world"
+
+#: workflow101/helloworld/flows.py:32
+msgid "New message"
+msgstr "Новое сообщение"
+
+#: workflow101/helloworld/flows.py:44
+msgid "Approve"
+msgstr "Подтвердить"
+
+#: workflow101/helloworld/flows.py:45
+msgid "Supervisor approvement"
+msgstr "Одобрение руководителя"
+
+#: workflow101/helloworld/flows.py:46
+msgid "Message review required"
+msgstr "Требуется подтверждение сообщения"
+
+#: workflow101/helloworld/flows.py:47
+msgid "Message was {{ process.approved|yesno:'Approved,Rejected' }}"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:56
+msgid "Approvement check"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:64
+msgid "Send message"
+msgstr "Отправить сообщение"
+
+#: workflow101/helloworld/flows.py:68
+msgid "End"
+msgstr "Конец"
+
+#: workflow101/helloworld/models.py:8
+msgid "Message"
+msgstr "Сообщение"
+
+#: workflow101/helloworld/models.py:13
+msgid "World Request"
+msgstr "Сообщение в мир"
+
+#: workflow101/helloworld/models.py:14
+msgid "World Requests"
+msgstr "Сообщения"
+
+#: workflow101/shipment/flows.py:18
+msgid "Order shipment"
+msgstr "Отправка заказа"
+
+#: workflow101/shipment/flows.py:20
+msgid "Split and synchronize work for a Manager, Clerk and Warehouse worker"
+msgstr "Параллельная обработка заказа"
+
+#: workflow101/shipment/flows.py:31
+#, fuzzy
+#| msgid "Order shipment"
+msgid "New shipment"
+msgstr "Отправка заказа"
