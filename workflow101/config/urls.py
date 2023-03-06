@@ -40,6 +40,7 @@ site = Site(
             title="Orders processing",
             icon="account_tree",
             permission="view_orderprocess",
+            primary_color="#d20011",
             viewsets=[
                 FlowAppViewset(OrderFlow, icon="shopping_cart"),
                 FlowAppViewset(CustomerVerificationFlow, icon="hail"),
