@@ -31,7 +31,9 @@ class DynamicSplitFlow(flow.Flow):
     )
 
     spit_on_decision = (
-        DynamicSplit(act.process.split_count).Next(this.make_decision).IfNone(this.end)
+        DynamicSplit(act.process.split_count)
+        .Next(this.make_decision)
+        .IfNone(this.rejected)
     )
 
     make_decision = (
@@ -40,6 +42,33 @@ class DynamicSplitFlow(flow.Flow):
         .Next(this.join_on_decision)
     )
 
-    join_on_decision = flow.Join().Next(this.end)
+    join_on_decision = flow.Join(continue_on_condition=this.check_voting_complete).Next(
+        this.check_result
+    )
 
-    end = flow.End()
+    check_result = flow.If(this.is_approved).Then(this.approved).Else(this.rejected)
+
+    approved = flow.End()
+
+    rejected = flow.End()
+
+    def is_approved(self, activation):
+        """
+        Determines if the voting process is complete by approvement
+        """
+        true_count = activation.process.decision_set.filter(decision=True).count()
+        return true_count > activation.process.split_count / 2
+
+    def check_voting_complete(self, activation, _):
+        """
+        Determines if the voting process is complete by checking if the
+        remaining unmade decisions would be unable to change the overall outcome
+        of the vote.
+        """
+        answers = activation.process.decision_set.all()
+        answers_count = len(answers)
+        true_count = sum(answer.decision for answer in answers)
+
+        min_additional_votes = abs(true_count - (answers_count - true_count)) + 1
+        remaining_votes = activation.process.split_count - answers_count
+        return remaining_votes < min_additional_votes

@@ -11,16 +11,24 @@ from .tasks import send_hello_world_request
 
 class HelloWorldFlow(flow.Flow):
     """
-    Hello world
+    Flow for sending hello world message requests.
 
-    This process demonstrates hello world approval request flow.
+    This process demonstrates a flow for sending hello world message requests
+    that require supervisor approval before being sent.
     """
 
     process_class = HelloWorldProcess
     process_title = _("Hello world")
-    process_description = _("Message to the world request flow.")
+    process_description = _(
+        "This process enables the user to send a message to the world, and request approval from a supervisor."
+    )
     process_summary_template = _("Send '{{ process.text }}' message to the world")
-    process_result_template = _("Sent '{{ process.text }}' message to the world")
+    process_result_template = _(
+        "{% if process.approved %}"
+        "Successfully sent '{{ process.text }}' message to the world"
+        "{% else %}Message was rejected"
+        "{% endif %}"
+    )
 
     lock_impl = lock.select_for_update_lock
 
@@ -58,4 +66,9 @@ class HelloWorldFlow(flow.Flow):
         .Next(this.end)
     )
 
-    end = flow.End().Annotation(title=_("End"))
+    end = flow.End().Annotation(
+        title=_("End"),
+        summary_template=(
+            "{% load i18n %}{% if process.approved %}{% trans 'Completed' %}{% else %}{% trans 'Rejected'%}{% endif %}"
+        ),
+    )

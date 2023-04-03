@@ -5,6 +5,10 @@ from viewflow.workflow.models import Process
 
 
 class DynamicSplitProcess(Process):
+    """
+    Workflow process with a dynamically generated number of splitting task.
+    """
+
     question = jsonstore.CharField(max_length=50)
     split_count = jsonstore.IntegerField(default=0)
 
@@ -13,6 +17,10 @@ class DynamicSplitProcess(Process):
 
 
 class Decision(models.Model):
+    """
+    Decision made on a DynamicSplitProcess.
+    """
+
     process = models.ForeignKey(DynamicSplitProcess, on_delete=models.CASCADE)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.CASCADE

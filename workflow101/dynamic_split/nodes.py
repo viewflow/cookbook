@@ -5,6 +5,13 @@ from viewflow.workflow.flow import views
 
 
 class DynamicSplitActivation(Activation):
+    """
+    Custom activation class for DynamicSplit node.
+
+    Overrides the default `activate` and `create_next` methods of the base
+    Activation class.
+    """
+
     def __init__(self, *args, **kwargs):  # noqa D102
         self.next_tasks = []
         super().__init__(*args, **kwargs)
@@ -17,14 +24,19 @@ class DynamicSplitActivation(Activation):
         elif self.flow_task._if_none_next_node is not None:
             self.next_tasks = [self.flow_task._if_none_next_node]
         else:
-            raise FlowRuntimeError("{} activated with zero and no IfNone nodes specified".format(self.flow_task.name))
+            raise FlowRuntimeError(
+                "{} activated with zero and no IfNone nodes specified".format(
+                    self.flow_task.name
+                )
+            )
 
     @Activation.status.super()
     def create_next(self):
-        """Activate next tasks for parallel execution.
+        """
+        Overrides the default `create_next` method of the base Activation class.
 
-        Each task would have a new execution token attached,
-        the Split task token as a common prefix.
+        Activates next tasks for parallel execution. Each task would have a new
+        execution token attached, the Split task token as a common prefix.
         """
         token_source = Token.split_token_source(self.task.token, self.task.pk)
 
@@ -39,10 +51,11 @@ class DynamicSplit(
     Node,
 ):
     """
-    Activates several outgoing task instances depends on callback value
+    Custom Node class for DynamicSplit.
 
-    Example::
+    Activates several outgoing task instances depends on callback value.
 
+    Example usage:
         spit_on_decision = flow.DynamicSplit(lambda p: 4) \\
             .Next(this.make_decision)
 
@@ -52,7 +65,8 @@ class DynamicSplit(
         join_on_decision = flow.Join() \\
             .Next(this.end)
     """
-    task_type = 'PARALLEL_GATEWAY'
+
+    task_type = "PARALLEL_GATEWAY"
 
     shape = {
         "width": 50,
@@ -72,7 +86,13 @@ class DynamicSplit(
     activation_class = DynamicSplitActivation
 
     def __init__(self, callback):
-        super(DynamicSplit, self).__init__()
+        """
+        Initializes the DynamicSplit Node.
+
+        Args:
+            callback (function): A callback function that returns the number of tasks to be activated.
+        """
+        super().__init__()
         self._task_count_callback = callback
         self._if_none_next_node = None
 
@@ -81,5 +101,9 @@ class DynamicSplit(
         self._if_none_next_node = this.resolve(instance, self._if_none_next_node)
 
     def IfNone(self, node):
+        """
+        Specifies the next node to be activated if the callback function returns
+        zero.
+        """
         self._if_none_next_node = node
         return self
