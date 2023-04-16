@@ -22,19 +22,27 @@ class Test(TestCase):  # noqa: D101
         return flow_task.reverse(name, args=[task.process_id, task.pk])
 
     def _testApproved(self):
+        response = self.client.post(
+            "/workflow/start/",
+            {
+                "text": "Hello, world",
+                "_viewflow_activation-started": "2000-01-01",
+                "_continue": 1,
+            },
+        )
+
         self.assertRedirects(
-            self.client.post(
-                "/workflow/start/",
-                {"text": "Hello, world", "_viewflow_activation-started": "2000-01-01", "_continue": 1},
-            ),
+            response,
             self.reverse(HelloRestFlow.approve, "index"),
             fetch_redirect_response=False,
         )
 
         self.assertRedirects(
-            self.client.post(self.reverse(HelloRestFlow.approve, "assign"), {"_continue": 1}),
+            self.client.post(
+                self.reverse(HelloRestFlow.approve, "assign"), {"_continue": 1}
+            ),
             self.reverse(HelloRestFlow.approve, "index"),
-            fetch_redirect_response=False
+            fetch_redirect_response=False,
         )
 
         self.assertEqual(
@@ -54,16 +62,22 @@ class Test(TestCase):  # noqa: D101
         self.assertRedirects(
             self.client.post(
                 "/workflow/start/",
-                {"text": "Hello, world", "_viewflow_activation-started": "2000-01-01", "_continue": 1},
+                {
+                    "text": "Hello, world",
+                    "_viewflow_activation-started": "2000-01-01",
+                    "_continue": 1,
+                },
             ),
             self.reverse(HelloRestFlow.approve, "index"),
-            fetch_redirect_response=False
+            fetch_redirect_response=False,
         )
 
         self.assertRedirects(
-            self.client.post(self.reverse(HelloRestFlow.approve, "assign"), {"_continue": 1}),
+            self.client.post(
+                self.reverse(HelloRestFlow.approve, "assign"), {"_continue": 1}
+            ),
             self.reverse(HelloRestFlow.approve, "index"),
-            fetch_redirect_response=False
+            fetch_redirect_response=False,
         )
 
         self.assertEqual(
@@ -71,7 +85,7 @@ class Test(TestCase):  # noqa: D101
                 self.reverse(HelloRestFlow.approve, "execute"),
                 {"approved": False, "_viewflow_activation-started": "2000-01-01"},
             ).status_code,
-            302
+            302,
         )
 
         process = Process.objects.get()
