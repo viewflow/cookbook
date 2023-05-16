@@ -1,5 +1,6 @@
 env
 node_modules
 .tox
+.venv
 *.pyc
 db.sqlite3
