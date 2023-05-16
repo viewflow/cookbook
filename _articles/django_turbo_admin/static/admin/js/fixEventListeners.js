@@ -1,10 +1,3 @@
-// document.addEventListener("turbo:submit-end", (event) => {
-//   if(!event.detail.success) {
-//     window.dispatchEvent(new Event('turbo:load'));
-//     document.dispatchEvent(new Event('DOMContentLoaded'));
-//   }
-// })
-
 window.addEventListener('turbo:render', function() {
     const toggleNavSidebar = document.getElementById('toggle-nav-sidebar');
     if (toggleNavSidebar !== null) {
@@ -35,7 +28,6 @@ const originalAddEventListener = window.addEventListener;
 
 window.addEventListener = function(event, listener, options) {
   if (event === 'load') {
-    console.log('call = ' + arguments)
     originalAddEventListener.call(this, 'turbo:render', listener, options);
   }
 
@@ -47,7 +39,6 @@ const originalDocAddEventListener = document.addEventListener;
 
 document.addEventListener = function(event, listener, options) {
   if (event === 'DOMContentLoaded') {
-    console.log('call = ' + arguments)
     originalDocAddEventListener.call(this, 'turbo:render', listener, options);
   }
 
