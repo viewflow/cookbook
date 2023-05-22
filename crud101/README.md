@@ -29,8 +29,8 @@ Navigate to http://127.0.0.1:8000
 
 ## Related documentation
 
-- [Site and Application Viewsets](https://docs-next.viewflow.io/-frontend/site.html)
-- [CRUD Viewset](https://docs-next.viewflow.io/frontend/crud.html)
+- [Site and Application Viewsets](https://docst.viewflow.io/-frontend/site.html)
+- [CRUD Viewset](https://docs.viewflow.io/frontend/crud.html)
 
 ## Most interesting files
 

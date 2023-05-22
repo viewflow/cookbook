@@ -22,7 +22,7 @@ $ python3 fsm101/manage.py runserver
 Navigate to http://127.0.0.1:8000
 
 ## Related documentation
-- [FSM Workflow](https://docs-next.viewflow.io/fsm/index.html)
+- [FSM Workflow](https://docs.viewflow.io/fsm/index.html)
 
 ## Most interesting files
 - [flows.py](./review/flows.py) - FSM workflow definition

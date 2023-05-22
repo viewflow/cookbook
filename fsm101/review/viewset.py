@@ -69,9 +69,9 @@ class ReviewApplication(Application):
     title = "FSM Flow Demo"
     icon = "fact_check"
     menu_template_name = "review/app_menu.html"
-    permission=lambda user: user.is_staff,
+    permission = (lambda user: user.is_staff,)
 
-    reviews_path = route("review", ReviewViewset())
+    reviews_path = route("review/", ReviewViewset())
     swagger_path = path(
         "api/swagger/",
         TemplateView.as_view(

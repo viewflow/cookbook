@@ -23,7 +23,7 @@ Navigate to http://127.0.0.1:8000
 
 ## Related documentation
 
-- [Material Forms](https://docs-next.viewflow.io/forms/index.html)
+- [Material Forms](https://docs.viewflow.io/forms/index.html)
 
 ## Most interesting files
 - [viewset.py](./forms/viewset.py) - Class-based URL configuration

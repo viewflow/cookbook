@@ -20,7 +20,7 @@ $ python3 json01/manage.py runserver
 Navigate to http://127.0.0.1:8000
 
 ## Related documentation
-- [JSON Storage](https://docs-next.viewflow.io/orm/json_storage.html)
+- [JSON Storage](https://docs.viewflow.io/orm/json_storage.html)
 
 ## Most interesting files
 - [models.py](./users/models.py) - Polymorphic user models definitions

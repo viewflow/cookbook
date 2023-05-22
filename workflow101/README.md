@@ -26,8 +26,8 @@ Navigate to http://127.0.0.1:8000
 
 ## Related documentation
 
-- [BPMN Workflow](https://docs-next.viewflow.io/bpmn/index.html)
-- [Site and Application Viewsets](https://docs-next.viewflow.io/-frontend/site.html)
+- [BPMN Workflow](https://docs.viewflow.io/bpmn/index.html)
+- [Site and Application Viewsets](https://docs.viewflow.io/-frontend/site.html)
 
 ## Most interesting files
 
