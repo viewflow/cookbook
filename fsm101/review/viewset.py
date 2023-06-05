@@ -2,10 +2,13 @@ from django.urls import include, path, reverse_lazy
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from rest_framework import routers
-from rest_framework.schemas import get_schema_view
+from drf_spectacular.openapi import AutoSchema
+from drf_spectacular.views import SpectacularAPIView
+
 from viewflow.fsm import FlowViewsMixin
 from viewflow.forms import TrixEditorWidget
 from viewflow.views import CreateModelView
+from viewflow.workflow.rest.views import get_schema_view
 from viewflow.urls import Application, CreateViewMixin, ReadonlyModelViewset, route
 
 from .flows import ReviewFlow
@@ -80,5 +83,24 @@ class ReviewApplication(Application):
         ),
         name="swagger",
     )
-    schema_path = path("api/schema/", get_schema_view(title="FSM 101"), name="schema")
+    # schema_path = path("api/schema/", get_schema_view(title="FSM 101"), name="schema")
+    # schema_path = path(
+    #     "api/schema/", SpectacularAPIView.as_view(schema=AutoSchema), name="schema"
+    # )
     api_path = path("api/", include(router.urls))
+
+    """
+    Schema view
+    """
+
+    @property
+    def schema_path(self):
+        def patterns():
+            prefix = self.reverse("index")
+            yield path(prefix, self.urls)
+
+        return path(
+            "",
+            get_schema_view(patterns=patterns()),
+            name="schema",
+        )

@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+
+@media (min-width: 640px) {
+  .col-1 {
+    flex-basis: 20%;
+  }
+  .col-2 {
+    flex-basis: 20%;
+  }
+  .col-3 {
+    flex-basis: 35%;
+  }
+  .col-4 {
+    flex-basis: 25%;
+  }
+}

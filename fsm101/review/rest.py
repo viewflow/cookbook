@@ -3,6 +3,7 @@ from rest_framework.exceptions import ValidationError, PermissionDenied
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.utils.translation import gettext_lazy as _
+from drf_spectacular.openapi import AutoSchema
 from viewflow.fsm.rest import FlowRESTMixin
 
 from .flows import ReviewFlow
@@ -29,6 +30,7 @@ class ReviewViewSet(FlowRESTMixin, viewsets.ModelViewSet):
     flow_state = ReviewFlow.stage
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+    schema = AutoSchema()
 
     def get_object_flow(self, request, obj):
         """Instantiate the flow without default constructor"""
@@ -44,7 +46,12 @@ class ReviewViewSet(FlowRESTMixin, viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(stage=ReviewState.NEW)
 
-    @action(methods=["POST"], detail=True, url_path="transition/approve")
+    @action(
+        methods=["POST"],
+        detail=True,
+        url_path="transition/approve",
+        schema=AutoSchema,
+    )
     def approve(self, request, *args, **kwargs):
         instance = self.get_object()
         flow = self.get_object_flow(request, instance)
