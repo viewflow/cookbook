@@ -1,8 +1,8 @@
 import datetime
 
 from django import forms
-from viewflow.forms import Layout, Row, Column, Span, FieldSet, FormSetField, Form
-from . import QUESTION_CHOICES, CARDIOVASCULAR_RISK_CHOICES, APNIA_RISK_CHOICES
+from viewflow.forms import Layout, Row, Column, Span, FieldSet, FormSetField
+from . import QUESTION_CHOICES, CARDIOVASCULAR_RISK_CHOICES, APNIA_RISK_CHOICES, Form
 
 
 class HospitalRegistrationForm(Form):

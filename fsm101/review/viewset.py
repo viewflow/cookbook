@@ -87,7 +87,6 @@ class ReviewApplication(Application):
     # schema_path = path(
     #     "api/schema/", SpectacularAPIView.as_view(schema=AutoSchema), name="schema"
     # )
-    api_path = path("api/", include(router.urls))
 
     """
     Schema view
@@ -100,7 +99,9 @@ class ReviewApplication(Application):
             yield path(prefix, self.urls)
 
         return path(
-            "",
+            "api/schema/",
             get_schema_view(patterns=patterns()),
             name="schema",
         )
+
+    api_path = path("api/", include(router.urls))

@@ -6,7 +6,6 @@ from . import models, views, forms
 
 
 class OrderItemFlow(flow.Flow):
-    process_class = models.OrderItemProcess
     lock_impl = lock.select_for_update_lock
 
     start = flow.StartSubprocess(this.start_func).Next(this.reserve_item)
@@ -19,28 +18,31 @@ class OrderItemFlow(flow.Flow):
             description="Is item reservation succeed?",
             result_template="Customer is {{ process.trusted|yesno:'Trusted,Unreliable' }}",
         )
-        .Assign(lambda activation: activation.process.parent_task.process.created_by)
+        .Assign(
+            lambda activation: activation.process.parent_task.process.coerced.created_by
+        )
         .Next(this.check_reservation)
     )
 
     check_reservation = (
-        flow.If(lambda activation: activation.process.item.reserved).Then(this.pack_item).Else(this.end)
+        flow.If(lambda activation: activation.process.artifact.reserved)
+        .Then(this.pack_item)
+        .Else(this.end)
     )
 
     pack_item = (
-        flow.View(UpdateProcessView.as_view())
+        flow.View(UpdateProcessView.as_view(fields=[]))
         .Annotation(description="Pack the item", result_template="Item packed")
-        .Assign(lambda activation: activation.process.parent_task.process.created_by)
+        .Assign(
+            lambda activation: activation.process.parent_task.process.coerced.created_by
+        )
         .Next(this.end)
     )
 
     end = flow.End()
 
-    def start_func(self, activation, parent_task, item):
-        activation.prepare(parent_task)
-        activation.process.item = item
-        activation.complete()
-        return activation
+    def start_func(self, activation, item):
+        activation.process.artifact = item
 
 
 class CustomerVerificationFlow(flow.Flow):
@@ -76,13 +78,13 @@ class OrderFlow(flow.Flow):
     process_class = models.OrderProcess
     lock_impl = lock.select_for_update_lock
 
-    start = flow.Start(CreateProcessView.as_view(form_class=forms.OrderForm)).Next(
-        this.verify_customer
-    )
+    start = flow.Start(
+        CreateProcessView.as_view(form_class=forms.OrderForm),
+    ).Next(this.verify_customer)
 
-    verify_customer = flow.Subprocess(CustomerVerificationFlow.start).Next(
-        this.check_verify
-    )
+    verify_customer = flow.Subprocess(
+        CustomerVerificationFlow.start,
+    ).Next(this.check_verify)
 
     check_verify = (
         flow.If(

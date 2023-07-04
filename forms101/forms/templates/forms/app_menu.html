@@ -30,10 +30,13 @@
       <span class="mdc-list-item__content">{% trans 'Checkout product'%}</span>
     </a>
 
-    <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{% reverse viewset 'comment_form' %}">
+    {% reverse viewset 'comment_form'  as url %}
+    {% if url %}
+    <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{{ url }}">
       <i class="material-icons mdc-list-item__start">radio_button_checked</i><i class="material-icons mdc-list-item__start">radio_button_unchecked</i>
       <span class="mdc-list-item__content">{% trans 'Comment form'%}</span>
     </a>
+    {% endif %}
 
     <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{% reverse viewset 'contact_form' %}">
       <i class="material-icons mdc-list-item__start">radio_button_checked</i><i class="material-icons mdc-list-item__start">radio_button_unchecked</i>
@@ -50,10 +53,13 @@
       <span class="mdc-list-item__content">{% trans 'Login form sample'%}</span>
     </a>
 
-    <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{% reverse viewset 'order_form' %}">
+    {% reverse viewset 'order_form' as url %}
+    {% if url %}
+    <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{{ url }}">
       <i class="material-icons mdc-list-item__start">radio_button_checked</i><i class="material-icons mdc-list-item__start">radio_button_unchecked</i>
       <span class="mdc-list-item__content">{% trans 'Order services'%}</span>
     </a>
+    {% endif %}
 
     <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{% reverse viewset 'profile_form' %}">
       <i class="material-icons mdc-list-item__start">radio_button_checked</i><i class="material-icons mdc-list-item__start">radio_button_unchecked</i>
@@ -67,7 +73,7 @@
 
     <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{% reverse viewset 'signup_form' %}">
       <i class="material-icons mdc-list-item__start">radio_button_checked</i><i class="material-icons mdc-list-item__start">radio_button_unchecked</i>
-      <span class="mdc-list-item__content">{% trans 'Sign up'%}</span>
+      <span class="mdc-list-item__content">{% trans 'Formset sample'%}</span>
     </a>
 
     <a class="mdc-list-item vf-page__menu-list-item mdc-list-item--with-one-line mdc-list-item--with-leading-icon" href="{% reverse viewset 'wizard_form' %}">

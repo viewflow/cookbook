@@ -19,6 +19,25 @@
               {% render form form.layout %}
             </section>
             <section class="mdc-card__actions vf-card__actions">
+              <vf-dialog style="padding-right:20px">
+                <a class="mdc-button mdc-card__action mdc-card__action--button vf-dialog__trigger">Source code</a>
+                <div class="mdc-dialog">
+                  <div class="mdc-dialog__container">
+                    <div class="mdc-dialog__surface"
+                         role="alertdialog"
+                         aria-modal="true"
+                         aria-labelledby="Start Flow">
+                      <div class="mdc-dialog__content">
+                        <h4 class="mdc-typography mdc-typography--headline5" style="margin-bottom:8px">{% trans 'Python' %}</h4>
+                        <div>
+                          <vf-demo-code style="font-size:12px;line-height:14px"><pre><code class="language-python">{{ form.source }}</code></pre></vf-demo-code>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mdc-dialog__scrim"></div>
+                </div>
+              </vf-dialog>
               <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--raised" type="submit">{{ button|default:"Save" }}</button>
             </section>
           </form>
@@ -27,4 +46,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

@@ -5,55 +5,65 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('viewflow', '0010_viewflow20'),
+        ("viewflow", "0010_viewflow20"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CustomerVerificationProcess',
-            fields=[
-            ],
+            name="CustomerVerificationProcess",
+            fields=[],
             options={
-                'proxy': True,
-                'indexes': [],
-                'constraints': [],
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
             },
-            bases=('viewflow.process',),
+            bases=("viewflow.process",),
         ),
         migrations.CreateModel(
-            name='OrderItemProcess',
-            fields=[
-            ],
+            name="OrderItemProcess",
+            fields=[],
             options={
-                'proxy': True,
-                'indexes': [],
-                'constraints': [],
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
             },
-            bases=('viewflow.process',),
+            bases=("viewflow.process",),
         ),
         migrations.CreateModel(
-            name='OrderProcess',
-            fields=[
-            ],
+            name="OrderProcess",
+            fields=[],
             options={
-                'proxy': True,
-                'indexes': [],
-                'constraints': [],
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
             },
-            bases=('viewflow.process',),
+            bases=("viewflow.process",),
         ),
         migrations.CreateModel(
-            name='OrderItem',
+            name="OrderItem",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=150)),
-                ('quantity', models.IntegerField(default=1)),
-                ('reserved', models.BooleanField(null=True)),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='subprocess.orderprocess')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=150)),
+                ("quantity", models.IntegerField(default=1)),
+                ("reserved", models.BooleanField(null=True)),
+                (
+                    "order",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="subprocess.orderprocess",
+                    ),
+                ),
             ],
         ),
     ]

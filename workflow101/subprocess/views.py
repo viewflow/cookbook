@@ -1,11 +1,14 @@
 from django import forms
+from django.http import HttpResponseRedirect
 from django.forms.models import modelform_factory
 from django.views import generic
-
+from viewflow.workflow.flow.views.mixins import TaskSuccessUrlMixin
 from .models import OrderItem, CustomerVerificationProcess
 
 
-class CustomerVerificationView(generic.UpdateView):
+class CustomerVerificationView(TaskSuccessUrlMixin, generic.UpdateView):
+    template_name = "viewflow/workflow/task.html"
+
     form_class = modelform_factory(
         CustomerVerificationProcess,
         fields=["trusted"],
@@ -13,17 +16,25 @@ class CustomerVerificationView(generic.UpdateView):
     )
 
     def get_object(self):
-        return self.activation.process
+        return self.request.activation.process
 
-    # todo
+    def form_valid(self, form):
+        self.object = form.save()
+        self.request.activation.execute()
+        return HttpResponseRedirect(self.get_success_url())
 
 
-class OrderReservationView(generic.UpdateView):
+class OrderReservationView(TaskSuccessUrlMixin, generic.UpdateView):
+    template_name = "viewflow/workflow/task.html"
+
     form_class = modelform_factory(
         OrderItem, fields=["reserved"], widgets={"reserved": forms.CheckboxInput}
     )
 
     def get_object(self):
-        return self.activation.process.item
+        return self.request.activation.process.artifact
 
-    # todo
+    def form_valid(self, form):
+        self.object = form.save()
+        self.request.activation.execute()
+        return HttpResponseRedirect(self.get_success_url())

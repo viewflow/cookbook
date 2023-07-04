@@ -56,7 +56,7 @@ export class FlowsListElement extends LitElement {
 
   renderErrorMessage(): TemplateResult {
     return html`
-      <div class="mt-4 text-red-500 error-message">
+      <div class="mt-4 text-red-500 error-message px-2">
         ${this.error}
       </div>
     `;

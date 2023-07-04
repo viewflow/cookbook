@@ -1,8 +1,9 @@
 from django import forms
-from viewflow.forms import Layout, Row, FormSetField, Form, Caption, FormSet
+from viewflow.forms import Layout, Row, FormSetField, Caption, FormSet
+from . import Form
 
 
-class EmailForm(forms.Form):
+class EmailForm(Form):
     email = forms.EmailField()
     description = forms.CharField()
 
@@ -13,7 +14,7 @@ class BaseEmailFormset(forms.BaseFormSet):
             return
         emails = []
         for form in self.forms:
-            email = form.cleaned_data.get('email')
+            email = form.cleaned_data.get("email")
             if not email:
                 continue
             if email in emails:
@@ -21,10 +22,12 @@ class BaseEmailFormset(forms.BaseFormSet):
             emails.append(email)
 
 
-EmailFormSet = forms.formset_factory(EmailForm, extra=3, can_delete=True, formset=BaseEmailFormset)
+EmailFormSet = forms.formset_factory(
+    EmailForm, extra=3, can_delete=True, formset=BaseEmailFormset
+)
 
 
-class AddressForm(forms.Form):
+class AddressForm(Form):
     line_1 = forms.CharField(max_length=250)
     line_2 = forms.CharField(max_length=250)
     state = forms.CharField(max_length=100)
@@ -32,11 +35,11 @@ class AddressForm(forms.Form):
     zipcode = forms.CharField(max_length=10)
 
     layout = Layout(
-        Caption('Address'),
-        'line_1',
-        'line_2',
-        'state',
-        Row('city', 'zipcode'),
+        Caption("Address"),
+        "line_1",
+        "line_2",
+        "state",
+        Row("city", "zipcode"),
     )
 
 
@@ -46,7 +49,7 @@ AddressFormSet = forms.formset_factory(AddressForm, extra=3, can_delete=True)
 class SignupForm(Form):
     username = forms.CharField(
         max_length=50,
-        widget=forms.TextInput(attrs={'leading-icon': 'account_box'}),
+        widget=forms.TextInput(attrs={"leading-icon": "account_box"}),
     )
     first_name = forms.CharField(max_length=250)
     last_name = forms.CharField(max_length=250)
@@ -55,8 +58,8 @@ class SignupForm(Form):
     addresses = FormSetField(formset_class=AddressFormSet)
 
     layout = Layout(
-        'username',
-        Row('first_name', 'last_name', 'date_of_birth'),
-        'emails',
-        FormSet('addresses', card_desktop=4),
+        "username",
+        Row("first_name", "last_name", "date_of_birth"),
+        "emails",
+        FormSet("addresses", card_desktop=4),
     )

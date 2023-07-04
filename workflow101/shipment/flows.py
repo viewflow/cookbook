@@ -28,7 +28,7 @@ class ShipmentFlow(flow.Flow):
 
     start = (
         flow.Start(views.StartView.as_view())
-        .Annotation(title=_('New shipment'))
+        .Annotation(title=_("New shipment"))
         .Permission("shipment.can_start_request")
         .Next(this.split_clerk_warehouse)
     )
@@ -77,29 +77,23 @@ class ShipmentFlow(flow.Flow):
         .Next(this.join_on_insurance)
     )
 
-    join_on_insurance = (
-        flow.Join()
-        .Next(this.join_clerk_warehouse)
-    )
+    join_on_insurance = flow.Join().Next(this.join_clerk_warehouse)
 
     # Logistic manager
     take_extra_insurance = (
         flow.View(views.InsuranceView.as_view())
-        .Permission('shipment.can_take_extra_insurance')
+        .Permission("shipment.can_take_extra_insurance")
         .Next(this.join_on_insurance)
     )
 
     # Warehouse worker
     package_goods = (
         flow.View(UpdateProcessView.as_view(fields=[]))
-        .Permission('shipment.can_package_goods')
+        .Permission("shipment.can_package_goods")
         .Next(this.join_clerk_warehouse)
     )
 
-    join_clerk_warehouse = (
-        flow.Join()
-        .Next(this.move_package)
-    )
+    join_clerk_warehouse = flow.Join().Next(this.move_package)
 
     move_package = (
         flow.View(UpdateProcessView.as_view(fields=[]))

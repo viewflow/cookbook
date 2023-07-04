@@ -1,9 +1,9 @@
 from django import forms
 from viewflow.forms import Layout, FieldSet, Row, Column, Span
-from . import COUNTRY_CHOICES
+from . import COUNTRY_CHOICES, Form
 
 
-class CheckoutForm(forms.Form):
+class CheckoutForm(Form):
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={"leading-icon": "account_box"})
     )
