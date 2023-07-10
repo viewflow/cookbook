@@ -65,7 +65,9 @@ class CustomerVerificationFlow(flow.Flow):
         .Next(this.end)
     )
 
-    end = flow.End()
+    end = flow.End().Annotation(
+        summary_template="{{ process.order_process.coerced.customer_name }} {{process.trusted|yesno:'Trusted,Rejected' }}"
+    )
 
 
 class OrderFlow(flow.Flow):
@@ -100,4 +102,4 @@ class OrderFlow(flow.Flow):
         OrderItemFlow.start, lambda p: p.orderitem_set.all()
     ).Next(this.end)
 
-    end = flow.End()
+    end = flow.End().Annotation(result_template="{{ process.customer_name }}")

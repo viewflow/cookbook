@@ -24,6 +24,9 @@ class CustomerVerificationProcess(Process):
 
     trusted = jsonstore.BooleanField(null=True)
 
+    def order_process(self):
+        return self.parent_task.process
+
 
 class OrderItemProcess(Process):
     class Meta:
