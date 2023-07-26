@@ -38,7 +38,10 @@ class DynamicSplitFlow(flow.Flow):
 
     make_decision = (
         flow.View(views.DecisionView.as_view())
-        .Annotation(description="Decision required")
+        .Annotation(
+            description="Decision required",
+            result_template="{{ task.artifact.decision|yesno:'Approved,Rejected'}}",
+        )
         .Next(this.join_on_decision)
     )
 

@@ -7,8 +7,8 @@ from .models import Decision
 
 class DecisionView(TaskSuccessUrlMixin, generic.CreateView):
     model = Decision
-    fields = ['decision']
-    template_name = 'viewflow/workflow/task.html'
+    fields = ["decision"]
+    template_name = "viewflow/workflow/task.html"
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -17,7 +17,7 @@ class DecisionView(TaskSuccessUrlMixin, generic.CreateView):
         self.object.process = self.request.activation.process
         self.object.save()
 
+        self.request.activation.task.artifact = self.object
         self.request.activation.execute()
-        # self.success('Task {task} has been completed.')
 
         return HttpResponseRedirect(self.get_success_url())
