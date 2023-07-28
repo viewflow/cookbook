@@ -1,18 +1,22 @@
 from django.contrib import admin
 from django.urls import path
 from viewflow.contrib.auth import AuthViewset
-from viewflow.urls import Site
+from viewflow.urls import Site, Application
 
 from ..forms.viewset import Forms
+from ..custom_widget.viewset import EmailViewset
 
-
-site = Site(title="Material Forms Demo", viewsets=[
-    Forms(),
-])
+site = Site(
+    title="Material Forms Demo",
+    viewsets=[
+        Forms(),
+        Application(viewsets=[EmailViewset()], app_name="widgets", title="Widgets"),
+    ],
+)
 
 
 urlpatterns = [
-    path('accounts/', AuthViewset().urls),
-    path('admin/', admin.site.urls),
-    path('', site.urls),
+    path("accounts/", AuthViewset().urls),
+    path("admin/", admin.site.urls),
+    path("", site.urls),
 ]
