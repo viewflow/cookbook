@@ -1,13 +1,4 @@
-import { FileUploadWithPreview } from 'file-upload-with-preview';
+import {MyFileUploadComponent} from './file_upload.ts';
 
+window.customElements.define('my-file-upload', MyFileUploadComponent);
 
-export class MyFileUploadComponent extends HTMLElement {
-  upload: any;
-
-  connectedCallback() {
-    this.upload = new FileUploadWithPreview(this.getAttribute('id') || 'id');
-  }
-
-  disconnectedCallback() {
-  }
-}

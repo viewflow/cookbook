@@ -11,12 +11,12 @@ https://demo-next.viewflow.io/review/
 ```bash
 $ git clone https://github.com/viewflow/cookbook.git
 
-$ python3 -m venv fsm101/venv
-$ source fsm101/venv/activate
+$ python3 -m venv cookbook/fsm101/venv
+$ source cookbook/fsm101/venv/bin/activate
 
-$ pip install fsm101/requirements.txt --extra-index-url=...
-$ python3 fsm101/manage.py migrate
-$ python3 fsm101/manage.py runserver
+$ pip install -r cookbook/fsm101/requirements.txt --extra-index-url=...
+$ python3 cookbook/fsm101/manage.py migrate
+$ python3 cookbook/fsm101/manage.py runserver
 ```
 
 Navigate to http://127.0.0.1:8000

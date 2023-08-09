@@ -13,6 +13,7 @@ class Email(models.Model):
 
 
 class Attachment(models.Model):
+    name = models.CharField(max_length=150)
     email = models.ForeignKey(
         Email, related_name="attachments", on_delete=models.CASCADE
     )

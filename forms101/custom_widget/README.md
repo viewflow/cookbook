@@ -32,6 +32,16 @@ Configure Vite
 
 See vite.config.ts and tsconfig.json for the reference
 
+Add following scripts to packages.json
+
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+
+
+npm run build
+
 Set Django settings
 -------------------
 

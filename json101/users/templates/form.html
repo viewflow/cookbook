@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="POST" class="pure-form-stacked">
+<form method="POST" class="pure-form-stacked" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
   {% csrf_token %}
   <fieldset>
     <legend>Edit {{ object.content_type|capfirst }}</legend>
@@ -10,5 +10,5 @@
   </fielset>
 </form>
 {% endblock content %}
-<form metho="POST">
+<form method="POST">
 </form>
