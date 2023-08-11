@@ -21,3 +21,9 @@ class Attachment(models.Model):
 
     def __str__(self):
         return self.image.url
+
+
+class Order(models.Model):
+    customer_name = models.CharField(max_length=150)
+    quantity = models.DecimalField(decimal_places=0, max_digits=5)
+    unit_price = models.DecimalField(decimal_places=2, max_digits=5)

@@ -4,13 +4,17 @@ from viewflow.contrib.auth import AuthViewset
 from viewflow.urls import Site, Application
 
 from ..forms.viewset import Forms
-from ..custom_widget.viewset import EmailViewset
+from ..custom_widget.viewset import EmailViewset, OrderViewset
 
 site = Site(
     title="Material Forms Demo",
     viewsets=[
         Forms(),
-        Application(viewsets=[EmailViewset()], app_name="widgets", title="Widgets"),
+        Application(
+            viewsets=[EmailViewset(), OrderViewset()],
+            app_name="widgets",
+            title="Widgets",
+        ),
     ],
 )
 
