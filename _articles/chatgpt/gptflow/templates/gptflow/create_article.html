@@ -1,0 +1,13 @@
+{% extends 'viewflow/workflow/task.html' %}
+
+{% block form %}
+{% with  summary=request.activation.process.artifact %}
+
+<div class="vf-card__form">
+  <vf-field-textarea name="Request" label="Chapters" value="{{ summary.format_article_request }}" rows=5></vf-field-textarea>
+  <vf-field-textarea name="Chapters" label="Chapters" value="{{ summary.chapters }}" rows=5></vf-field-textarea>
+</div>
+
+{% endwith %}
+{{ block.super }}
+{% endblock %}

@@ -17,6 +17,7 @@ from .profile_form import ProfileForm
 from .registration_form import RegistrationForm
 from .signup_form import SignupForm
 from .wizard_form import WizardView
+from .views import CheckoutFormView
 
 
 class Forms(Application):
@@ -41,7 +42,7 @@ class Forms(Application):
 
     checkout_form_path = path(
         "checkout/",
-        generic.FormView.as_view(
+        CheckoutFormView.as_view(
             form_class=CheckoutForm,
             success_url="/forms/checkout/",
             template_name="forms/form.html",

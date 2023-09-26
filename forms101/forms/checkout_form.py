@@ -1,5 +1,6 @@
 from django import forms
-from viewflow.forms import Layout, FieldSet, Row, Column, Span
+from viewflow.forms import Layout, FieldSet, Row, Column, Span, DependentModelSelect
+from cookbook.crud101.atlas.models import Country
 from . import COUNTRY_CHOICES, Form
 
 
@@ -13,8 +14,22 @@ class CheckoutForm(Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={"leading-icon": "email"}))
     phone = forms.CharField(widget=forms.TextInput(attrs={"leading-icon": "call"}))
     country = forms.ChoiceField(choices=COUNTRY_CHOICES)
-    city = forms.CharField()
-    post_code = forms.IntegerField()
+    city = forms.CharField(
+        widget=forms.Select(
+            attrs={
+                "tag": "vf-field-select-dependent",
+                "parent": "country",
+            },
+        )
+    )
+    post_code = forms.CharField(
+        widget=forms.Select(
+            attrs={
+                "tag": "vf-field-select-dependent",
+                "parent": "city",
+            },
+        )
+    )
     address = forms.CharField()
     additional_info = forms.CharField(widget=forms.Textarea)
     card_type = forms.ChoiceField(

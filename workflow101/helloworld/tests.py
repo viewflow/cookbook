@@ -15,9 +15,7 @@ from .flows import HelloWorldFlow
 class Test(TestCase):  # noqa: D101
     @classmethod
     def setUpTestData(cls):
-        cls.admin = User.objects.create_superuser(
-            username="admin", password="admin"
-        )
+        cls.admin = User.objects.create_superuser(username="admin", password="admin")
 
         cls.employee = User.objects.create_user(
             username="employee", password="employee"
@@ -47,16 +45,22 @@ class Test(TestCase):  # noqa: D101
         self.assertRedirects(
             self.client.post(
                 "/workflow/start/",
-                {"text": "Hello, world", "_viewflow_activation-started": "2000-01-01", "_continue": 1},
+                {
+                    "text": "Hello, world",
+                    "_viewflow_activation-started": "2000-01-01",
+                    "_continue": 1,
+                },
             ),
             self.reverse(HelloWorldFlow.approve, "index"),
             fetch_redirect_response=False,
         )
 
         self.assertRedirects(
-            self.client.post(self.reverse(HelloWorldFlow.approve, "assign"), {"_continue": 1}),
+            self.client.post(
+                self.reverse(HelloWorldFlow.approve, "assign"), {"_continue": 1}
+            ),
             self.reverse(HelloWorldFlow.approve, "index"),
-            fetch_redirect_response=False
+            fetch_redirect_response=False,
         )
 
         self.assertEqual(
@@ -77,16 +81,22 @@ class Test(TestCase):  # noqa: D101
         self.assertRedirects(
             self.client.post(
                 "/workflow/start/",
-                {"text": "Hello, world", "_viewflow_activation-started": "2000-01-01", "_continue": 1},
+                {
+                    "text": "Hello, world",
+                    "_viewflow_activation-started": "2000-01-01",
+                    "_continue": 1,
+                },
             ),
             self.reverse(HelloWorldFlow.approve, "index"),
-            fetch_redirect_response=False
+            fetch_redirect_response=False,
         )
 
         self.assertRedirects(
-            self.client.post(self.reverse(HelloWorldFlow.approve, "assign"), {"_continue": 1}),
+            self.client.post(
+                self.reverse(HelloWorldFlow.approve, "assign"), {"_continue": 1}
+            ),
             self.reverse(HelloWorldFlow.approve, "index"),
-            fetch_redirect_response=False
+            fetch_redirect_response=False,
         )
 
         self.assertEqual(
@@ -94,7 +104,7 @@ class Test(TestCase):  # noqa: D101
                 self.reverse(HelloWorldFlow.approve, "execute"),
                 {"approved": False, "_viewflow_activation-started": "2000-01-01"},
             ).status_code,
-            302
+            302,
         )
 
         process = Process.objects.get()

@@ -1,0 +1,13 @@
+{
+  "name": "chatgpt",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "python manage.py test",
+    "server": "python manage.py runserver",
+    "celery": "cd ../../../ && pwd && celery -A cookbook._articles.chatgpt.config worker -c 1 -l DEBUG"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
