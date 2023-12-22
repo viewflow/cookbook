@@ -1,6 +1,8 @@
 from django import forms
+
 from viewflow.forms import ModelForm
-from .models import Summary, Article
+
+from .models import Article, Summary
 
 
 class ArticleSelectForm(ModelForm):

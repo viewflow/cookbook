@@ -1,8 +1,9 @@
 from viewflow import this
-from viewflow.workflow import flow, Activation
-from viewflow.workflow.flow.views import CreateArtifactView, UpdateArtifactView
 from viewflow.contrib import celery
-from viewflow.forms import Layout, Row, FieldSet
+from viewflow.forms import FieldSet, Layout, Row
+from viewflow.workflow import Activation, flow
+from viewflow.workflow.flow.views import CreateArtifactView, UpdateArtifactView
+
 from . import models, tasks
 from .views import CreateArticleView, SelectArticleView
 
@@ -23,6 +24,17 @@ class NSplit(flow.Split):
         super().__init__(**kwargs)
         self._count = count
 
+
+# todo
+# 1. set generation params after url and title fetching
+# 2. use gpt-instruct? or claude for section summaries generation?
+# 3. generate an article with claude api
+# 4. ask to improve article (claude)
+# 5. ask to select article 1,2 (claude)
+# 6. ask to select article b, 3 (claude)
+# 7. Link to downsub in load subtitles
+# 8. Language detect
+# 9. Исправь грамматику, расширь текст статьи информацией из лекции
 
 class VideoBriefFlow(flow.Flow):
     start = (

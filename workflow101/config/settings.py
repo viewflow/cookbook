@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "cookbook.workflow101.dynamic_split",
     "cookbook.workflow101.helloworld",
     "cookbook.workflow101.hellorest",
+    "cookbook.workflow101.reassign",
     "cookbook.workflow101.shipment",
     "cookbook.workflow101.subprocess",
 ]

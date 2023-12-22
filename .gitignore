@@ -1,7 +1,1 @@
-env
-node_modules
-.tox
-.venv
-*.pyc
-db.sqlite3
-.env
+_articles/chatgpt/.env

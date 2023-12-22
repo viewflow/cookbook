@@ -12,6 +12,7 @@ from viewflow.workflow.flow import FlowAppViewset
 from ..bloodtest.flows import BloodTestFlow
 from ..dynamic_split.flows import DynamicSplitFlow
 from ..helloworld.flows import HelloWorldFlow
+from ..reassign.flows import ReassignFlow
 from ..shipment.flows import ShipmentFlow
 from ..shipment.viewsets import ShipmentViewset, CarierViewset
 from ..subprocess.flows import OrderItemFlow, CustomerVerificationFlow, OrderFlow
@@ -35,6 +36,7 @@ site = Site(
         FlowAppViewset(HelloWorldFlow, icon="assignment"),
         FlowAppViewset(DynamicSplitFlow, icon="call_split"),
         FlowAppViewset(BloodTestFlow, icon="bloodtype"),
+        FlowAppViewset(ReassignFlow, icon="swap_horiz"),
         Site(
             app_name="subprocess",
             title="Orders processing",

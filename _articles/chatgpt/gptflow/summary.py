@@ -1,7 +1,8 @@
 import re
+from typing import List, Tuple, TypedDict
+from urllib.request import Request, urlopen
+
 import openai
-from typing import List, TypedDict, Tuple
-from urllib.request import urlopen, Request
 
 SUMMARY_TASK_TEMPLATE = """
 1. Analyze the text provided below.

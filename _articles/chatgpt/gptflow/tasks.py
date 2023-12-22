@@ -1,14 +1,11 @@
+from celery import chord, shared_task
 from openai import OpenAIError
+
 from viewflow.contrib.celery import Job
-from celery import shared_task, chord
+
 from .models import Article
-from .summary import (
-    load_youtube_data,
-    parse_srt,
-    split_into_sections,
-    get_section_summary,
-    create_article,
-)
+from .summary import (create_article, get_section_summary, load_youtube_data,
+                      parse_srt, split_into_sections)
 
 
 @shared_task

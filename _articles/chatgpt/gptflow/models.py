@@ -1,6 +1,8 @@
 from django.db import models
+
 from viewflow import jsonstore
-from .summary import SUMMARY_TASK_TEMPLATE, ARTICLE_TASK_TEMPLATE
+
+from .summary import ARTICLE_TASK_TEMPLATE, SUMMARY_TASK_TEMPLATE
 
 
 class Article(models.Model):

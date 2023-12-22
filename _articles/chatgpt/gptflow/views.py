@@ -1,12 +1,12 @@
 from django.http import HttpResponseRedirect
 from django.views import generic
+
 from viewflow.views import FormLayoutMixin
-from viewflow.workflow.flow.views import (
-    SuccessMessageMixin,
-    TaskSuccessUrlMixin,
-    TaskViewTemplateNames,
-    UpdateArtifactView,
-)
+from viewflow.workflow.flow.views import (SuccessMessageMixin,
+                                          TaskSuccessUrlMixin,
+                                          TaskViewTemplateNames,
+                                          UpdateArtifactView)
+
 from .forms import ArticleSelectForm
 from .models import Article
 
