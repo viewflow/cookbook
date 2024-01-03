@@ -9,12 +9,12 @@ https://demo.viewflow.io/review/
 ## Quickstart
 
 ```bash
-$ git clone https://github.com/viewflow/cookbook.git
+$ git clone https://github.com/viewflow/cookbook.git --depth=1
 
 $ python3 -m venv cookbook/fsm101/venv
 $ source cookbook/fsm101/venv/bin/activate
 
-$ pip install -r cookbook/fsm101/requirements.txt --extra-index-url=...
+$ pip install -r cookbook/fsm101/requirements.txt --extra-index-url https://pypi.viewflow.io/<licence_id>/simple/
 $ python3 cookbook/fsm101/manage.py migrate
 $ python3 cookbook/fsm101/manage.py runserver
 ```

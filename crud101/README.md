@@ -11,16 +11,15 @@ https://demo.viewflow.io/atlas/
 ## Quickstart
 
 ```bash
-$ git clone https://github.com/viewflow/cookbook.git
-$ cd cookbook
+$ git clone https://github.com/viewflow/cookbook.git --depth=1
 
-$ python3 -m venv crud101/venv
-$ source crud101/venv/bin/activate
+$ python3 -m venv cookbook/crud101/venv
+$ source cookbook/crud101/venv/bin/activate
 
-# pip install -r crud101/requirements.txt --extra-index-url https://pypi.viewflow.io/<licence_id>/simple/
-$ python3 crud101/manage.py migrate
-$ python3 crud101/manage.py loaddata crud101/atlas/fixtures/*.json
-$ python3 crud101/manage.py runserver
+$ pip install -r cookbook/crud101/requirements.txt --extra-index-url https://pypi.viewflow.io/<licence_id>/simple/
+$ python3 cookbook/crud101/manage.py migrate
+$ python3 cookbook/crud101/manage.py loaddata cookbook/crud101/atlas/fixtures/*.json
+$ python3 cookbook/crud101/manage.py runserver
 ```
 
 Navigate to http://127.0.0.1:8000
