@@ -10,7 +10,7 @@ This sample shows how to use JSON storage and polymorphic proxy models, to imple
 $ git clone https://github.com/viewflow/cookbook.git
 
 $ python3 -m venv json101/venv
-$ source json101/venv/activate
+$ source json101/venv/bin/activate
 
 $ pip install json101/requirements.txt --extra-index-url=...
 $ python3 json101/manage.py migrate

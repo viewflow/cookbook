@@ -10,7 +10,7 @@ Get the device ops database sample - https://docs.timescale.com/latest/tutorials
 $ git clone https://github.com/viewflow/cookbook.git
 
 $ python3 -m venv timescale_db/venv
-$ source timescale_db/venv/activate
+$ source timescale_db/venv/bin/activate
 
 $ pip install fsm101/requirements.txt --extra-index-url=...
 $ python3 timescale_db/manage.py migrate

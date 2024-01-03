@@ -1,3 +1,5 @@
 django
 django-guardian
-django-viewflow-pro
+django-extensions
+django-import-export
+django-viewflow-pro>=2.0.0b8

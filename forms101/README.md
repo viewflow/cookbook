@@ -4,7 +4,7 @@ Various form options samples
 
 ## Online demo
 
-https://demo-next.viewflow.io/forms/
+https://demo.viewflow.io/forms/
 
 ## Quickstart
 
@@ -12,7 +12,7 @@ https://demo-next.viewflow.io/forms/
 $ git clone https://github.com/viewflow/cookbook.git
 
 $ python3 -m venv forms101/venv
-$ source forms101/venv/activate
+$ source forms101/venv/bin/activate
 
 $ pip install forms101/requirements.txt --extra-index-url=...
 $ python3 forms101/manage.py migrate

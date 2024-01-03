@@ -8,7 +8,7 @@ Get and install PostgreSQL Demo Database - https://postgrespro.com/education/dem
 $ git clone https://github.com/viewflow/cookbook.git
 
 $ python3 -m venv legacy_db/venv
-$ source legacy_db/venv/activate
+$ source legacy_db/venv/bin/activate
 
 $ pip install fsm101/requirements.txt --extra-index-url=...
 $ python3 legacy_db/manage.py migrate

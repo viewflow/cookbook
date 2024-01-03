@@ -4,7 +4,7 @@ Finite state machine workflow UI and REST API
 
 ## Online demo
 
-https://demo-next.viewflow.io/review/
+https://demo.viewflow.io/review/
 
 ## Quickstart
 

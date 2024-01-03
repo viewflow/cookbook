@@ -1,4 +1,4 @@
 django
-django-viewflow-pro
+django-viewflow-pro>=2.0.0b8
 django-guardian
 celery

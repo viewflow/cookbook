@@ -6,17 +6,18 @@ This demo shows how to create a quick CRUD frontend.
 
 ## Online demo
 
-https://demo-next.viewflow.io/atlas/
+https://demo.viewflow.io/atlas/
 
 ## Quickstart
 
 ```bash
 $ git clone https://github.com/viewflow/cookbook.git
+$ cd cookbook
 
 $ python3 -m venv crud101/venv
-$ source crud101/venv/activate
+$ source crud101/venv/bin/activate
 
-$ pip install crud101/requirements.txt --extra-index-url=...
+# pip install -r crud101/requirements.txt --extra-index-url https://pypi.viewflow.io/<licence_id>/simple/
 $ python3 crud101/manage.py migrate
 $ python3 crud101/manage.py loaddata crud101/atlas/fixtures/*.json
 $ python3 crud101/manage.py runserver
