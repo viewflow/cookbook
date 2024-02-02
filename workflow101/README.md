@@ -12,7 +12,7 @@ https://demo.viewflow.io/workflow/
 $ git clone https://github.com/viewflow/cookbook.git --depth=1
 
 $ python3 -m venv cookbook/workflow101/venv
-$ source workflow101/venv/bin/activate
+$ source cookbook/workflow101/venv/bin/activate
 
 $ pip install -r cookbook/workflow101/requirements.txt --extra-index-url https://pypi.viewflow.io/<licence_id>/simple/
 $ python3 cookbook/workflow101/manage.py migrate

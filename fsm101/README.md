@@ -16,10 +16,11 @@ $ source cookbook/fsm101/venv/bin/activate
 
 $ pip install -r cookbook/fsm101/requirements.txt --extra-index-url https://pypi.viewflow.io/<licence_id>/simple/
 $ python3 cookbook/fsm101/manage.py migrate
+$ python3 cookbook/fsm101/manage.py createsuperuser
 $ python3 cookbook/fsm101/manage.py runserver
 ```
 
-Navigate to http://127.0.0.1:8000
+Navigate to http://127.0.0.1:8000/api/
 
 ## Related documentation
 - [FSM Workflow](https://docs.viewflow.io/fsm/index.html)
