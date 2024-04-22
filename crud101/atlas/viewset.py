@@ -4,114 +4,172 @@ from viewflow import Icon
 from viewflow.contrib.import_export import ExportViewsetMixin
 from viewflow.forms import Layout, FieldSet, Row, DependentModelSelect
 from viewflow.urls import (
-    Application, DetailViewMixin, DeleteViewMixin,
-    ModelViewset, ReadonlyModelViewset
+    Application,
+    DetailViewMixin,
+    DeleteViewMixin,
+    ModelViewset,
+    ReadonlyModelViewset,
 )
 
 from . import models, filters, forms
 
 
 class CityViewset(ExportViewsetMixin, DetailViewMixin, DeleteViewMixin, ModelViewset):
-    icon = Icon('location_city')
+    """
+    A viewset for displaying, editing, deleting, and exporting city instances.
+
+    Attributes:
+        icon (Icon): An icon representing the viewset in the UI.
+        model (models.City): The model class this viewset works with.
+        list_columns (tuple): Columns to display in the list view.
+        list_filter_fields (tuple): Fields to provide filtering capabilities in the list view.
+        list_search_fields (list): Fields to provide search capabilities in the list view.
+        queryset: The queryset used for list, detail, and other actions, optimized with select_related.
+        form_widgets (dict, optional): Custom form widgets to use in forms. Uses AjaxModelSelect for country field to
+                                       enable AJAX based selection.
+
+    """
+
+    icon = Icon("location_city")
     model = models.City
-    list_columns = ('name', 'country', 'population')
-    list_filter_fields = ('is_capital', 'country', )
-    list_search_fields = ['name']
-    queryset = model._default_manager.select_related('country')
+    list_columns = ("name", "country", "population")
+    list_filter_fields = (
+        "is_capital",
+        "country",
+    )
+    list_search_fields = ["name"]
+    queryset = model._default_manager.select_related("country")
     try:
         from viewflow.forms import AjaxModelSelect
-        form_widgets = {
-            'country': AjaxModelSelect(lookups=['name__istartswith'])
-        }
+
+        form_widgets = {"country": AjaxModelSelect(lookups=["name__istartswith"])}
     except ImportError:
         # pro-only
         pass
 
 
 class ContinentViewset(ExportViewsetMixin, ModelViewset):
-    icon = Icon('terrain')
+    """
+    A viewset for displaying and editing continent instances.
+
+    Provides capabilities to list, create, and edit continents along with exporting functionality.
+
+    Attributes:
+        icon (Icon): An icon representing the viewset in the UI.
+        model (models.Continent): The model class this viewset works with.
+        list_columns (tuple): Columns to display in the list view.
+        list_filter_fields (tuple): Fields to provide filtering capabilities in the list view.
+        create_form_layout (Layout): Defines the layout of the form used for creating a continent.
+        form_layout (Layout): Defines the layout of the form used for editing a continent.
+
+    Methods:
+        surrounded_oceans: Returns a string listing the names of oceans surrounding a continent.
+    """
+
+    icon = Icon("terrain")
     model = models.Continent
     list_columns = (
-        'name', 'surrounded_oceans', 'countries_count',
-        'area', 'population',
+        "name",
+        "surrounded_oceans",
+        "countries_count",
+        "area",
+        "population",
     )
-    list_filter_fields = ('oceans', )
+    list_filter_fields = ("oceans",)
     create_form_layout = Layout(
-        'name',
+        "name",
         FieldSet(
-            _('Details'),
-            'area',
-            Row('oceans', 'hemisphere'),
-            Row('population', 'population_density')
+            _("Details"),
+            "area",
+            Row("oceans", "hemisphere"),
+            Row("population", "population_density"),
         ),
     )
     form_layout = Layout(
-        'name',
+        "name",
         FieldSet(
-            _('Details'),
-            'area',
-            Row('oceans', 'hemisphere'),
-            Row('population', 'population_density')
+            _("Details"),
+            "area",
+            Row("oceans", "hemisphere"),
+            Row("population", "population_density"),
         ),
         FieldSet(
-            _('Fun facts'),
-            Row('largest_country', 'biggest_mountain'),
-            Row('biggest_city', 'longest_river')
-        )
+            _("Fun facts"),
+            Row("largest_country", "biggest_mountain"),
+            Row("biggest_city", "longest_river"),
+        ),
     )
 
-    def surrounded_oceans(self, contintent):
-        return ', '.join(ocean.name for ocean in contintent.oceans.all())
-    surrounded_oceans.short_description = _('Surrounded oceans')
+    def surrounded_oceans(self, continent):
+        return ", ".join(ocean.name for ocean in continent.oceans.all())
+
+    surrounded_oceans.short_description = _("Surrounded oceans")
 
 
 class CountryViewset(DeleteViewMixin, ModelViewset):
-    icon = Icon('nature_people')
+    icon = Icon("nature_people")
     update_form_class = forms.CountryForm
     model = models.Country
     list_columns = (
-        'tld', 'name', 'continent',
-        'became_independent_in_20_century',
-        'gay_friendly'
+        "tld",
+        "name",
+        "continent",
+        "became_independent_in_20_century",
+        "gay_friendly",
     )
-    list_filter_fields = ('continent', 'independence_day', )
-    list_object_link_columns = ('tld', 'name')
-    queryset = model._default_manager.select_related('continent').order_by('name')
+    list_filter_fields = (
+        "continent",
+        "independence_day",
+    )
+    list_object_link_columns = ("tld", "name")
+    queryset = model._default_manager.select_related("continent").order_by("name")
 
     def tld(self, country):
-        return '.' + country.code.lower()
-    tld.short_description = 'TLD'
+        return "." + country.code.lower()
+
+    tld.short_description = "TLD"
 
     def became_independent_in_20_century(self, country):
         if country.independence_day:
             return 1900 <= country.independence_day.year <= 2000
-    became_independent_in_20_century.short_description = _('Became independent in XX century')
+
+    became_independent_in_20_century.short_description = _(
+        "Became independent in XX century"
+    )
     became_independent_in_20_century.boolean = True
 
 
 ocean_viewset = ReadonlyModelViewset(
-    app_name='ocean',
-    icon=Icon('directions_boat'),
+    app_name="ocean",
+    icon=Icon("directions_boat"),
     model=models.Ocean,
-    list_columns=('name', 'area',),
+    list_columns=(
+        "name",
+        "area",
+    ),
 )
 
 
 class SeaViewset(DeleteViewMixin, ModelViewset):
-    icon = Icon('beach_access')
+    icon = Icon("beach_access")
     model = models.Sea
-    list_columns = ('name', 'parent_sea', 'ocean', 'sea_area', )
+    list_columns = (
+        "name",
+        "parent_sea",
+        "ocean",
+        "sea_area",
+    )
     list_filterset_class = filters.SeaFilterSet
     form_layout = Layout(
-        'ocean',
-        Row('name', 'parent'),
-        Row('area', 'avg_depth', 'max_depth'),
-        'basin_countries'
+        "ocean",
+        Row("name", "parent"),
+        Row("area", "avg_depth", "max_depth"),
+        "basin_countries",
     )
     form_widgets = {
-        'parent': DependentModelSelect(
-            depends_on='ocean',
-            queryset=lambda parent: models.Sea.objects.filter(ocean=parent)
+        "parent": DependentModelSelect(
+            depends_on="ocean",
+            queryset=lambda parent: models.Sea.objects.filter(ocean=parent),
         )
     }
 
@@ -120,23 +178,31 @@ class SeaViewset(DeleteViewMixin, ModelViewset):
 
     def sea_area(self, sea):
         return None if sea.area == 0 else sea.area
-    sea_area.empty_value = '-'
-    sea_area.column_type = 'numeric'
+
+    sea_area.empty_value = "-"
+    sea_area.column_type = "numeric"
 
     def get_queryset(self, request):
-        return self.model._default_manager.select_related('ocean', 'parent')
+        return self.model._default_manager.select_related("ocean", "parent")
+
+    @property
+    def list_filterset_initial(self):
+        ocean = models.Ocean.objects.filter(name="Atlantic").first()
+        if ocean:
+            return {"ocean": ocean.pk}
+        return None
 
 
 atlas = Application(
-    title='CRUD sample',
-    icon=Icon('extension'),
-    app_name='atlas',
-    permission='atlas.can_view_city',
+    title="CRUD sample",
+    icon=Icon("extension"),
+    app_name="atlas",
+    permission="atlas.can_view_city",
     viewsets=[
         CityViewset(),
         ContinentViewset(),
         CountryViewset(),
         ocean_viewset,
         SeaViewset(),
-    ]
+    ],
 )

@@ -2,8 +2,6 @@ from django.urls import include, path, reverse_lazy
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from rest_framework import routers
-from drf_spectacular.openapi import AutoSchema
-from drf_spectacular.views import SpectacularAPIView
 
 from viewflow.fsm import FlowViewsMixin
 from viewflow.forms import TrixEditorWidget

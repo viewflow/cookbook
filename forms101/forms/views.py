@@ -1,5 +1,9 @@
+from django.contrib import messages
 from django.http import HttpResponseBadRequest, QueryDict, JsonResponse
 from django.views import generic
+from viewflow.views import FormLayoutMixin
+from viewflow.forms import FormDependentSelectMixin, FormAjaxCompleteMixin
+from .user_form import UserForm
 from . import COUNTRY_CHOICES
 
 
@@ -79,3 +83,24 @@ class CheckoutFormView(generic.FormView):
                 )
 
         return HttpResponseBadRequest("Unknown request")
+
+
+class CreateUserView(
+    FormLayoutMixin,
+    FormDependentSelectMixin,
+    FormAjaxCompleteMixin,
+    generic.CreateView,
+):
+    form_class = UserForm
+    template_name = "forms/form.html"
+    extra_context = {"title": "Create user form", "button": "Submit"}
+
+    def form_valid(self, *args, **kwargs):
+        response = super().form_valid(*args, **kwargs)
+        messages.add_message(
+            self.request,
+            messages.SUCCESS,
+            "User created!",
+            fail_silently=True,
+        )
+        return response

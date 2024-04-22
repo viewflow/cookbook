@@ -42,8 +42,8 @@ class HelloWorldFlow(flow.Flow):
     approve = (
         flow.View(views.UpdateProcessView.as_view(fields=["approved"]))
         .Annotation(
-            title=_("Approve"),
-            description=_("Supervisor approvement"),
+            title=_("Approval Request"),
+            description=_("Presents the message to a supervisor for approval."),
             summary_template=_("Message review required"),
             result_template=_(
                 "Message was {{ process.approved|yesno:'Approved,Rejected' }}"

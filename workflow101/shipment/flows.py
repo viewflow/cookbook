@@ -43,6 +43,12 @@ class ShipmentFlow(flow.Flow):
             views.ShipmentView.as_view(fields=["carrier"]),
             task_description="Carrier selection",
         )
+        .Annotation(
+            title=_("Select carrier"),
+            description=_(
+                "Selection of a shipping carrier based on order specifics and requirements."
+            ),
+        )
         .Assign(act.process.created_by)
         .Next(this.delivery_mode)
     )
@@ -55,12 +61,24 @@ class ShipmentFlow(flow.Flow):
 
     request_quotes = (
         flow.View(views.ShipmentView.as_view(fields=["carrier_quote"]))
+        .Annotation(
+            title=_("Obtain carrier quotes"),
+            description=_(
+                "Gathers quotes from potential carriers to compare rates and services."
+            ),
+        )
         .Assign(lambda act: act.process.created_by)
         .Next(this.join_clerk_warehouse)
     )
 
     check_insurance = (
         flow.View(views.ShipmentView.as_view(fields=["need_insurance"]))
+        .Annotation(
+            title=_("Assess insurance needs"),
+            description=_(
+                "Determines if the shipment requires additional insurance coverage based on value and risk."
+            ),
+        )
         .Assign(act.process.created_by)
         .Next(this.split_on_insurance)
     )
@@ -73,6 +91,12 @@ class ShipmentFlow(flow.Flow):
 
     fill_post_label = (
         flow.View(views.ShipmentView.as_view(fields=["post_label"]))
+        .Annotation(
+            title=_("Complete post label"),
+            description=_(
+                "Fills out the postal label with the necessary details for shipping."
+            ),
+        )
         .Assign(act.process.created_by)
         .Next(this.join_on_insurance)
     )
@@ -82,6 +106,12 @@ class ShipmentFlow(flow.Flow):
     # Logistic manager
     take_extra_insurance = (
         flow.View(views.InsuranceView.as_view())
+        .Annotation(
+            title=_("Opt for extra insurance"),
+            description=_(
+                "Considers additional insurance based on the shipment's assessed needs."
+            ),
+        )
         .Permission("shipment.can_take_extra_insurance")
         .Next(this.join_on_insurance)
     )
@@ -89,6 +119,12 @@ class ShipmentFlow(flow.Flow):
     # Warehouse worker
     package_goods = (
         flow.View(UpdateProcessView.as_view(fields=[]))
+        .Annotation(
+            title=_("Packaging"),
+            description=_(
+                "Ensures goods are properly packaged for safe and secure delivery."
+            ),
+        )
         .Permission("shipment.can_package_goods")
         .Next(this.join_clerk_warehouse)
     )
@@ -97,6 +133,12 @@ class ShipmentFlow(flow.Flow):
 
     move_package = (
         flow.View(UpdateProcessView.as_view(fields=[]))
+        .Annotation(
+            title=_("Finalize shipment"),
+            description=_(
+                "Prepares the packaged goods for dispatch to the destination."
+            ),
+        )
         .Assign(this.package_goods.owner)
         .Next(this.end)
     )

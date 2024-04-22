@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.views import generic
-from django.urls import path
+from django.urls import path, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from viewflow import Icon
@@ -17,7 +17,7 @@ from .profile_form import ProfileForm
 from .registration_form import RegistrationForm
 from .signup_form import SignupForm
 from .wizard_form import WizardView
-from .views import CheckoutFormView
+from .views import CheckoutFormView, CreateUserView
 
 
 class Forms(Application):
@@ -145,3 +145,9 @@ class Forms(Application):
     )
 
     wizard_form_path = path("wizard/", WizardView.as_view(), name="wizard_form")
+
+    user_form_path = path(
+        "user/",
+        CreateUserView.as_view(success_url=reverse_lazy("forms:user_form")),
+        name="user_form",
+    )

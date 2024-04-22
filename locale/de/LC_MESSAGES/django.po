@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Viewflow\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-07 10:45+0000\n"
+"POT-Creation-Date: 2024-02-20 07:49+0000\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,12 +31,12 @@ msgstr "Kurzbeschreibung"
 msgid "sea area"
 msgstr "Seegebiet"
 
-#: crud101/atlas/admin.py:127 crud101/atlas/viewset.py:42
-#: crud101/atlas/viewset.py:51
+#: crud101/atlas/admin.py:127 crud101/atlas/viewset.py:50
+#: crud101/atlas/viewset.py:59
 msgid "Details"
 msgstr "Einzelheiten"
 
-#: crud101/atlas/admin.py:130 crud101/atlas/viewset.py:57
+#: crud101/atlas/admin.py:130 crud101/atlas/viewset.py:65
 msgid "Fun facts"
 msgstr "Lustige Fakten"
 
@@ -179,11 +179,11 @@ msgstr "Stadt"
 msgid "cities"
 msgstr "Städte"
 
-#: crud101/atlas/viewset.py:65
+#: crud101/atlas/viewset.py:74
 msgid "Surrounded oceans"
 msgstr "Umgebene Ozeane"
 
-#: crud101/atlas/viewset.py:88
+#: crud101/atlas/viewset.py:105
 msgid "Became independent in XX century"
 msgstr "Im XX Jahrhundert unabhängig geworden"
 
@@ -367,41 +367,47 @@ msgstr "Bankanwendung"
 msgid "Checkout product"
 msgstr "Kassenprodukt"
 
-#: forms101/forms/templates/forms/app_menu.html:35
+#: forms101/forms/templates/forms/app_menu.html:37
 msgid "Comment form"
 msgstr "Kommentarformular"
 
-#: forms101/forms/templates/forms/app_menu.html:40
+#: forms101/forms/templates/forms/app_menu.html:43
 msgid "Contact form"
 msgstr "Kontakt Formular"
 
-#: forms101/forms/templates/forms/app_menu.html:45
+#: forms101/forms/templates/forms/app_menu.html:48
 msgid "Hospital registration"
 msgstr "Registrierung im Krankenhaus"
 
-#: forms101/forms/templates/forms/app_menu.html:50
+#: forms101/forms/templates/forms/app_menu.html:53
 msgid "Login form sample"
 msgstr "Anmeldeformular Muster"
 
-#: forms101/forms/templates/forms/app_menu.html:55
+#: forms101/forms/templates/forms/app_menu.html:60
 msgid "Order services"
 msgstr "Dienstleistungen bestellen"
 
-#: forms101/forms/templates/forms/app_menu.html:60
+#: forms101/forms/templates/forms/app_menu.html:66
 msgid "Profile Edit"
 msgstr "Profil bearbeiten"
 
-#: forms101/forms/templates/forms/app_menu.html:65
+#: forms101/forms/templates/forms/app_menu.html:71
 msgid "Registration form"
 msgstr "Anmeldeformular"
 
-#: forms101/forms/templates/forms/app_menu.html:70
-msgid "Sign up"
-msgstr "Anmelden"
+#: forms101/forms/templates/forms/app_menu.html:76
+#, fuzzy
+#| msgid "Login form sample"
+msgid "Formset sample"
+msgstr "Anmeldeformular Muster"
 
-#: forms101/forms/templates/forms/app_menu.html:75
+#: forms101/forms/templates/forms/app_menu.html:81
 msgid "Wizard sample"
 msgstr "Wizard-Beispiel"
+
+#: forms101/forms/templates/forms/form.html:31
+msgid "Python"
+msgstr ""
 
 #: forms101/forms/templates/formtools/wizard/wizard_done.html:20
 msgid "One more time"
@@ -419,9 +425,23 @@ msgstr "vorheriger schritt"
 msgid "submit"
 msgstr "einreichen"
 
-#: forms101/forms/viewset.py:22
+#: forms101/forms/viewset.py:24
 msgid "Forms and Widgets"
 msgstr "Formulare und Widgets"
+
+#: forms101/forms/wizard_form.py:9
+#, fuzzy
+#| msgid "Contact form"
+msgid "Contact Data"
+msgstr "Kontakt Formular"
+
+#: forms101/forms/wizard_form.py:16 workflow101/helloworld/models.py:21
+msgid "Message"
+msgstr "Nachricht"
+
+#: forms101/forms/wizard_form.py:25
+msgid "Mail a client"
+msgstr ""
 
 #: fsm101/review/admin.py:92
 msgid "Reject review"
@@ -431,7 +451,7 @@ msgstr "Überprüfung ablehnen"
 msgid "New"
 msgstr "Neu"
 
-#: fsm101/review/models.py:9 workflow101/helloworld/models.py:9
+#: fsm101/review/models.py:9 workflow101/helloworld/models.py:22
 msgid "Approved"
 msgstr "Genehmigt"
 
@@ -451,7 +471,7 @@ msgstr "Versteckt"
 msgid "Removed"
 msgstr "Entfernt"
 
-#: fsm101/review/rest.py:56
+#: fsm101/review/rest.py:63
 msgid "Transition is not allowed"
 msgstr "Der Übergang ist nicht erlaubt"
 
@@ -479,63 +499,75 @@ msgstr "Verwaltung"
 msgid "Blood test"
 msgstr "Bluttest"
 
-#: workflow101/helloworld/flows.py:19
+#: workflow101/bloodtest/templates/bloodtest/first_sample.html:23
+msgid "Prev"
+msgstr ""
+
+#: workflow101/bloodtest/templates/bloodtest/first_sample.html:31
+msgid "Next"
+msgstr ""
+
+#: workflow101/bloodtest/templates/bloodtest/first_sample.html:38
+msgid "Start"
+msgstr ""
+
+#: workflow101/helloworld/flows.py:21
 msgid "Hello world"
 msgstr "Hallo Welt"
 
-#: workflow101/helloworld/flows.py:20
-msgid "Message to the world request flow."
-msgstr "Nachricht an die welt anfragefluss."
+#: workflow101/helloworld/flows.py:23
+msgid ""
+"This process enables the user to send a message to the world, and request "
+"approval from a supervisor."
+msgstr ""
 
-#: workflow101/helloworld/flows.py:21
+#: workflow101/helloworld/flows.py:25
 msgid "Send '{{ process.text }}' message to the world"
 msgstr "Senden Sie die Nachricht {{ process.text }} in die Welt"
 
-#: workflow101/helloworld/flows.py:22
-msgid "Sent '{{ process.text }}' message to the world"
-msgstr "Nachricht {{ process.text }} an die Welt gesendet"
+#: workflow101/helloworld/flows.py:27
+msgid ""
+"{% if process.approved %}Successfully sent '{{ process.text }}' message to "
+"the world{% else %}Message was rejected{% endif %}"
+msgstr ""
 
-#: workflow101/helloworld/flows.py:32
+#: workflow101/helloworld/flows.py:37
 msgid "New message"
 msgstr "Neue Nachricht"
 
-#: workflow101/helloworld/flows.py:44
+#: workflow101/helloworld/flows.py:45
 msgid "Approve"
 msgstr "Genehmigen Sie"
 
-#: workflow101/helloworld/flows.py:45
+#: workflow101/helloworld/flows.py:46
 msgid "Supervisor approvement"
 msgstr "Genehmigung des Datenschutzbeauftragten"
 
-#: workflow101/helloworld/flows.py:46
+#: workflow101/helloworld/flows.py:47
 msgid "Message review required"
 msgstr "Überprüfung der Nachricht erforderlich"
 
-#: workflow101/helloworld/flows.py:47
+#: workflow101/helloworld/flows.py:49
 msgid "Message was {{ process.approved|yesno:'Approved,Rejected' }}"
 msgstr "Die Nachricht wurde {{ process.approved|yesno:'Approved,Rejected' }}"
 
-#: workflow101/helloworld/flows.py:56
+#: workflow101/helloworld/flows.py:58
 msgid "Approvement check"
 msgstr "Prüfung der Zulassung"
 
-#: workflow101/helloworld/flows.py:64
+#: workflow101/helloworld/flows.py:65
 msgid "Send message"
 msgstr "Nachricht senden"
 
-#: workflow101/helloworld/flows.py:68
+#: workflow101/helloworld/flows.py:70
 msgid "End"
 msgstr "Ende"
 
-#: workflow101/helloworld/models.py:8
-msgid "Message"
-msgstr "Nachricht"
-
-#: workflow101/helloworld/models.py:13
+#: workflow101/helloworld/models.py:26
 msgid "World Request"
 msgstr "Welt-Anfrage"
 
-#: workflow101/helloworld/models.py:14
+#: workflow101/helloworld/models.py:27
 msgid "World Requests"
 msgstr "Welt-Anfragen"
 
@@ -552,6 +584,15 @@ msgstr ""
 #: workflow101/shipment/flows.py:31
 msgid "New shipment"
 msgstr "Neue Sendung"
+
+#~ msgid "Sign up"
+#~ msgstr "Anmelden"
+
+#~ msgid "Message to the world request flow."
+#~ msgstr "Nachricht an die welt anfragefluss."
+
+#~ msgid "Sent '{{ process.text }}' message to the world"
+#~ msgstr "Nachricht {{ process.text }} an die Welt gesendet"
 
 #~ msgid "department employeevi"
 #~ msgstr "Mitarbeiter der Abteilung"

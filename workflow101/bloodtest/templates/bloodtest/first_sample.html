@@ -1,7 +1,7 @@
 {% extends 'viewflow/workflow/start.html' %}
 {% load i18n viewflow %}
 
-<div class="card-title black-text">{{ activation.flow_task.task_title|default:activation.task.flow_task }}</div>
+<div class="card-title black-text">{{ activation.task.title }}</div>
 <span>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</span>
 
 
