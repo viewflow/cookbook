@@ -108,7 +108,7 @@ msgstr "максимальная глубина"
 
 #: crud101/atlas/models.py:66
 msgid "sea"
-msgstr "мое"
+msgstr "море"
 
 #: crud101/atlas/models.py:67
 msgid "seas"

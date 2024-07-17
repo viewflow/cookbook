@@ -4,7 +4,7 @@ from django.urls import path, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from viewflow import Icon
-from viewflow.urls import Application
+from viewflow.urls import Application, AppMenuMixin
 
 from .bank_form import BankForm
 from .checkout_form import CheckoutForm
@@ -20,8 +20,8 @@ from .wizard_form import WizardView
 from .views import CheckoutFormView, CreateUserView
 
 
-class Forms(Application):
-    title = _("Forms and Widgets")
+class Forms(AppMenuMixin, Application):
+    title = _("Forms")
     icon = Icon("dynamic_form")
     menu_template_name = "forms/app_menu.html"
     permission = (lambda user: user.is_staff,)

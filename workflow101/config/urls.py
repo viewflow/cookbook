@@ -15,7 +15,7 @@ from ..helloworld.flows import HelloWorldFlow
 from ..reassign.flows import ReassignFlow
 from ..shipment.flows import ShipmentFlow
 from ..shipment.viewsets import ShipmentViewset, CarierViewset
-from ..subprocess.flows import OrderItemFlow, CustomerVerificationFlow, OrderFlow
+from ..subprocesses.flows import OrderItemFlow, CustomerVerificationFlow, OrderFlow
 
 site = Site(
     title="Workflow 101 Demo",

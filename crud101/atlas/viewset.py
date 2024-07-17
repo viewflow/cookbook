@@ -193,16 +193,15 @@ class SeaViewset(DeleteViewMixin, ModelViewset):
         return None
 
 
-atlas = Application(
-    title="CRUD sample",
-    icon=Icon("extension"),
-    app_name="atlas",
-    permission="atlas.can_view_city",
-    viewsets=[
+class AtlasApp(Application):
+    title = "CRUD sample"
+    icon = Icon("extension")
+    app_name = "atlas"
+    permission = "atlas.can_view_city"
+    viewsets = [
         CityViewset(),
         ContinentViewset(),
         CountryViewset(),
         ocean_viewset,
         SeaViewset(),
-    ],
-)
+    ]
