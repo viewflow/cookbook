@@ -21,7 +21,8 @@ class SaleViewset(ModelViewset):
     list_filter_fields = ["sale_date", "customer"]
     form_widgets = {
         "primary_contact": DependentModelSelect(
-            depends_on="customer", queryset=lambda customer: customer.contacts
+            depends_on="customer",
+            queryset=lambda customer: models.Contact.objects.filter(customer=customer),
         ),
         "customer": AjaxModelSelect(
             lookups=["name__istartswith"],
