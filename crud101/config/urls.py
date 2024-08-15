@@ -12,6 +12,7 @@ from ..tasks.viewsets import (
     CategoryViewset,
     SubCategoryViewset,
 )
+from ..sales.urls import SalesApp
 
 site = Site(
     title="CRUD 101 Demo",
@@ -31,6 +32,7 @@ site = Site(
                 TaskViewset(),
             ],
         ),
+        SalesApp(),
         Admin(),
     ],
 )

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "cookbook.crud101.polls",
     "cookbook.crud101.staff",
     "cookbook.crud101.tasks",
+    "cookbook.crud101.sales",
 ]
 
 MIDDLEWARE = [
