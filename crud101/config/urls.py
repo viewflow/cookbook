@@ -3,10 +3,15 @@ from django.conf.urls.static import static
 from django.urls import path
 from viewflow.contrib.admin import Admin
 from viewflow.contrib.auth import AuthViewset
-from viewflow.urls import Site
+from viewflow.urls import Site, Application
 from ..atlas.viewset import AtlasApp
 from ..staff.urls import StaffApp
-
+from ..tasks.viewsets import (
+    TaskViewset,
+    ProjectViewset,
+    CategoryViewset,
+    SubCategoryViewset,
+)
 
 site = Site(
     title="CRUD 101 Demo",
@@ -15,6 +20,17 @@ site = Site(
     viewsets=[
         AtlasApp(),
         StaffApp(),
+        Application(
+            app_name="tasks",
+            title="Tasks",
+            icon="tasks",
+            viewsets=[
+                CategoryViewset(),
+                SubCategoryViewset(),
+                ProjectViewset(),
+                TaskViewset(),
+            ],
+        ),
         Admin(),
     ],
 )

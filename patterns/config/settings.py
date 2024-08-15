@@ -1,7 +1,17 @@
+import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env(
+    DATABASE_URL=(str, "sqlite:///" + str(BASE_DIR) + "/db.sqlite3"),
+    DOMAIN_NAME=(str, "127.0.0.1"),
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, "--secret--"),
+)
+env.read_env(BASE_DIR / ".env") if os.path.exists(BASE_DIR / ".env") else None
 
 
 # Quick-start development settings - unsuitable for production
@@ -58,18 +68,16 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "config.wsgi.application"
+WSGI_APPLICATION = "cookbook.patterns.config.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": env.db(),
 }
+
 
 MIGRATION_MODULES = {
     "viewflow": None,

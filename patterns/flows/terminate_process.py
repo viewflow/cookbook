@@ -18,3 +18,5 @@ class TerminateProcess(flow.Flow):
         This pattern provides a means of halting a specified process instance
         and withdrawing any tasks associated with it.
     """
+ 
+    # https://stackoverflow.com/questions/52311822/how-to-finish-all-parallel-activities-viewflow-terminate-end
