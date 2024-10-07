@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import UserManager
+from django.db import models
 from django.urls import reverse
 from polymodels.managers import PolymorphicManager
 from polymodels.models import PolymorphicModel
@@ -11,21 +12,24 @@ class UserManager(PolymorphicManager, UserManager):
 
 
 class User(PolymorphicModel, AbstractUser):
-    data = jsonstore.JSONField(null=True, default=dict)
+    data = models.JSONField(null=True, default=dict)
     objects = UserManager()
 
 
 class Employee(User):
     hire_date = jsonstore.DateField()
     salary = jsonstore.DecimalField(max_digits=10, decimal_places=2)
-    department = jsonstore.CharField(max_length=200, choices=[
-        ('Marketing', 'Marketing'),
-        ('Development', 'Development'),
-        ('Sales', 'Sales'),
-    ])
+    department = jsonstore.CharField(
+        max_length=200,
+        choices=[
+            ("Marketing", "Marketing"),
+            ("Development", "Development"),
+            ("Sales", "Sales"),
+        ],
+    )
 
     def get_absolute_url(self):
-        return reverse('employee_edit', args=[self.pk])
+        return reverse("employee_edit", args=[self.pk])
 
     class Meta:
         proxy = True
@@ -38,7 +42,7 @@ class Client(User):
     vip = jsonstore.BooleanField()
 
     def get_absolute_url(self):
-        return reverse('client_edit', args=[self.pk])
+        return reverse("client_edit", args=[self.pk])
 
     class Meta:
         proxy = True

@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "viewflow",
     "guardian",
+    "djmoney",
     "import_export",
     "cookbook.crud101.atlas",
     "cookbook.crud101.polls",

@@ -26,6 +26,6 @@ def reject_view(request, pk):
         messages.add_message(
             request, messages.SUCCESS, "Review rejected", fail_silently=True
         )
-        return redirect(reverse("review:list"))
+        return redirect(reverse("review:review:list"))
 
     return render(request, "review/reject.html", {"form": form})

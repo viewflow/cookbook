@@ -1,3 +1,4 @@
+from djmoney.models.fields import MoneyField
 from django.db import models
 
 
@@ -25,7 +26,7 @@ class Sale(models.Model):
     primary_contact = models.ForeignKey(
         Contact, on_delete=models.SET_NULL, null=True, blank=True
     )
-    sale_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    sale_amount = MoneyField(max_digits=14, decimal_places=2, default_currency="USD")
     sale_date = models.DateField()
 
     def __str__(self):
