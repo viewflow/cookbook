@@ -79,8 +79,8 @@ class Test(TestCase):
 
         process = Process.objects.get()
 
-        self.assertEquals("DONE", process.status)
-        self.assertEquals(7, process.task_set.count())
+        self.assertEqual("DONE", process.status)
+        self.assertEqual(7, process.task_set.count())
 
     def _testSecondSampleFlow(self):
         patient = Patient.objects.create(
@@ -113,8 +113,8 @@ class Test(TestCase):
 
         process = Process.objects.get()
 
-        self.assertEquals("DONE", process.status)
-        self.assertEquals(5, process.task_set.count())
+        self.assertEqual("DONE", process.status)
+        self.assertEqual(5, process.task_set.count())
 
 
 urlpatterns = [path("bloodtest/", FlowViewset(BloodTestFlow).urls)]

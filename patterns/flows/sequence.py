@@ -55,7 +55,7 @@ class SelectUserForm(ModelForm):
 
     class Meta:
         model = SequenceProcess
-        fields = ["seed"]
+        fields = []
 
 
 class UserDetailsForm(ModelForm):
@@ -209,11 +209,11 @@ BPMN = """
             <bpmndi:BPMNEdge id="id_edge_shape_input_user_details__verify_account" bpmnElement="id_edge_input_user_details__verify_account" sourceElement="id_shape_input_user_details" targetElement="id_shape_verify_account">
                 <di:waypoint xsi:type="dc:Point" x="225" y="51" />
                 <di:waypoint xsi:type="dc:Point" x="250" y="51" />
-            </bpmndi:BPMNEdge>            
-            <bpmndi:BPMNEdge id="id_edge_shape_verify_account__end" bpmnElement="id_edge_verify_account__end" sourceElement="id_shape_verify_account" targetElement="id_shape_end">                
-                <di:waypoint xsi:type="dc:Point" x="400" y="51" />                
-                <di:waypoint xsi:type="dc:Point" x="425" y="50" />                
-            </bpmndi:BPMNEdge>            
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="id_edge_shape_verify_account__end" bpmnElement="id_edge_verify_account__end" sourceElement="id_shape_verify_account" targetElement="id_shape_end">
+                <di:waypoint xsi:type="dc:Point" x="400" y="51" />
+                <di:waypoint xsi:type="dc:Point" x="425" y="50" />
+            </bpmndi:BPMNEdge>
         </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>
 </bpmn:definitions>

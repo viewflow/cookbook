@@ -73,8 +73,8 @@ class Test(TestCase):  # noqa: D101
 
         process = Process.objects.get()
 
-        self.assertEquals("DONE", process.status)
-        self.assertEquals(5, process.task_set.count())
+        self.assertEqual("DONE", process.status)
+        self.assertEqual(5, process.task_set.count())
 
     def test_not_approved_flow(self):
         self.assertTrue(self.client.login(username="admin", password="admin"))
@@ -109,8 +109,8 @@ class Test(TestCase):  # noqa: D101
 
         process = Process.objects.get()
 
-        self.assertEquals("DONE", process.status)
-        self.assertEquals(4, process.task_set.count())
+        self.assertEqual("DONE", process.status)
+        self.assertEqual(4, process.task_set.count())
 
     def test_users_collaboration_flow(self):
         self.assertTrue(self.client.login(username="employee", password="employee"))
@@ -126,8 +126,8 @@ class Test(TestCase):  # noqa: D101
         )
         self.assertEqual(response.status_code, 302)
         process = Process.objects.get()
-        self.assertEquals("NEW", process.status)
-        self.assertEquals(2, process.task_set.count())
+        self.assertEqual("NEW", process.status)
+        self.assertEqual(2, process.task_set.count())
 
         # login as manager and assign the task
         self.assertTrue(self.client.login(username="manager", password="manager"))
@@ -144,8 +144,8 @@ class Test(TestCase):  # noqa: D101
         self.assertEqual(response.status_code, 302)
 
         process = Process.objects.get()
-        self.assertEquals("DONE", process.status)
-        self.assertEquals(5, process.task_set.count())
+        self.assertEqual("DONE", process.status)
+        self.assertEqual(5, process.task_set.count())
 
     def test_access_protection(self):
         # Try to start a process as the manager

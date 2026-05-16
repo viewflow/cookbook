@@ -62,7 +62,7 @@ class Test(TestCase):
         self.assertTrue(
             all([process.status == "DONE" for process in Process.objects.all()])
         )
-        self.assertEquals(18, Task.objects.count())
+        self.assertEqual(18, Task.objects.count())
 
 
 urlpatterns = [

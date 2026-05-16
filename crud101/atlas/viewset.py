@@ -47,6 +47,29 @@ class CityViewset(ExportViewsetMixin, DetailViewMixin, DeleteViewMixin, ModelVie
         # pro-only
         pass
 
+    def get_create_form_class(self, request):
+        """
+        Custom form class that restricts capital city creation to admin users
+        """
+        from django import forms
+        from viewflow.forms import ModelForm
+
+        class CityCreateForm(ModelForm):
+            class Meta:
+                model = self.model
+                fields = ["name", "country", "population", "is_capital"]
+
+            def __init__(self, *args, **kwargs):
+                super().__init__(*args, **kwargs)
+                # Only admin users can create capital cities
+                if not request.user.is_superuser:
+                    self.fields["is_capital"].disabled = True
+                    self.fields["is_capital"].help_text = _(
+                        "Only administrators can create capital cities"
+                    )
+
+        return CityCreateForm
+
 
 class ContinentViewset(ExportViewsetMixin, ModelViewset):
     """

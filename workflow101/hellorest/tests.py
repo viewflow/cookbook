@@ -55,8 +55,8 @@ class Test(TestCase):  # noqa: D101
 
         process = Process.objects.get()
 
-        self.assertEquals("DONE", process.status)
-        self.assertEquals(5, process.task_set.count())
+        self.assertEqual("DONE", process.status)
+        self.assertEqual(5, process.task_set.count())
 
     def _testNotApproved(self):
         self.assertRedirects(
@@ -90,8 +90,8 @@ class Test(TestCase):  # noqa: D101
 
         process = Process.objects.get()
 
-        self.assertEquals("DONE", process.status)
-        self.assertEquals(4, process.task_set.count())
+        self.assertEqual("DONE", process.status)
+        self.assertEqual(4, process.task_set.count())
 
 
 urlpatterns = [path("api/", FlowViewset(HelloRestFlow).urls)]
