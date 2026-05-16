@@ -53,8 +53,15 @@ Overflow](https://stackoverflow.com/questions/tagged/viewflow) or [GitHub
 Discussions](https://github.com/viewflow/viewflow/discussions) We're always
 happy to help!
 
+## Stay updated
+
+[Subscribe to our newsletter][newsletter] for release notes, Django low-code
+tips, and notes on shipping business apps fast.
+
 ## Contributions
 
 Please feel free to use these samples as a starting point for your own projects.
 If you have any suggestions for new samples, please open an issue
+
+[newsletter]: https://robustarush.substack.com/?utm_source=github&utm_medium=readme&utm_campaign=viewflow_cookbook
 
