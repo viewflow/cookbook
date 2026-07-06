@@ -7,10 +7,12 @@ from django.urls import path, include
 
 from viewflow.contrib.auth import AuthViewset
 from viewflow.urls import Application, Site
-from viewflow.workflow.flow import FlowAppViewset
+from viewflow.workflow.flow import FlowAppViewset, FlowViewset
 
 from ..bloodtest.flows import BloodTestFlow
 from ..dynamic_split.flows import DynamicSplitFlow
+from ..dynamic_subprocess.flows import OrderFlow as DynamicOrderFlow, ItemFlow
+from ..dynamic_subprocess.viewsets import OrderFlowViewset as DynamicOrderFlowViewset
 from ..helloworld.flows import HelloWorldFlow
 from ..reassign.flows import ReassignFlow
 from ..snooze.flows import SnoozeFlow
@@ -42,6 +44,8 @@ site = Site(
         FlowAppViewset(ReassignFlow, icon="swap_horiz"),
         FlowAppViewset(SubstituteFlow, icon="people_alt"),
         SnoozeFlowViewset(SnoozeFlow, icon="snooze"),
+        DynamicOrderFlowViewset(DynamicOrderFlow, icon="playlist_add"),
+        FlowAppViewset(ItemFlow, icon="inventory_2"),
         Site(
             app_name="subprocess",
             title="Orders processing",

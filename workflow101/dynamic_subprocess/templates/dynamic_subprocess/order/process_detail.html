@@ -1,0 +1,26 @@
+{% extends "viewflow/workflow/process_detail.html" %}
+{% load i18n viewflow workflow %}
+
+{% comment %}
+  Adds an "Add item" action to the order detail page. While the order is
+  running (status NEW) the customer can attach one more item process to the
+  still-running NSubprocess task -- issue #258.
+{% endcomment %}
+
+{% block panel-cell %}
+  {{ block.super }}
+  {% if process.status == 'NEW' %}
+    <div class="mdc-card vf-card" style="margin-top:16px">
+      <section class="vf-card__header">
+        <h2 class="vf-card__title">{% trans 'Need to add an item?' %}</h2>
+      </section>
+      <div class="mdc-card__actions vf-card__actions">
+        <a href="{% reverse viewset 'add_item' process.pk %}"
+           class="mdc-button mdc-button--raised mdc-card__action mdc-card__action--button">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">{% trans 'Add item' %}</span>
+        </a>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

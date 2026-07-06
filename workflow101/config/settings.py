@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "viewflow.workflow",
     "cookbook.workflow101.bloodtest",
     "cookbook.workflow101.dynamic_split",
+    "cookbook.workflow101.dynamic_subprocess",
     "cookbook.workflow101.helloworld",
     "cookbook.workflow101.hellorest",
     "cookbook.workflow101.reassign",
