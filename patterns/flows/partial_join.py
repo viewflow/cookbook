@@ -19,7 +19,7 @@ Purpose:
 from django import forms
 from django.shortcuts import render, redirect
 from viewflow import this, jsonstore
-from viewflow.workflow import flow
+from viewflow.workflow import flow, lock
 from viewflow.workflow.flow import views
 from viewflow.workflow.models import Process
 
@@ -65,6 +65,8 @@ def approve_view(request, **kwargs):
 
 
 class PartialJoin(flow.Flow):
+
+    lock_impl = lock.select_for_update_lock
     process_class = ExpenditureApprovalProcess
 
     start = (

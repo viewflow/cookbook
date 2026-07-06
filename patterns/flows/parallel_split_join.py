@@ -17,7 +17,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from viewflow import this, jsonstore
 from viewflow.forms import ModelForm
-from viewflow.workflow import flow, PROCESS
+from viewflow.workflow import flow, PROCESS, lock
 from viewflow.workflow.flow import views
 from viewflow.workflow.models import Process
 
@@ -41,6 +41,8 @@ class ReceiptForm(ModelForm):
 
 
 class ParallelSplit(flow.Flow):
+
+    lock_impl = lock.select_for_update_lock
     process_class = OrderProcess
 
     start = (

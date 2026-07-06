@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.utils.translation import gettext_lazy as _
 
 from viewflow import this
@@ -50,6 +52,8 @@ class HelloWorldFlow(flow.Flow):
             ),
         )
         .Permission(auto_create=True)
+        # escalate if the supervisor does not respond within the deadline
+        .OnTimeout(timedelta(days=3), this.escalate, title=_("Escalate"))
         .Next(this.check_approve)
     )
 
@@ -64,6 +68,11 @@ class HelloWorldFlow(flow.Flow):
         celery.Job(send_hello_world_request)
         .Annotation(title=_("Send message"))
         .Next(this.end)
+    )
+
+    escalate = flow.End().Annotation(
+        title=_("Escalated"),
+        summary_template=_("Approval deadline passed"),
     )
 
     end = flow.End().Annotation(

@@ -13,6 +13,9 @@ class Test(TestCase):
         self.client.login(username="admin", password="password")
 
     def testApproved(self):
+        # pks are derived from the DB, not hardcoded: on PostgreSQL sequences
+        # are not reset between tests, so the ids drift from the 1-based values
+        # SQLite happens to reuse.
         response = self.client.post(
             "/workflow/order/order/start/",
             {
@@ -27,37 +30,46 @@ class Test(TestCase):
                 "_viewflow_activation-started": "2000-01-01",
             },
         )
-        self.assertRedirects(response, "/workflow/order/order/1/")
+        order = Process.objects.get(flow_class=OrderFlow)
+        self.assertRedirects(response, f"/workflow/order/order/{order.pk}/")
 
+        # verify the customer (subprocess started by the order)
+        verification = Process.objects.get(flow_class=CustomerVerificationFlow)
+        verify_task = verification.task_set.get(
+            flow_task=CustomerVerificationFlow.verify_customer
+        )
         response = self.client.post(
-            "/workflow/order/customerverification/2/verify_customer/4/execute/",
+            f"/workflow/order/customerverification/{verification.pk}"
+            f"/verify_customer/{verify_task.pk}/execute/",
             {"trusted": True, "_viewflow_activation-started": "2000-01-01"},
         )
-        self.assertRedirects(response, "/workflow/order/customerverification/2/")
-
-        response = self.client.post(
-            "/workflow/order/orderitem/3/reserve_item/9/execute/",
-            {"reserved": True, "_viewflow_activation-started": "2000-01-01"},
+        self.assertRedirects(
+            response, f"/workflow/order/customerverification/{verification.pk}/"
         )
-        self.assertRedirects(response, "/workflow/order/orderitem/3/")
 
-        response = self.client.post(
-            "/workflow/order/orderitem/4/reserve_item/11/execute/",
-            {"reserved": True, "_viewflow_activation-started": "2000-01-01"},
+        # one OrderItem subprocess per ordered item
+        order_items = list(
+            Process.objects.filter(flow_class=OrderItemFlow).order_by("pk")
         )
-        self.assertRedirects(response, "/workflow/order/orderitem/4/")
+        self.assertEqual(2, len(order_items))
 
-        response = self.client.post(
-            "/workflow/order/orderitem/3/pack_item/13/execute/",
-            {"_viewflow_activation-started": "2000-01-01"},
-        )
-        self.assertRedirects(response, "/workflow/order/orderitem/3/")
+        for item in order_items:
+            reserve_task = item.task_set.get(flow_task=OrderItemFlow.reserve_item)
+            response = self.client.post(
+                f"/workflow/order/orderitem/{item.pk}"
+                f"/reserve_item/{reserve_task.pk}/execute/",
+                {"reserved": True, "_viewflow_activation-started": "2000-01-01"},
+            )
+            self.assertRedirects(response, f"/workflow/order/orderitem/{item.pk}/")
 
-        response = self.client.post(
-            "/workflow/order/orderitem/4/pack_item/15/execute/",
-            {"_viewflow_activation-started": "2000-01-01"},
-        )
-        self.assertRedirects(response, "/workflow/order/orderitem/4/")
+        for item in order_items:
+            pack_task = item.task_set.get(flow_task=OrderItemFlow.pack_item)
+            response = self.client.post(
+                f"/workflow/order/orderitem/{item.pk}"
+                f"/pack_item/{pack_task.pk}/execute/",
+                {"_viewflow_activation-started": "2000-01-01"},
+            )
+            self.assertRedirects(response, f"/workflow/order/orderitem/{item.pk}/")
 
         self.assertTrue(
             all([process.status == "DONE" for process in Process.objects.all()])

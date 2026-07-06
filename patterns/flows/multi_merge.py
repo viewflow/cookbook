@@ -16,7 +16,7 @@ Purpose:
 """
 
 from viewflow import this, jsonstore
-from viewflow.workflow import flow
+from viewflow.workflow import flow, lock
 from viewflow.workflow.flow import views
 from viewflow.workflow.models import Process
 
@@ -35,6 +35,8 @@ class ConstructionProcess(Process):
 
 
 class MultiMerge(flow.Flow):
+
+    lock_impl = lock.select_for_update_lock
     process_description = """
     The tasks lay_foundations, order_materials, and book_labourer run at the
     same time. After each task is finished, the quality_review task runs before

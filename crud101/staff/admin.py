@@ -11,7 +11,7 @@ class DepartmentAdmin(admin.ModelAdmin):
 @admin.register(models.DeptEmp)
 class DeptEmpAdmin(admin.ModelAdmin):
     list_display = ('employee', 'department', 'from_date', 'to_date')
-    list_select_related = True
+    list_select_related = ('employee', 'department')
     raw_id_fields = ('employee', )
     list_filter = ('department', )
 

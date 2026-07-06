@@ -1,5 +1,5 @@
 from viewflow import this
-from viewflow.workflow import flow, act
+from viewflow.workflow import flow, act, lock
 from viewflow.workflow.flow.views import CreateProcessView
 
 
@@ -13,6 +13,8 @@ class DynamicSplitFlow(flow.Flow):
 
     Depends on initial decision, several instances on make_decision task would be instantiated
     """
+
+    lock_impl = lock.select_for_update_lock
 
     process_class = models.DynamicSplitProcess
 

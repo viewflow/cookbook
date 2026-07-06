@@ -13,9 +13,17 @@ from cookbook.patterns.flows.cancelling_partial_join import (
 )
 from cookbook.patterns.flows.multiple_instances import MultipleInstances
 from cookbook.patterns.flows.loop import Loop
-from cookbook.patterns.flows.restart_process import RestartProcess
-from cookbook.patterns.flows.withdraw_task import WithdrawTask
-from cookbook.patterns.flows.terminate_process import TerminateProcess
+from cookbook.patterns.flows.service_tasks import ServiceTasks
+from cookbook.patterns.flows.manual_task import ManualHandover
+from cookbook.patterns.flows.timer_event import TimerDelay
+from cookbook.patterns.flows.scheduled_start import ScheduledReport
+from cookbook.patterns.flows.timer_boundary import ApprovalTimeout
+from cookbook.patterns.flows.error_boundary import DeployRecovery
+from cookbook.patterns.flows.terminate_end import RaceTerminate
+from cookbook.patterns.flows.error_end import PaymentError
+from cookbook.patterns.flows.subprocess import OrderFulfillment
+from cookbook.patterns.flows.multi_instance import BatchReview
+from cookbook.patterns.flows.compensation import BookingSaga
 
 
 site = Site(
@@ -47,16 +55,35 @@ site = Site(
             ],
         ),
         Application(
-            title="Livecycle",
-            app_name="livecycle",
+            title="Tasks",
+            app_name="tasks",
             viewsets=[
-                FlowViewset(WithdrawTask, icon="u_turn_left", title="Withdraw Task"),
-                # TODO Pause task?
                 FlowViewset(
-                    RestartProcess, icon="roundabout_left", title="Restart Process"
+                    ServiceTasks, icon="mark_email_read", title="Service Tasks"
                 ),
+                FlowViewset(ManualHandover, icon="back_hand", title="Manual Task"),
+            ],
+        ),
+        Application(
+            title="Events",
+            app_name="events",
+            viewsets=[
+                FlowViewset(TimerDelay, icon="timer", title="Timer Event"),
+                FlowViewset(ScheduledReport, icon="schedule", title="Timer Start"),
+                FlowViewset(ApprovalTimeout, icon="alarm", title="Timer Boundary"),
+                FlowViewset(DeployRecovery, icon="error", title="Error Boundary"),
+                FlowViewset(RaceTerminate, icon="cancel", title="Terminate End"),
+                FlowViewset(PaymentError, icon="dangerous", title="Error End"),
+            ],
+        ),
+        Application(
+            title="Transactions",
+            app_name="transactions",
+            viewsets=[
+                FlowViewset(OrderFulfillment, icon="account_tree", title="Subprocess"),
+                FlowViewset(BatchReview, icon="dynamic_feed", title="Multi Instance"),
                 FlowViewset(
-                    TerminateProcess, icon="do_disturb_on", title="Terminate Process"
+                    BookingSaga, icon="settings_backup_restore", title="Compensation"
                 ),
             ],
         ),

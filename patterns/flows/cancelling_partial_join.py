@@ -21,7 +21,7 @@ import random
 from celery import shared_task
 from viewflow import this, jsonstore
 from viewflow.contrib import celery
-from viewflow.workflow import flow
+from viewflow.workflow import flow, lock
 from viewflow.workflow.flow import views
 from viewflow.workflow.models import Process
 
@@ -37,6 +37,8 @@ class ReviewProcess(Process):
 
 
 class CancelingPartialJoin(flow.Flow):
+
+    lock_impl = lock.select_for_update_lock
     process_class = ReviewProcess
 
     start = (

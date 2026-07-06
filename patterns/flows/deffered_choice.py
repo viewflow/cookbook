@@ -25,7 +25,7 @@ from django.contrib.auth.models import User
 
 from viewflow import this, jsonstore
 from viewflow.contrib import celery
-from viewflow.workflow import flow, STATUS
+from viewflow.workflow import flow, STATUS, lock
 from viewflow.workflow.models import Process
 from viewflow.workflow.flow import views
 
@@ -45,6 +45,8 @@ class DeferredChoiceProcess(Process):
 
 
 class DefferedChoice(flow.Flow):
+
+    lock_impl = lock.select_for_update_lock
     process_class = DeferredChoiceProcess
 
     start = (

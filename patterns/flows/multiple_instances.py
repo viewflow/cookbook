@@ -17,7 +17,7 @@ from django import forms
 from django.db.models import TextChoices
 from viewflow import this, jsonstore
 from viewflow.forms import FormSetField, Form, ModelForm
-from viewflow.workflow import act, flow
+from viewflow.workflow import act, flow, lock
 from viewflow.workflow.flow import views
 from viewflow.workflow.models import Process
 
@@ -71,6 +71,8 @@ class InfringementListForm(ModelForm):
 
 
 class MultipleInstances(flow.Flow):
+
+    lock_impl = lock.select_for_update_lock
     start = (
         flow.Start(views.CreateProcessView.as_view(form_class=InfringementListForm))
         .Annotation(description="Select infringements")

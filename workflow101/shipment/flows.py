@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.utils.translation import gettext_lazy as _
 
 from viewflow import this
@@ -50,8 +52,17 @@ class ShipmentFlow(flow.Flow):
             ),
         )
         .Assign(act.process.created_by)
+        # non-interrupting SLA reminder -- the clerk keeps working
+        .OnTimeout(
+            timedelta(days=1),
+            this.remind_clerk,
+            interrupting=False,
+            title=_("Reminder"),
+        )
         .Next(this.delivery_mode)
     )
+
+    remind_clerk = flow.End().Annotation(title=_("Reminder sent"))
 
     delivery_mode = (
         flow.If(act.process.is_normal_post)
