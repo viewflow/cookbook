@@ -1,0 +1,31 @@
+{% extends 'viewflow/workflow/task_base.html' %}
+{% load i18n viewflow workflow %}
+
+{% block breadcrumbs_items %}
+  {{ block.super }}
+  <a>{% trans 'Snooze' %}</a>
+{% endblock %}
+
+{% block task_content %}
+  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+    <p>{% trans 'Hide this task from your inbox until later. It stays yours and comes back automatically when the time is up.' %}</p>
+    <form id="snooze-form" class="vf-form" method="POST">
+      {% csrf_token %}
+      <p>
+        <label for="{{ form.until.id_for_label }}">{{ form.until.label }}</label><br>
+        {{ form.until }}
+      </p>
+      {% for error in form.until.errors %}<p style="color:#b00020">{{ error }}</p>{% endfor %}
+    </form>
+  </div>
+{% endblock %}
+
+{% block task_actions %}
+  <button type="submit" form="snooze-form"
+          class="mdc-button mdc-card__action mdc-card__action--button mdc-button--raised mdc-button--touch">
+    <span class="mdc-button__ripple"></span>
+    <span class="mdc-button__touch"></span>
+    <span class="mdc-button__focus-ring"></span>
+    <span class="mdc-button__label">{% trans 'Snooze' %}</span>
+  </button>
+{% endblock %}

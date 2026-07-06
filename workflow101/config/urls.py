@@ -13,6 +13,9 @@ from ..bloodtest.flows import BloodTestFlow
 from ..dynamic_split.flows import DynamicSplitFlow
 from ..helloworld.flows import HelloWorldFlow
 from ..reassign.flows import ReassignFlow
+from ..snooze.flows import SnoozeFlow
+from ..snooze.viewsets import SnoozeFlowViewset
+from ..substitute.flows import SubstituteFlow
 from ..shipment.flows import ShipmentFlow
 from ..shipment.viewsets import ShipmentViewset, CarierViewset
 from ..subprocesses.flows import OrderItemFlow, CustomerVerificationFlow, OrderFlow
@@ -37,6 +40,8 @@ site = Site(
         FlowAppViewset(DynamicSplitFlow, icon="call_split"),
         FlowAppViewset(BloodTestFlow, icon="bloodtype"),
         FlowAppViewset(ReassignFlow, icon="swap_horiz"),
+        FlowAppViewset(SubstituteFlow, icon="people_alt"),
+        SnoozeFlowViewset(SnoozeFlow, icon="snooze"),
         Site(
             app_name="subprocess",
             title="Orders processing",

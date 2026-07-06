@@ -1,0 +1,32 @@
+{% extends 'viewflow/workflow/task_base.html' %}
+{% load i18n viewflow workflow %}
+
+{% block breadcrumbs_items %}
+  {{ block.super }}
+  <a>{% trans 'Substitute' %}</a>
+{% endblock %}
+
+{% block task_content %}
+  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+    <p>{% trans 'Hand this task over to another user. They become the new owner and can execute it.' %}</p>
+    <form id="substitute-form" class="vf-form" method="POST">
+      {% csrf_token %}
+      <p>
+        <label for="{{ form.user.id_for_label }}">{{ form.user.label }}</label><br>
+        {{ form.user }}
+      </p>
+      {% for error in form.user.errors %}<p style="color:#b00020">{{ error }}</p>{% endfor %}
+    </form>
+  </div>
+{% endblock %}
+
+{% block task_actions %}
+  <button type="submit" form="substitute-form"
+          class="mdc-button mdc-card__action mdc-card__action--button mdc-button--raised mdc-button--touch"
+          name="_continue" value="1">
+    <span class="mdc-button__ripple"></span>
+    <span class="mdc-button__touch"></span>
+    <span class="mdc-button__focus-ring"></span>
+    <span class="mdc-button__label">{% trans 'Substitute' %}</span>
+  </button>
+{% endblock %}

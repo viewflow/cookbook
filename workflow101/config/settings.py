@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     "cookbook.workflow101.hellorest",
     "cookbook.workflow101.reassign",
     "cookbook.workflow101.shipment",
+    "cookbook.workflow101.snooze",
     "cookbook.workflow101.subprocesses",
+    "cookbook.workflow101.substitute",
 ]
 
 MIDDLEWARE = [

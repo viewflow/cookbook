@@ -1,0 +1,27 @@
+{% extends 'viewflow/workflow/task_base.html' %}
+{% load i18n viewflow workflow %}
+
+{% block breadcrumbs_items %}
+  {{ block.super }}
+  <a>{% trans 'Wake up' %}</a>
+{% endblock %}
+
+{% block task_content %}
+  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+    <p>{% trans 'Bring this task back to your inbox now?' %}</p>
+  </div>
+{% endblock %}
+
+{% block task_actions %}
+  <vf-form>
+    <form class="vf-form" method="POST">
+      {% csrf_token %}
+      <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--raised mdc-button--touch">
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__touch"></span>
+        <span class="mdc-button__focus-ring"></span>
+        <span class="mdc-button__label">{% trans 'Wake up' %}</span>
+      </button>
+    </form>
+  </vf-form>
+{% endblock %}
