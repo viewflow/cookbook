@@ -8,7 +8,19 @@
   <script>
     // Before first paint: the component library reads the theme from this class
     // and so does Tailwind's `dark:` variant, so setting it later would flash.
-    document.documentElement.className = localStorage.getItem("theme") || "light";
+    //
+    // Validated, not trusted: the class has to be one the library actually
+    // defines a palette for, or the page ends up with no --md-sys-color-* at all
+    // and every component renders with no colour, border or outline. A stored
+    // value can be anything — "theme" is a generic key and localStorage is
+    // shared by everything else ever served from this host and port.
+    (() => {
+      const stored = localStorage.getItem("todo-theme");
+      const system = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.className = stored === "dark" || stored === "light"
+        ? stored
+        : system;
+    })();
   </script>
 
   <link rel="stylesheet" href="{{ url_for('static', path='/app.css') }}">
@@ -51,7 +63,7 @@
     toggle.addEventListener("selectedChange", (event) => {
       const theme = event.detail.selected ? "dark" : "light";
       document.documentElement.className = theme;
-      localStorage.setItem("theme", theme);
+      localStorage.setItem("todo-theme", theme);
     });
   </script>
 </body>

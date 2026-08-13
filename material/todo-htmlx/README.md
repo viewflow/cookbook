@@ -3,13 +3,13 @@
 Add, toggle, delete, filter. No frontend framework and no client-side model of a todo — the server
 renders every piece of the page, including the pieces that change one row at a time.
 
-![A text field and Add button, filter chips with a remaining count, and three todo rows with checkboxes and delete buttons](./screenshot.png)
+![A text field and Add button, segmented All/Active/Done filters with a remaining count, and three todo rows with checkboxes and delete buttons](./screenshot.png)
 
 The toggle in the app bar switches the whole page — components included — by swapping one class on
 `<html>`.
 
 - **[advanced-material-web](https://www.npmjs.com/package/advanced-material-web)** ≥26.30.0 — Material 3
-  as custom elements; nine of them here
+  as custom elements; eight of them here
 - **Tailwind v4** — layout around the components, themed from the same Material tokens
 - **htmx** — every interaction is an HTTP request that returns HTML
 - **FastAPI + Jinja2 + SQLite** — five endpoints, all returning HTML
@@ -29,21 +29,21 @@ startup. `npm run watch:css` / `watch:js` rebuild while working. Tests: `uv run 
 
 | File | Raw | gzip | |
 |---|---|---|---|
-| `app.js` | 106 KB | 27 KB | nine components, bundled from `src/app.js` |
+| `app.js` | 94 KB | 25 KB | eight components, bundled from `src/app.js` |
 | `htmx.min.js` | 50 KB | 16 KB | as npm ships it |
-| `app.css` | 27 KB | 5 KB | Tailwind + the Material tokens |
+| `app.css` | 26 KB | 5 KB | Tailwind + the Material tokens |
 | `material-symbols-subset.woff2` | 26 KB | 27 KB | six icons |
-| | | **76 KB** | |
+| | | **74 KB** | |
 
 Two of those are built rather than copied, and both are worth it: the library's prebuilt
-`cdn/material.min.js` is 585 KB with every element eager, against 106 KB for the nine in
+`cdn/material.min.js` is 585 KB with every element eager, against 94 KB for the eight in
 `src/app.js`; and `material-symbols` ships the full 3.8 MB variable font, against 26 KB for the six
 icons `scripts/subset-font.mjs` keeps. Nothing is fetched from a third party, fonts included.
 
 ## Layout
 
 ```
-src/app.js          the nine component imports — the frontend's dependency list
+src/app.js          the eight component imports — the frontend's dependency list
 src/app.css         Tailwind + the Material token bridge + tokens + @font-face
 scripts/            copy htmx, subset the icon font
 app/main.py         five endpoints

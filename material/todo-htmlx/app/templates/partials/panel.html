@@ -1,23 +1,34 @@
-{# Rendered inside the page, and returned on its own when a filter chip is clicked. #}
+{# Rendered inside the page, and returned on its own when a filter is clicked. #}
 <div id="panel">
   {# 24 above, 8 below: the filters belong to the list beneath them, not to the composer. #}
   <div class="flex items-center justify-between gap-4 pt-6 pb-2">
-    {# selection="single" keeps one chip selected as you click, so the optimistic
-       state already matches what the server sends back — no second reflow. #}
-    <material-chip-set selection="single">
+    {# Segmented buttons, not filter chips: these three views are mutually
+       exclusive, and a chip is a multi-select control that also changes width
+       when it gains its check icon, shifting its neighbours on every switch.
+       `required` keeps one selected, so the optimistic state always matches what
+       the server sends back. #}
+    <material-button-group
+      variant="connected"
+      selection-mode="single"
+      required
+      aria-label="Filter todos"
+    >
       {% for value, text in [("all", "All"), ("active", "Active"), ("done", "Done")] %}
-        <material-chip
+        <material-button
           id="filter-{{ value }}"
-          variant="filter"
+          toggle
+          type="button"
+          variant="tonal"
+          value="{{ value }}"
           label="{{ text }}"
           {% if filter == value %}selected{% endif %}
           hx-get="/todos?filter={{ value }}"
           hx-target="#panel"
           hx-swap="outerHTML"
           hx-push-url="/?filter={{ value }}"
-        ></material-chip>
+        ></material-button>
       {% endfor %}
-    </material-chip-set>
+    </material-button-group>
 
     {% include "partials/count.html" %}
   </div>
