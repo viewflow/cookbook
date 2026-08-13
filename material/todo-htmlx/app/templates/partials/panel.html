@@ -1,6 +1,7 @@
 {# Rendered inside the page, and returned on its own when a filter chip is clicked. #}
 <div id="panel">
-  <div class="flex items-center justify-between gap-4 py-4">
+  {# 24 above, 8 below: the filters belong to the list beneath them, not to the composer. #}
+  <div class="flex items-center justify-between gap-4 pt-6 pb-2">
     {# selection="single" keeps one chip selected as you click, so the optimistic
        state already matches what the server sends back — no second reflow. #}
     <material-chip-set selection="single">
