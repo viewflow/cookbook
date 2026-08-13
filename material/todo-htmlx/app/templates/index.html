@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form
+    class="flex items-start gap-2 pt-6"
+    hx-post="/todos?filter={{ filter }}"
+    hx-target="#todo-list"
+    hx-swap="afterbegin"
+    hx-on::after-request="if (event.detail.successful) this.reset()"
+  >
+    {% include "partials/composer_field.html" %}
+
+    <material-button type="submit" size="m" label="Add" icon="add"></material-button>
+  </form>
+
+  {% include "partials/panel.html" %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{# Rendered in the form, and returned on its own when the server rejects a title. #}
+<material-textfield
+  id="new-title"
+  class="flex-1"
+  name="title"
+  label="What needs doing?"
+  leading-icon="add_task"
+  max-length="120"
+  required
+  {% if error %}error error-text="{{ error }}"{% endif %}
+  hx-on:input="this.removeAttribute('error'); this.removeAttribute('error-text')"
+></material-textfield>

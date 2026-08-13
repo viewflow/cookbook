@@ -1,0 +1,43 @@
+/* The only stylesheet the app builds.
+   1. Tailwind itself.
+   2. The Material token bridge, which redefines Tailwind's theme in terms of
+      --md-sys-* variables, so `bg-surface` and `text-body-large` mean what
+      they mean in Material 3.
+   3. The token values: the six palettes plus the type scale, motion and shape
+      tokens the components read out of the page. Imported here rather than
+      <link>ed so the browser fetches one stylesheet — @import in a Tailwind
+      entry is inlined at build time, not at runtime. */
+@import "tailwindcss";
+@import "advanced-material-web/tailwind.css";
+@import "advanced-material-web/theme.css";
+
+/* Tailwind v4 scans for class names starting from this file's directory, and
+   the templates live outside it. */
+@source "../app/templates";
+
+/* Icons are a ligature font. The components ask for this family name inside
+   their own shadow roots; @font-face is document-scoped, so declaring it once
+   here reaches all of them.
+
+   The file is built by scripts/subset-font.mjs — six icons and pinned axes,
+   27 KB instead of the 3.8 MB variable font npm installs. `font-weight: normal`
+   because that instance is no longer variable. */
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("/static/material-symbols-subset.woff2") format("woff2");
+}
+
+/* The empty state is a sibling of the list, shown by CSS when the list has no
+   element children. Deleting the last row is then a plain row removal: no
+   endpoint has to remember to render an empty state, and none of them can
+   disagree about when it applies. */
+#empty-state {
+  display: none;
+}
+
+#todo-list:not(:has(*)) + #empty-state {
+  display: block;
+}

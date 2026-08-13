@@ -1,0 +1,26 @@
+{
+  "name": "material-htmx-todo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A todo app built from Material 3 web components, Tailwind, htmx and FastAPI",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:assets && npm run build:font && npm run build:js && npm run build:css",
+    "build:assets": "node scripts/copy-assets.mjs",
+    "build:font": "node scripts/subset-font.mjs",
+    "build:js": "esbuild src/app.js --bundle --minify --format=esm --outfile=app/static/app.js",
+    "build:css": "tailwindcss --input src/app.css --output app/static/app.css --minify",
+    "watch:js": "npm run build:js -- --watch",
+    "watch:css": "tailwindcss --input src/app.css --output app/static/app.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "advanced-material-web": "^26.30.0",
+    "htmx.org": "^2.0.10",
+    "material-symbols": "^0.45.10"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "subset-font": "^2.5.0"
+  }
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Todos{% endblock %}</title>
+
+  <script>
+    // Before first paint: the component library reads the theme from this class
+    // and so does Tailwind's `dark:` variant, so setting it later would flash.
+    document.documentElement.className = localStorage.getItem("theme") || "light";
+  </script>
+
+  <link rel="stylesheet" href="{{ url_for('static', path='/app.css') }}">
+
+  <!-- The custom elements, bundled from the nine imports in src/app.js. A
+       module script is deferred by definition, so the markup below parses first
+       and each <material-*> element upgrades in place — the components carry
+       their own styles, so there is no flash of unstyled content to guard
+       against. -->
+  <script type="module" src="{{ url_for('static', path='/app.js') }}"></script>
+  <script src="{{ url_for('static', path='/htmx.min.js') }}" defer></script>
+</head>
+
+<body class="min-h-dvh bg-surface text-on-surface">
+  {# Small and centered: a tall `medium`/`large` bar with a left-aligned
+     headline is for a page whose content fills the width, and reads as
+     detached from a single narrow column. #}
+  <material-app-bar variant="small" align="centered">
+    <span slot="headline">Todos</span>
+    <material-icon-button
+      slot="trailing"
+      id="theme-toggle"
+      variant="standard"
+      toggle
+      icon="dark_mode"
+      selected-icon="light_mode"
+      aria-label="Toggle dark theme"
+    ></material-icon-button>
+  </material-app-bar>
+
+  <main class="mx-auto max-w-2xl px-4 pb-16">
+    {% block content %}{% endblock %}
+  </main>
+
+  <script>
+    // The whole of theme switching: the palettes are six classes on <html>, so
+    // there is nothing to re-render and no tokens to recompute.
+    const toggle = document.getElementById("theme-toggle");
+    toggle.selected = document.documentElement.classList.contains("dark");
+    toggle.addEventListener("selectedChange", (event) => {
+      const theme = event.detail.selected ? "dark" : "light";
+      document.documentElement.className = theme;
+      localStorage.setItem("theme", theme);
+    });
+  </script>
+</body>
+</html>

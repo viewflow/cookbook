@@ -1,0 +1,12 @@
+# Build output. `npm run build` regenerates all of it; the directory itself
+# stays, because FastAPI mounts it at startup.
+/app/static/*
+!/app/static/.gitkeep
+
+# The database is created on first run.
+/todos.db
+
+node_modules/
+.venv/
+__pycache__/
+.pytest_cache/

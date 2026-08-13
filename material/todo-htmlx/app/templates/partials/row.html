@@ -1,0 +1,23 @@
+<material-list-item id="todo-{{ todo.id }}">
+  <material-checkbox
+    slot="leading"
+    {% if todo.done %}checked{% endif %}
+    aria-label="Mark “{{ todo.title }}” as {{ "not done" if todo.done else "done" }}"
+    hx-post="/todos/{{ todo.id }}/toggle?filter={{ filter }}"
+    hx-trigger="checkedChange"
+    hx-target="#todo-{{ todo.id }}"
+    hx-swap="outerHTML"
+  ></material-checkbox>
+
+  <span class="{{ 'text-on-surface-variant line-through' if todo.done }}">{{ todo.title }}</span>
+
+  <material-icon-button
+    slot="trailing"
+    variant="standard"
+    icon="delete"
+    aria-label="Delete “{{ todo.title }}”"
+    hx-delete="/todos/{{ todo.id }}"
+    hx-target="#todo-{{ todo.id }}"
+    hx-swap="outerHTML"
+  ></material-icon-button>
+</material-list-item>

@@ -22,6 +22,10 @@ and run it.
 - [Timescale DB](./timescale_db) - Access to timescale database from Django
 - [Workflow 101](./workflow101) - HelloWorld workflow sample
 
+Material 3 web components, without Django:
+
+- [Todo + htmx](./material/todo-htmlx) - Material 3 custom elements driven by htmx, over a FastAPI backend
+
 
 ## How to use this repository
 

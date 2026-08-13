@@ -1,0 +1,39 @@
+{# Rendered inside the page, and returned on its own when a filter chip is clicked. #}
+<div id="panel">
+  <div class="flex items-center justify-between gap-4 py-4">
+    {# selection="single" keeps one chip selected as you click, so the optimistic
+       state already matches what the server sends back — no second reflow. #}
+    <material-chip-set selection="single">
+      {% for value, text in [("all", "All"), ("active", "Active"), ("done", "Done")] %}
+        <material-chip
+          id="filter-{{ value }}"
+          variant="filter"
+          label="{{ text }}"
+          {% if filter == value %}selected{% endif %}
+          hx-get="/todos?filter={{ value }}"
+          hx-target="#panel"
+          hx-swap="outerHTML"
+          hx-push-url="/?filter={{ value }}"
+        ></material-chip>
+      {% endfor %}
+    </material-chip-set>
+
+    {% include "partials/count.html" %}
+  </div>
+
+  {# selection-trigger="control": without it a click anywhere in the row toggles the
+     checkbox, delete button included — two requests for one click.
+     -mx-4 cancels the page margin so the rows' own 16dp padding provides it, which
+     lines their leading control up with the field and chips above; dense brings the
+     row back to the MD3 one-line 56dp that the 48dp checkbox target would exceed. #}
+  <material-list id="todo-list" class="-mx-4" dense selection="none" selection-trigger="control">
+    {% for todo in todos %}
+      {% include "partials/row.html" %}
+    {% endfor %}
+  </material-list>
+
+  {# Shown by CSS when the list has no children — see src/app.css. #}
+  <p id="empty-state" class="px-4 py-10 text-center text-body-medium text-on-surface-variant">
+    {{ empty_text }}
+  </p>
+</div>

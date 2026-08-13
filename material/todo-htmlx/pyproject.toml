@@ -1,0 +1,21 @@
+[project]
+name = "material-htmx-todo"
+version = "1.0.0"
+description = "A todo app built from Material 3 web components, Tailwind, htmx and FastAPI"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "jinja2>=3.1",
+    "python-multipart>=0.0.9", # form parsing, used by the add-todo POST
+    "uvicorn[standard]>=0.30",
+]
+
+[dependency-groups]
+dev = [
+    "httpx2>=0.29", # what starlette's TestClient uses
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."] # so `from app import ...` works without installing the app
