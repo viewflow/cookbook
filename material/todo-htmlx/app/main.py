@@ -17,11 +17,13 @@ is drawn.
 from __future__ import annotations
 
 import sqlite3
+import secrets
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, Form, HTTPException, Query, Request
+from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -36,6 +38,9 @@ EMPTY_TEXT: dict[Filter, str] = {
     "active": "No active todos. Enjoy the quiet.",
     "done": "Nothing completed yet.",
 }
+
+CSRF_COOKIE = "todo-csrf"
+CSRF_HEADER = "X-CSRF-Token"
 
 
 @asynccontextmanager
@@ -54,14 +59,44 @@ Connection = Annotated[sqlite3.Connection, Depends(db.get_db)]
 #: ``?filter=`` on every route. FastAPI rejects anything outside the Literal,
 #: so a template never has to defend against an unknown filter name.
 FilterQuery = Annotated[Filter, Query(alias="filter")]
+NewTodoQuery = Annotated[int | None, Query(alias="new")]
 
 
-def panel_context(conn: sqlite3.Connection, todo_filter: Filter) -> dict:
+@app.middleware("http")
+async def set_csrf_cookie(request: Request, call_next):
+    """Give each browser a token that htmx echoes for unsafe requests."""
+    response = await call_next(request)
+    if CSRF_COOKIE not in request.cookies:
+        response.set_cookie(
+            CSRF_COOKIE,
+            secrets.token_urlsafe(),
+            httponly=False,
+            samesite="strict",
+            secure=request.url.scheme == "https",
+        )
+    return response
+
+
+def require_csrf(request: Request) -> None:
+    """Reject cross-site writes, which cannot read the token cookie."""
+    token = request.cookies.get(CSRF_COOKIE)
+    supplied = request.headers.get(CSRF_HEADER)
+    if not token or not supplied or not secrets.compare_digest(token, supplied):
+        raise HTTPException(status_code=403, detail="CSRF validation failed")
+
+
+Csrf = Annotated[None, Depends(require_csrf)]
+
+
+def panel_context(
+    conn: sqlite3.Connection, todo_filter: Filter, fresh_todo_id: int | None = None
+) -> dict:
     return {
         "todos": db.list_todos(conn, todo_filter),
         "active_count": db.count_active(conn),
         "filter": todo_filter,
         "empty_text": EMPTY_TEXT[todo_filter],
+        "fresh_todo_id": fresh_todo_id,
     }
 
 
@@ -70,6 +105,7 @@ def row_response(
     conn: sqlite3.Connection,
     todo: db.Todo,
     todo_filter: Filter,
+    fresh: bool = False,
 ):
     """One changed row plus the counter — the answer to adding and to toggling.
 
@@ -84,15 +120,21 @@ def row_response(
             "active_count": db.count_active(conn),
             "filter": todo_filter,
             "oob": True,
+            "fresh": fresh,
         },
     )
 
 
 @app.get("/")
-def index(request: Request, conn: Connection, todo_filter: FilterQuery = "all"):
+def index(
+    request: Request,
+    conn: Connection,
+    todo_filter: FilterQuery = "all",
+    new_todo_id: NewTodoQuery = None,
+):
     """The whole page. Also what a browser reload of a filtered view returns."""
     return templates.TemplateResponse(
-        request, "index.html", panel_context(conn, todo_filter)
+        request, "index.html", panel_context(conn, todo_filter, new_todo_id)
     )
 
 
@@ -113,6 +155,7 @@ def todo_panel(request: Request, conn: Connection, todo_filter: FilterQuery = "a
 def add_todo(
     request: Request,
     conn: Connection,
+    _csrf: Csrf,
     # Defaulted, not required: FastAPI reports an empty form value as a *missing*
     # field, so declaring `title` required would answer it with a 422 and its own
     # JSON body — past htmx, which does not swap error responses. The default
@@ -142,13 +185,17 @@ def add_todo(
             {"error": "A todo needs a title"},
             headers={"HX-Retarget": "#new-title", "HX-Reswap": "outerHTML"},
         )
-    return row_response(request, conn, db.create_todo(conn, title), todo_filter)
+    todo = db.create_todo(conn, title)
+    if todo_filter == "done":
+        return Response(headers={"HX-Redirect": f"/?filter=active&new={todo.id}"})
+    return row_response(request, conn, todo, todo_filter, fresh=True)
 
 
 @app.post("/todos/{todo_id}/toggle")
 def toggle_todo(
     request: Request,
     conn: Connection,
+    _csrf: Csrf,
     todo_id: int,
     todo_filter: FilterQuery = "all",
 ):
@@ -160,7 +207,7 @@ def toggle_todo(
 
 
 @app.delete("/todos/{todo_id}")
-def remove_todo(request: Request, conn: Connection, todo_id: int):
+def remove_todo(request: Request, conn: Connection, _csrf: Csrf, todo_id: int):
     """Delete one todo. The response body is only the counter, so the row this
     request came from is replaced by nothing."""
     if not db.delete_todo(conn, todo_id):

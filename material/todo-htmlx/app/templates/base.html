@@ -56,6 +56,14 @@
   </main>
 
   <script>
+    document.body.addEventListener("htmx:configRequest", (event) => {
+      const token = document.cookie
+        .split("; ")
+        .find((cookie) => cookie.startsWith("todo-csrf="))
+        ?.split("=")[1];
+      if (token) event.detail.headers["X-CSRF-Token"] = token;
+    });
+
     // The whole of theme switching: the palettes are six classes on <html>, so
     // there is nothing to re-render and no tokens to recompute.
     const toggle = document.getElementById("theme-toggle");

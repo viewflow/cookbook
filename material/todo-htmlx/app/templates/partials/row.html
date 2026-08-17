@@ -1,4 +1,7 @@
-<material-list-item id="todo-{{ todo.id }}">
+<material-list-item
+  id="todo-{{ todo.id }}"
+  {% if fresh or todo.id == fresh_todo_id %}class="todo-new"{% endif %}
+>
   <material-checkbox
     slot="leading"
     {% if todo.done %}checked{% endif %}

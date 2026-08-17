@@ -1,5 +1,17 @@
 {# Rendered inside the page, and returned on its own when a filter is clicked. #}
 <div id="panel">
+  <form
+    class="flex items-start gap-4 pt-6"
+    hx-post="/todos?filter={{ filter }}"
+    hx-target="#todo-list"
+    hx-swap="afterbegin"
+    hx-on::after-request="if (event.detail.successful) this.reset()"
+  >
+    {% include "partials/composer_field.html" %}
+
+    <material-button type="submit" size="m" label="Add" icon="add"></material-button>
+  </form>
+
   {# 24 above, 8 below: the filters belong to the list beneath them, not to the composer. #}
   <div class="flex items-center justify-between gap-4 pt-6 pb-2">
     {# Segmented buttons, not filter chips: these three views are mutually

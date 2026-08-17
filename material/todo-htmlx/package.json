@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
-    "advanced-material-web": "^26.30.0",
+    "advanced-material-web": "^26.30.1",
     "htmx.org": "^2.0.10",
     "material-symbols": "^0.45.10"
   },

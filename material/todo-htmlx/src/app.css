@@ -41,3 +41,28 @@
 #todo-list:not(:has(*)) + #empty-state {
   display: block;
 }
+
+.todo-new {
+  animation: todo-added 1.8s ease-out;
+}
+
+@keyframes todo-added {
+  0% {
+    outline: 3px solid var(--md-sys-color-primary);
+    outline-offset: -3px;
+    background-color: var(--md-sys-color-primary-container);
+  }
+
+  100% {
+    outline-color: transparent;
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .todo-new {
+    animation: none;
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: -2px;
+  }
+}
